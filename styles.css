@@ -1,0 +1,68 @@
+/* Hero Section and Navbar */
+	.icon {
+		height: 30px; 
+		width: 30px; 
+		margin-right: 1rem;
+	}
+  .hero-wrapper {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar {
+    flex-shrink: 0; /* Navbar won't shrink */
+  }
+  .hero {
+    flex-grow: 1; /* Hero takes the remaining height */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), 
+                url('https://via.placeholder.com/1920x800') no-repeat center center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  .hero p {
+    font-size: 1.5rem;
+  }
+
+  /* Our Events Section */
+  .events-title {
+    display: flex; 
+    justify-content: center; 
+    background-color: linear-gradient();
+  }
+  .carousel-item {
+    height: 80vh; /* Set height to 80% of viewport height */
+  }
+  .card {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+  }
+  .card-body {
+    flex: 0 0 40%; /* Text area takes 40% of the width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem 2rem 2rem 10%;
+  } 
+	.card-text {
+		font-size: 1.25rem;
+	}
+  .card-img-end {
+    flex: 0 0 60%; /* Image takes 60% of the width */
+    height: 100%;
+    object-fit: cover;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #333; /* Dark color for arrows */ 
+    z-index: 10; 
+  }
