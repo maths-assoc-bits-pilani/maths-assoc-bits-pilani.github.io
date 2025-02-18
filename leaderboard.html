@@ -5,18 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Leaderboard - Puzzles 2 Puzzle U</title>
 		<script src="https://cdn.tailwindcss.com"></script>
-		<!-- Add Bootstrap for table styling -->
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 			rel="stylesheet" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap"
 			rel="stylesheet" />
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<link rel="stylesheet" href="./styles/fonts.css" />
-		<!-- favicon -->
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -26,24 +24,18 @@
 	<body class="container lato-regular">
 		<div class="px-5 py-4 puzzles-navbar">
 			<nav class="flex justify-between items-center border-black border-b-4 py-3">
-				<!-- Logo Section -->
 				<div class="flex">
-					<a href="./index.html">
-						<div class="border-sky-400 border-2 rounded p-1 w-auto">
-							<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
-						</div>
-					</a>
-					<!-- Title Section -->
+					<div class="border-sky-400 border-2 rounded p-1 w-auto">
+						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
+					</div>
 					<div>
 						<a
 							href="puzzles.html"
-							class="text-4xl transition hover:text-green-800 mx-4 merriweather-regular">
-							Puzzles 2 Puzzle U
-						</a>
+							class="text-4xl transition hover:text-green-800 mx-4 merriweather-regular"
+							>Puzzles 2 Puzzle U</a
+						>
 					</div>
 				</div>
-
-				<!-- Desktop Navigation Links -->
 				<div class="hidden md:block">
 					<ul class="flex space-x-6 text-sm">
 						<li>
@@ -61,27 +53,19 @@
 						</li>
 					</ul>
 				</div>
-
-				<!-- Burger Menu for Small Screens -->
 				<div class="block md:hidden">
 					<button id="menu-toggle" class="text-xl hover:text-sky-400">&#9776;</button>
 				</div>
 			</nav>
-
-			<!-- Dropdown Menu for Small Screens -->
 			<div
 				id="menu"
 				class="fixed top-0 right-0 h-full w-0 bg-zinc-900 text-white lato-bold transition-all duration-500 overflow-hidden z-40 md:hidden py-16 opacity-90">
 				<div class="relative p-4">
-					<!-- Close Button -->
 					<button
 						id="close-menu"
 						class="absolute top-4 left-4 text-3xl transform transition-transform duration-500 hover:text-sky-400">
 						&#10005;
-						<!-- Unicode cross symbol -->
 					</button>
-
-					<!-- Menu Links -->
 					<div class="space-y-4 my-10">
 						<a href="index.html" class="block hover:text-sky-400">Home</a>
 						<a href="verticals.html" class="block hover:text-sky-400">Verticals</a>
@@ -90,41 +74,48 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Leaderboard Table -->
-		<div class="container lg:px-24 md:px-16 my-5">
+		<div class="container my-5 lg:mx-16 md:mx-8 sm:mx-4">
 			<h2 class="text-center mb-4 text-3xl">Leaderboard</h2>
-			<table class="table table-bordered table-striped" id="leaderboard-table">
-				<thead>
+			<table class="table table-bordered table-striped">
+				<thead class="table-dark">
 					<tr>
-						<th>Rank</th>
 						<th>Name</th>
+						<th>Email</th>
 						<th>Attempts</th>
 						<th>Puzzles Solved</th>
 					</tr>
 				</thead>
-				<tbody id="leaderboard-table-body">
-					<!-- Leaderboard rows will be inserted here -->
-					<tr>
-						<td>1</td>
-						<td>dtu1141b</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Sherlock</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<!-- Add more rows dynamically -->
-				</tbody>
+				<tbody id="leaderboard-table-body"></tbody>
 			</table>
 		</div>
-
-		<!-- Bootstrap JS and dependencies -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="./scripts/leaderboard.js"></script>
-		<!-- <script src="./scripts/sheets.js"></script> -->
+		<script>
+			document.addEventListener("DOMContentLoaded", async () => {
+				try {
+					const res = await fetch("https://puzzles-backend.onrender.com/leaderboard");
+					const data = await res.json();
+					const tbody = document.getElementById("leaderboard-table-body");
+					tbody.innerHTML = "";
+					data.forEach((entry) => {
+						const row = document.createElement("tr");
+						const nameCell = document.createElement("td");
+						nameCell.textContent = entry.name;
+						const emailCell = document.createElement("td");
+						emailCell.textContent = entry.email;
+						const attemptsCell = document.createElement("td");
+						attemptsCell.textContent = entry.totalAttempts;
+						const solvedCell = document.createElement("td");
+						solvedCell.textContent = entry.problemsSolved;
+						row.appendChild(nameCell);
+						row.appendChild(emailCell);
+						row.appendChild(attemptsCell);
+						row.appendChild(solvedCell);
+						tbody.appendChild(row);
+					});
+				} catch (err) {
+					console.error("Error fetching leaderboard:", err);
+				}
+			});
+		</script>
 	</body>
 </html>
