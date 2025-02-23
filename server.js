@@ -22,7 +22,7 @@ mongoose.connect(MONGO_URI, {
 .catch((err) => console.error('❌ MongoDB connection error:', err));
 
 const CURRENT_WEEK = 'week1';
-const CORRECT_ANSWER = '42';
+const CORRECT_ANSWER = '2';
 
 const submissionSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -78,6 +78,10 @@ app.post('/submit', async (req, res) => {
     const { name, email, answer } = req.body;
     if (!name || !email || !answer) {
       return res.status(400).json({ error: 'Missing name, email, or answer.' });
+    }
+    const existingCorrect = await Submission.findOne({ email, week: CURRENT_WEEK, isCorrect: true });
+    if (existingCorrect) {
+      return res.status(400).json({ error: 'Correct answer already submitted for this puzzle/week.' });
     }
     const attemptCount = await Submission.countDocuments({ email, week: CURRENT_WEEK });
     if (attemptCount >= 3) {
