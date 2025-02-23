@@ -79,6 +79,10 @@ app.post('/submit', async (req, res) => {
     if (!name || !email || !answer) {
       return res.status(400).json({ error: 'Missing name, email, or answer.' });
     }
+    const existingCorrect = await Submission.findOne({ email, week: CURRENT_WEEK, isCorrect: true });
+    if (existingCorrect) {
+      return res.status(400).json({ error: 'Correct answer already submitted for this puzzle/week.' });
+    }
     const attemptCount = await Submission.countDocuments({ email, week: CURRENT_WEEK });
     if (attemptCount >= 3) {
       return res.status(400).json({ error: 'Max attempts reached for this puzzle/week.' });
