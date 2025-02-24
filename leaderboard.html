@@ -22,32 +22,46 @@
 		<link rel="manifest" href="/favicon/site.webmanifest" />
 	</head>
 	<body class="container lato-regular">
-		<div class="px-5 py-4 puzzles-navbar">
+		<div class="px-4 md:px-5 py-4 puzzles-navbar">
 			<nav class="flex justify-between items-center border-black border-b-4 py-3">
-				<div class="flex">
-					<div class="border-sky-400 border-2 rounded p-1 w-auto">
+				<div class="flex items-center justify-between md:w-auto w-fit">
+					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
 						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
 					</div>
-					<div>
+					<div
+						class="text-center flex flex-col items-center justify-center mx-4 md:mx-10">
 						<a
 							href="puzzles.html"
-							class="text-4xl transition hover:text-green-800 mx-4 merriweather-regular"
-							>Puzzles 2 Puzzle U</a
+							class="text-4xl m-0 transition hover:text-green-800 merriweather-regular"
+							>Puzzles 2</a
+						>
+						<a
+							href="puzzles.html"
+							class="text-4xl m-0 transition hover:text-green-800 merriweather-regular"
+							>Puzzle U</a
 						>
 					</div>
 				</div>
 				<div class="hidden md:block">
 					<ul class="flex space-x-6 text-sm">
 						<li>
-							<a href="./puzzles.html" class="hover:text-sky-400 transition"
+							<a
+								href="./puzzles.html"
+								class="hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-gray-950"
 								>This Week's Puzzle</a
 							>
 						</li>
 						<li>
-							<a href="./index.html" class="hover:text-sky-400 transition">Home</a>
+							<a
+								href="./index.html"
+								class="hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								>Home</a
+							>
 						</li>
 						<li>
-							<a href="./contact.html" class="hover:text-sky-400 transition"
+							<a
+								href="./contact.html"
+								class="hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
 								>Contact</a
 							>
 						</li>
@@ -74,9 +88,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="container my-5 lg:mx-16 md:mx-8 sm:mx-4">
+		<div class="container my-5 lg:mx-16 md:mx-8 sm:mx-4 w-auto">
 			<h2 class="text-center mb-4 text-3xl">Leaderboard</h2>
-			<table class="table table-bordered table-striped">
+			<table class="table table-bordered table-striped md:w-full">
 				<thead class="table-dark">
 					<tr>
 						<th>Name</th>

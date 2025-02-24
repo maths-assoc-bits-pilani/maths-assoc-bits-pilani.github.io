@@ -29,7 +29,8 @@
 					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
 						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
 					</div>
-					<div class="text-center flex flex-col items-center justify-center mx-4">
+					<div
+						class="text-center flex flex-col items-center justify-center mx-4 md:mx-10">
 						<a
 							href="puzzles.html"
 							class="text-4xl m-0 transition hover:text-green-800 merriweather-regular"
@@ -45,15 +46,23 @@
 				<div class="hidden md:block">
 					<ul class="flex space-x-6 text-sm">
 						<li>
-							<a href="./leaderboard.html" class="hover:text-sky-400 transition"
+							<a
+								href="./leaderboard.html"
+								class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-gray-950"
 								>Leaderboard</a
 							>
 						</li>
 						<li>
-							<a href="./index.html" class="hover:text-sky-400 transition">Home</a>
+							<a
+								href="./index.html"
+								class="block hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								>Home</a
+							>
 						</li>
 						<li>
-							<a href="./contact.html" class="hover:text-sky-400 transition"
+							<a
+								href="./contact.html"
+								class="block hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
 								>Contact</a
 							>
 						</li>
@@ -81,6 +90,9 @@
 			</div>
 		</div>
 		<main class="container px-4 md:px-5 py-4" style="padding: 0; margin: 0">
+			<div class="flex justify-center my-3 md:my-10 text-xl">
+				<em>Weekly puzzles to work your brain!</em>
+			</div>
 			<div
 				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-0">
 				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
@@ -89,10 +101,11 @@
 					</h2>
 					<p class="text-base mt-4">
 						You have a gold bar of length 7 units. Suppose a quirky customer comes up to
-						you and demands that he receive one unit of gold bar the first day of the
-						week, two units the second day, and so on upto the seventh day. What is the
-						minimum number of cuts you need to apply to your gold bar in order to
-						fulfill his demand?
+						you and puts up a request. He wants to have in his possession one unit of
+						gold bar the first day of the week, two units the second day, and so on upto
+						the seventh day. You can take back pieces of gold bar from him so long as
+						this condition is satisfied. What is the minimum number of cuts you need to
+						apply to your gold bar in order to fulfill his demand?
 					</p>
 				</div>
 				<div class="w-auto mr-0">

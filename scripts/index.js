@@ -86,7 +86,7 @@ responseForm.addEventListener("submit", async (e) => {
 		const data = await res.json();
 		if (res.ok && data.success) {
 			if (data.isCorrect) {
-				alert("🎉 Correct! Your response has been recorded.");
+				alert("🎉 Correct! Your response has been recorded. Come back next week!");
 			} else {
 				alert("❌ Incorrect! Try again (if you still have attempts left).");
 			}
