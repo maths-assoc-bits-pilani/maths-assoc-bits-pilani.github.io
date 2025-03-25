@@ -93,8 +93,8 @@
 			<table class="table table-bordered table-striped md:w-full">
 				<thead class="table-dark">
 					<tr>
+						<th>Rank</th>
 						<th>Name</th>
-						<th>Email</th>
 						<th>Attempts</th>
 						<th>Puzzles Solved</th>
 					</tr>
@@ -110,18 +110,18 @@
 					const data = await res.json();
 					const tbody = document.getElementById("leaderboard-table-body");
 					tbody.innerHTML = "";
-					data.forEach((entry) => {
+					data.forEach((entry, index) => {
 						const row = document.createElement("tr");
+						const rankCell = document.createElement("td");
+						rankCell.textContent = index + 1;
 						const nameCell = document.createElement("td");
 						nameCell.textContent = entry.name;
-						const emailCell = document.createElement("td");
-						emailCell.textContent = entry.email;
 						const attemptsCell = document.createElement("td");
 						attemptsCell.textContent = entry.totalAttempts;
 						const solvedCell = document.createElement("td");
 						solvedCell.textContent = entry.problemsSolved;
+						row.appendChild(rankCell);
 						row.appendChild(nameCell);
-						row.appendChild(emailCell);
 						row.appendChild(attemptsCell);
 						row.appendChild(solvedCell);
 						tbody.appendChild(row);
