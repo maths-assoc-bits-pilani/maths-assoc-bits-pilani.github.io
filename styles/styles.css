@@ -91,3 +91,8 @@ a {
 	justify-content: center;
 	height: 24rem;
 }
+
+
+.container {
+  max-width: 100% !important;
+}
