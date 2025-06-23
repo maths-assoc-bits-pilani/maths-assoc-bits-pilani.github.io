@@ -22,9 +22,11 @@ window.addEventListener("click", (e) => {
 	}
 });
 
+const API_BASE = "https://maths-assoc-website.onrender.com";
+
 function handleCredentialResponse(response) {
 	const token = response.credential;
-	fetch("https://puzzles-backend.onrender.com/auth/google", {
+	fetch(`${API_BASE}/auth/google`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ token }),
@@ -74,7 +76,7 @@ responseForm.addEventListener("submit", async (e) => {
 		return;
 	}
 	try {
-		const res = await fetch("https://puzzles-backend.onrender.com/submit", {
+		const res = await fetch(`${API_BASE}/submit`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
