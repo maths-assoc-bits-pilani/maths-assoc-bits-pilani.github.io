@@ -24,7 +24,7 @@
 	</head>
 	<body class="container lato-regular" style="padding: 0; margin: 0">
 		<div class="px-4 md:px-5 py-4 puzzles-navbar">
-			<nav class="flex justify-between items-center border-black border-b-4 py-3">
+			<nav class="flex justify-between items-center border-black border-b-4 py-3 navbar">
 				<div class="flex items-center justify-between md:w-auto w-fit">
 					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
 						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
@@ -48,7 +48,7 @@
 						<li>
 							<a
 								href="./leaderboard.html"
-								class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-gray-950"
+								class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-sky-700"
 								>Leaderboard</a
 							>
 						</li>
@@ -123,21 +123,21 @@
 						<div class="container text-center py-6 md:py-10 px-4">
 							<h2 class="text-2xl mb-6 md:mb-10">Think you have the answer?</h2>
 							<form id="details-form">
-								<div class="mb-3">
+								<div class="mb-3 px-40">
 									<label for="name" class="form-label">Name</label>
 									<input
 										type="text"
 										id="name"
-										class="form-control"
+										class="form-control bg-gray-300 input-text"
 										placeholder="Your Name"
 										required />
 								</div>
-								<div class="mb-3">
+								<div class="mb-3 px-40">
 									<label for="email" class="form-label">Email</label>
 									<input
 										type="email"
 										id="email"
-										class="form-control"
+										class="form-control  bg-gray-300 input-text"
 										placeholder="Your Email"
 										required />
 								</div>
@@ -161,12 +161,12 @@
 					<div class="carousel-item">
 						<div class="container text-center py-5 px-4">
 							<form id="response-form">
-								<div class="mb-3">
+								<div class="mb-3 px-40">
 									<label for="response" class="form-label">Your Response</label>
 									<input
 										type="text"
 										id="response"
-										class="form-control"
+										class="form-control  bg-gray-300 input-text"
 										placeholder="Enter Your Response"
 										required />
 								</div>
