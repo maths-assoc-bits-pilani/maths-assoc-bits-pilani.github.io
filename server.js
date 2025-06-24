@@ -24,7 +24,7 @@ mongoose
 	.catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const CURRENT_WEEK = "week1";
-const CORRECT_ANSWER = "2";
+const CORRECT_ANSWER = "0.25";
 
 const submissionSchema = new mongoose.Schema({
 	name: { type: String, required: true },

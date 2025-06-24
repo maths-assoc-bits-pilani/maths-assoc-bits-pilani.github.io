@@ -67,6 +67,8 @@ detailsForm.addEventListener("submit", (e) => {
 	}
 });
 
+let attemptCount = 0;
+
 responseForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	const responseField = document.getElementById("response");
@@ -86,11 +88,21 @@ responseForm.addEventListener("submit", async (e) => {
 			}),
 		});
 		const data = await res.json();
+		const carousel = new bootstrap.Carousel("#carouselExample");
 		if (res.ok && data.success) {
 			if (data.isCorrect) {
-				alert("🎉 Correct! Your response has been recorded. Come back next week!");
+				alert("🎉 Correct! Come back next week!"); 
+                // show correct modal 
+                carousel.to(2); 
 			} else {
-				alert("❌ Incorrect! Try again (if you still have attempts left).");
+				attemptCount++; 
+                if (attemptCount >= 3) {
+                    alert("Maximum attempts reached for this week. Better luck next time!");
+                    carousel.to(2); // Show the end screen
+                } else {
+                    alert(`Incorrect! You have ${3 - attemptCount} attempts left.`);
+                    carousel.to(1); // Stay on the response form
+                }
 			}
 		} else {
 			alert(data.error || "Unknown error occurred.");
