@@ -10,7 +10,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI =
-	"mongodb+srv://rishabjha098:F7QzcbD8-VAiqR.@cluster0.sq6fc.mongodb.net/puzzlesDB?retryWrites=true&w=majority&appName=Cluster0";
+	"mongodb+srv://admin-mathassoc:uLNqWefYhyHZ8akQ@math-association.9a0xikp.mongodb.net/?retryWrites=true&w=majority&appName=Math-Association";
 const GOOGLE_CLIENT_ID = "1070688162806-kflhnm9vmvps7nbmi1j14192st7riua4.apps.googleusercontent.com";
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
