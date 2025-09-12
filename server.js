@@ -10,9 +10,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 // const MONGO_URI = 'mongodb://localhost:27017/db';
-const MONGO_URI = 'mongodb+srv://techteammathsassoc_db_user:2cCMCbIYFj8U6D81@mathassoccluster.i59ctvc.mongodb.net/?retryWrites=true&w=majority&appName=MathAssocCluster';
-// const MONGO_URI =
-// 	"mongodb+srv://rishabjha098:F7QzcbD8-VAiqR.@cluster0.sq6fc.mongodb.net/puzzlesDB?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI =
+  'mongodb+srv://techteammathsassoc_db_user:2cCMCbIYFj8U6D81@mathassoccluster.i59ctvc.mongodb.net/?retryWrites=true&w=majority&appName=MathAssocCluster';
+// const MONGO_URI = "mongodb+srv://rishabjha098:F7QzcbD8-VAiqR.@cluster0.sq6fc.mongodb.net/puzzlesDB?retryWrites=true&w=majority&appName=Cluster0";
 const GOOGLE_CLIENT_ID =
   '1070688162806-kflhnm9vmvps7nbmi1j14192st7riua4.apps.googleusercontent.com';
 
@@ -97,11 +97,9 @@ app.post('/submit', async (req, res) => {
       isCorrect: true,
     });
     if (existingCorrect) {
-      return res
-        .status(400)
-        .json({
-          error: 'Correct answer already submitted for this puzzle/week.',
-        });
+      return res.status(400).json({
+        error: 'Correct answer already submitted for this puzzle/week.',
+      });
     }
     const attemptCount = await Submission.countDocuments({
       email,
