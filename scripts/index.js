@@ -86,19 +86,19 @@ responseForm.addEventListener("submit", async (e) => {
 		return;
 	}
 	try {
-		// const res = await fetch(`${API_BASE}/submit`, {
-		// 	method: "POST",
-		// 	headers: { "Content-Type": "application/json" },
-		// 	body: JSON.stringify({
-		// 		name: globalName,
-		// 		email: globalEmail,
-		// 		answer,
-		// 	}),
-		// });
-		// const data = await res.json();
+		const res = await fetch(`${API_BASE}/submit`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				name: globalName,
+				email: globalEmail,
+				answer,
+			}),
+		});
+		const data = await res.json();
 		const carousel = new bootstrap.Carousel("#carouselExample");
-		// if (res.ok && data.success) {
-			if (true) {
+		if (res.ok && data.success) {
+			if (data.isCorrect) {
 				// alert('🎉 Correct! Come back next week!');
 				// show correct modal\
                 const correctModal = document.querySelector(".correct-modal");
@@ -119,9 +119,9 @@ responseForm.addEventListener("submit", async (e) => {
 					carousel.to(1); // Stay on the response form
 				}
 			}
-		// } else {
-		// 	alert(data.error || "Unknown error occurred.");
-		// }
+		} else {
+			alert(data.error || "Unknown error occurred.");
+		}
 	} catch (err) {
 		console.error("Error during submission:", err);
 		alert("Server error. Please try again later.");
