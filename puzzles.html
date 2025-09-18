@@ -98,7 +98,9 @@
 				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
 					<h2 class="text-4xl mb-4 merriweather-regular-italic">Random Ratio</h2>
 					<p class="text-lg mt-4">
-						If $P$ and $Q$ are two points chosen at random from the interval $(0,1)$, what is the probability (up to two decimal places) that the ratio $P/Q$ lies between $1$ and $2$?
+						If $P$ and $Q$ are two points chosen at random from the interval $(0,1)$,
+						what is the probability (up to two decimal places) that the ratio $P/Q$ lies
+						between $1$ and $2$?
 					</p>
 				</div>
 				<div class="w-auto mr-0">
@@ -163,24 +165,93 @@
 										placeholder="Enter Your Response"
 										required />
 								</div>
-								<button type="submit" class="btn btn-success my-5">Submit</button>
+								<div class="flex justify-center gap-x-4">
+									<button
+										class="back-btn btn my-5 text-stone-950 bg-stone-50 hover:bg-stone-300 hover:text-stone-950">
+										Back
+									</button>
+									<button type="submit" class="btn btn-success my-5">
+										Submit
+									</button>
+								</div>
 							</form>
 						</div>
 					</div>
-					<div class="carousel-item">
+					<div class="correct-modal modal hidden">
+						<div class="tick-mark flex justify-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="100"
+								height="100"
+								viewBox="0 0 48 48">
+								<path
+									fill="#c8e6c9"
+									d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+								<path
+									fill="#4caf50"
+									d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
+							</svg>
+						</div>
+						<div class="correct-text">
+							<h2 class="text-2xl mb-6">Correct!</h2>
+							<p class="text-base">Well done! Your answer is correct.</p>
+							<button class="close-btn">OK</button>
+						</div>
+					</div>
+					<div class="incorrect-modal modal hidden">
+						<div class="cross-mark flex justify-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="100"
+								height="100"
+								viewBox="0 0 48 48">
+								<path
+									fill="#f44336"
+									d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+								<path
+									fill="#fff"
+									d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"></path>
+								<path
+									fill="#fff"
+									d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"></path>
+							</svg>
+						</div>
+						<div class="incorrect-text flex justify-center"></div>
+						<button class="close-btn">OK</button>
+					</div>
+					<div class="attempts-complete modal hidden text-center px-4">
+						<h2>No attempts left!</h2>
+						<p>You have used all your attempts! Come back next week.</p>
+						<button class="close-btn">OK</button>
+					</div>
+					<div class="carousel-item h-auto">
 						<div
-							class="container text-center py-5 px-4 flex flex-row justify-center align-items-between">
-							<h2 class="text-2xl mb-6">Solution</h2>
-							<p class="text-base">
-								Assume that the points are $x$ & $y$ respectively. We want to know if
-								$\frac{x}{y}$ is between $1$ and $2$. If we plot this, the limits are $\frac{x}{y}=1$ and
-								$\frac{x}{y}=2$. Thus, the desired region is the area between lines $y=x$ &
-								$y=\frac{x}{2}$.
+							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
+							<div class="w-1/2">
+								<h2 class="text-2xl mb-6">Solution</h2>
+								<p class="text-base text-left w-full">
+									Assume that the points are $x$ & $y$ respectively. We want to
+									know if $\frac{x}{y}$ is between $1$ and $2$. If we plot this,
+									the limits are $\frac{x}{y}=1$ and $\frac{x}{y}=2$.
+								</p>
+								<p class="text-base text-left w-full my-6">
+									Thus, the desired region is the area between lines $y=x$ &
+									$y=\frac{x}{2}$.
+								</p>
+                                <p class="text-base text-left w-full">
+								This region is 1/4 th of the rest.
 							</p>
-							<img
-								src="https://brainstellar.com/static/65c403f64f72da60c3b30ee42389a238/a8a0d/112_plot.drawio.png"
-								alt="" />
-							<p class="text-base">This region is 1/4 th of the rest.</p>
+							</div>
+							<div class="w-1/2">
+								<img
+									src="https://brainstellar.com/static/65c403f64f72da60c3b30ee42389a238/a8a0d/112_plot.drawio.png"
+									alt=""
+									class="flex" />
+							</div>
 						</div>
 					</div>
 				</div>

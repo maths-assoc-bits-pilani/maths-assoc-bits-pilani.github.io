@@ -104,14 +104,14 @@ a {
   max-width: 100% !important;
   background-color: var(--dark-bg); 
   color: var(--dark-primary);
-  border-color: var(--dark-borders) !important;
+  border-color: var(--dark-borders) !important; 
 }
 .navbar {
     border-color: var(--dark-borders) !important;
 } 
 .input-text { 
-    background-color: #2f3335;
-    color: var(--dark-primary);
+    /* background-color: #2f3335; */
+    /* color: var(--dark-primary); */
     border: 1px solid var(--dark-borders);
 }
 .leaderboard-table {
@@ -123,4 +123,18 @@ a {
     background-color: var(--dark-secondary);
     color: var(--dark-primary);
     border: 1px solid var(--dark-borders);
+}
+.modal { 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    transition: 0.3s all ease-in-out;  
+    opacity: 0;  
+    z-index: -1; 
+    position: fixed;
+} 
+.modal.open { 
+    opacity: 1; 
+    z-index: 999; 
 }
