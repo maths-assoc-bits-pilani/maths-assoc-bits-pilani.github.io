@@ -107,9 +107,6 @@ a {
 	height: 100%;
 	object-fit: cover;
 }
-.carousel{ 
-    /* border-color: var(--dark-borders) !important;  */
-}
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
 	background-color: var(--dark-secondary); /* Dark color for arrows */
