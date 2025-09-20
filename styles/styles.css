@@ -12,6 +12,28 @@ div {
 	padding: 0;
 	margin: 0;
 }
+.swipe-underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+.swipe-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;              /* adjust distance from text */
+  height: 2px;               /* underline thickness */
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1);
+  will-change: transform;
+}
+.swipe-underline:hover::after,
+.swipe-underline:focus::after {
+  transform: scaleX(1);
+}
 /* add a transition when the hidden menu opens and closes */
 #menu {
 	transition: all 0.5s ease;
@@ -29,7 +51,7 @@ div {
 	flex-direction: column;
 }
 .navbar {
-	flex-shrink: 0; /* Navbar won't shrink */
+	flex-shrink: 0;/* Navbar won't shrink */
 }
 .hero {
 	flex-grow: 1; /* Hero takes the remaining height */
@@ -50,8 +72,8 @@ div {
 	font-size: 1.5rem;
 }
 a {
-	text-decoration: none !important;
-	color: inherit !important;
+	text-decoration: none;
+	color: inherit;
 }
 .puzzle-btn {
 	text-decoration: none;
@@ -86,7 +108,7 @@ a {
 	object-fit: cover;
 }
 .carousel{ 
-    border-color: var(--dark-borders) !important; 
+    /* border-color: var(--dark-borders) !important;  */
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -100,12 +122,6 @@ a {
 	height: 24rem;
 }
 
-.container {
-  max-width: 100% !important;
-  background-color: var(--dark-bg); 
-  color: var(--dark-primary);
-  border-color: var(--dark-borders) !important; 
-}
 .navbar {
     border-color: var(--dark-borders) !important;
 } 
