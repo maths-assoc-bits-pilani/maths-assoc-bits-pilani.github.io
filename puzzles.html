@@ -11,9 +11,9 @@
 		<script src="https://accounts.google.com/gsi/client" async defer></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
+		<!-- <link
 			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap"
-			rel="stylesheet" />
+			rel="stylesheet" /> -->
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<link rel="stylesheet" href="./styles/fonts.css" />
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -22,23 +22,23 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
 		<link rel="manifest" href="/favicon/site.webmanifest" />
 	</head>
-	<body class="container lato-regular" style="padding: 0; margin: 0">
-		<div class="px-4 md:px-5 py-4 puzzles-navbar">
-			<nav class="flex justify-between items-center border-black border-b-4 py-3 navbar">
+	<body style="padding: 0; margin: 0">
+		<div class="puzzles-navbar bg-gray-800 border-sky-400 border-b-4">
+			<nav class="flex justify-between items-center mx-20 px-6 py-6 navbar">
 				<div class="flex items-center justify-between md:w-auto w-fit">
 					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
 						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
 					</div>
 					<div
-						class="text-center flex flex-col items-center justify-center mx-4 md:mx-10">
+						class="text-center font-extrabold text-white flex flex-col items-center justify-center mx-4 md:mx-10">
 						<a
 							href="puzzles.html"
-							class="text-4xl m-0 transition hover:text-green-800 merriweather-regular"
+							class="text-4xl m-0 transition hover:text-green-800"
 							>Puzzles 2</a
 						>
 						<a
 							href="puzzles.html"
-							class="text-4xl m-0 transition hover:text-green-800 merriweather-regular"
+							class="text-4xl m-0 transition hover:text-green-800"
 							>Puzzle U</a
 						>
 					</div>
@@ -55,14 +55,14 @@
 						<li>
 							<a
 								href="./index.html"
-								class="block hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
 								>Home</a
 							>
 						</li>
 						<li>
 							<a
 								href="./contact.html"
-								class="block hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
 								>Contact</a
 							>
 						</li>
@@ -89,14 +89,14 @@
 				</div>
 			</div>
 		</div>
-		<main class="container px-4 md:px-5 py-4" style="padding: 0; margin: 0">
+		<main class="container px-4 md:px-5 py-4 w-full">
 			<div class="flex justify-center my-3 md:my-10 text-xl">
 				<em>Weekly puzzles to work your brain!</em>
 			</div>
 			<div
 				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-0">
 				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
-					<h2 class="text-4xl mb-4 merriweather-regular-italic">Random Ratio</h2>
+					<h2 class="text-4xl font-bold mb-4-italic">Random Ratio</h2>
 					<p class="text-lg mt-4">
 						If $P$ and $Q$ are two points chosen at random from the interval $(0,1)$,
 						what is the probability (up to two decimal places) that the ratio $P/Q$ lies
@@ -112,7 +112,7 @@
 			</div>
 			<div
 				id="carouselExample"
-				class="carousel slide lg:px-48 border-black border-4 py-6 md:py-10">
+				class="carousel slide border-black border-4 py-6 md:py-10 md:px-20">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="container text-center py-6 md:py-10 px-4">
@@ -228,7 +228,7 @@
 						<p>You have used all your attempts! Come back next week.</p>
 						<button class="close-btn">OK</button>
 					</div>
-					<div class="carousel-item h-auto">
+					<div class="carousel-item h-auto md:py-10">
 						<div
 							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
 							<div class="w-1/2">
