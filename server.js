@@ -2,19 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config();
 const { OAuth2Client } = require('google-auth-library');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3000;
-// const MONGO_URI = 'mongodb://localhost:27017/db';
-const MONGO_URI =
-  'mongodb+srv://techteammathsassoc_db_user:2cCMCbIYFj8U6D81@mathassoccluster.i59ctvc.mongodb.net/?retryWrites=true&w=majority&appName=MathAssocCluster';
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MONGO_URI;
 // const MONGO_URI = "mongodb+srv://rishabjha098:F7QzcbD8-VAiqR.@cluster0.sq6fc.mongodb.net/puzzlesDB?retryWrites=true&w=majority&appName=Cluster0";
-const GOOGLE_CLIENT_ID =
-  '1070688162806-kflhnm9vmvps7nbmi1j14192st7riua4.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
