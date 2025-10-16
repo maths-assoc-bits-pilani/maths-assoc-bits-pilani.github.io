@@ -11,7 +11,6 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
-// const MONGO_URI = "mongodb+srv://rishabjha098:F7QzcbD8-VAiqR.@cluster0.sq6fc.mongodb.net/puzzlesDB?retryWrites=true&w=majority&appName=Cluster0";
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
