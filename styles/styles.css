@@ -128,9 +128,16 @@ a {
     border: 1px solid var(--dark-borders);
 }
 .leaderboard-table {
-    background-color: var(--dark-bg);
-    color: var(--dark-primary);
-    border: 1px solid var(--dark-borders);
+    /* background-color: var(--dark-bg); */
+    /* Alternating row colors for the leaderboard table */
+    tbody tr:nth-child(odd) {
+        background-color: #d3d3d3; /* Dark grey */
+    }
+    tbody tr:nth-child(even) {
+        background-color: #f0f0f0; /* Light grey */
+    }
+    /*color: var(--dark-primary);
+    border: 1px solid var(--dark-borders); */
 }
 .g_id_signin { 
     background-color: var(--dark-secondary);
