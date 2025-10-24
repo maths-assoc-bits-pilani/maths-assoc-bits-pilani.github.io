@@ -54,18 +54,65 @@ const responseForm = document.getElementById("response-form");
 let globalName = "";
 let globalEmail = "";
 
+const emailField = document.getElementById("email");
+const nameFieldEl = document.getElementById("name");
+const isValidBITSIdEmail = (email) => {
+	const m = /^f202(\d)(\d{4})@pilani\.bits-pilani\.ac\.in$/i.exec(email.trim());
+	if (!m) return false;
+	const last4 = parseInt(m[2], 10);
+	return last4 >= 1 && last4 <= 2000;
+};
+
+if (emailField) {
+	emailField.addEventListener("input", () => {
+		const v = emailField.value.trim();
+		if (!v) {
+			emailField.classList.remove("is-invalid");
+			emailField.setCustomValidity("");
+			return;
+		}
+		if (isValidBITSIdEmail(v)) {
+			emailField.classList.remove("is-invalid");
+			emailField.setCustomValidity("");
+		} else {
+			emailField.classList.add("is-invalid");
+			emailField.setCustomValidity("Enter a valid BITS email.");
+		}
+	});
+}
+
 detailsForm.addEventListener("submit", (e) => {
 	e.preventDefault();
-	const nameField = document.getElementById("name");
-	const emailField = document.getElementById("email");
-	if (nameField.value && emailField.value) {
-		globalName = nameField.value;
-		globalEmail = emailField.value;
-		const carousel = new bootstrap.Carousel("#carouselExample");
-		carousel.next();
-	} else {
-		alert("Please fill in both name and email or sign in with Google.");
+	const nameVal = nameFieldEl ? nameFieldEl.value.trim() : "";
+	const emailVal = emailField ? emailField.value.trim() : "";
+
+	let valid = true;
+
+	if (!nameVal) {
+		if (nameFieldEl) nameFieldEl.classList.add("is-invalid");
+		valid = false;
+	} else if (nameFieldEl) {
+		nameFieldEl.classList.remove("is-invalid");
 	}
+
+	if (!emailVal || !isValidBITSIdEmail(emailVal)) {
+		if (emailField) {
+			emailField.classList.add("is-invalid");
+			emailField.setCustomValidity("Enter a valid BITS email.");
+			emailField.reportValidity();
+		}
+		valid = false;
+	} else if (emailField) {
+		emailField.classList.remove("is-invalid");
+		emailField.setCustomValidity("");
+	}
+
+	if (!valid) return;
+
+	globalName = nameVal;
+	globalEmail = emailVal;
+	const carousel = new bootstrap.Carousel("#carouselExample");
+	carousel.next();
 });
 
 let attemptCount = 0;
