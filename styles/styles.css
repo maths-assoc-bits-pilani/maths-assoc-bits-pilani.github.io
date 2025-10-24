@@ -150,11 +150,13 @@ a {
     right: 0; 
     bottom: 0; 
     transition: 0.3s all ease-in-out;  
-    opacity: 0;  
-    z-index: -1; 
     position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
 } 
 .modal.open { 
-    opacity: 1; 
+    display: flex !important; 
     z-index: 999; 
 }
