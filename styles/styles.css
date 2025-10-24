@@ -128,16 +128,9 @@ a {
     border: 1px solid var(--dark-borders);
 }
 .leaderboard-table {
-    /* background-color: var(--dark-bg); */
-    /* Alternating row colors for the leaderboard table */
-    tbody tr:nth-child(odd) {
-        background-color: #d3d3d3; /* Dark grey */
-    }
-    tbody tr:nth-child(even) {
-        background-color: #f0f0f0; /* Light grey */
-    }
-    /*color: var(--dark-primary);
-    border: 1px solid var(--dark-borders); */
+    tbody tr { 
+        background-color: #f0f0f0;
+    } 
 }
 .g_id_signin { 
     background-color: var(--dark-secondary);
@@ -159,4 +152,17 @@ a {
 .modal.open { 
     display: flex !important; 
     z-index: 999; 
+}
+
+.leaderboard-table tbody tr:nth-child(1) {
+	background-color: #e7dd97;
+	color: #1a1a1a;
+}
+.leaderboard-table tbody tr:nth-child(2) {
+	background-color: #b1b5b9; 
+	color: #1a1a1a;
+}
+.leaderboard-table tbody tr:nth-child(3) {
+	background-color: #c29f76; 
+	color: #1a1a1a;
 }
