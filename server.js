@@ -23,8 +23,8 @@ mongoose
   .then(() => console.log('✅ Connected to MongoDB!'))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-const CURRENT_WEEK = 'week2';
-const CORRECT_ANSWER = 'july 16';
+const CURRENT_WEEK = 'week1';
+const CORRECT_ANSWER = '0.25';
 
 const submissionSchema = new mongoose.Schema({
   name: { type: String, required: true },
