@@ -49,6 +49,8 @@ function handleCredentialResponse(response) {
 		});
 }
 
+window.handleCredentialResponse = handleCredentialResponse; 
+
 const detailsForm = document.getElementById("details-form");
 const responseForm = document.getElementById("response-form");
 let globalName = "";
