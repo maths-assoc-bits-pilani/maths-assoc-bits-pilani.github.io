@@ -1,295 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Puzzles 2 Puzzle U</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-			rel="stylesheet" />
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="https://accounts.google.com/gsi/client" async defer></script>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<!-- <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puzzles 2 Puzzle U</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link
 			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap"
 			rel="stylesheet" /> -->
-		<link rel="stylesheet" href="./styles/styles.css" />
-		<link rel="stylesheet" href="./styles/fonts.css" />
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-	</head>
-	<body style="padding: 0; margin: 0">
-		<div class="puzzles-navbar bg-gray-800 border-sky-400 border-b-4">
-			<nav class="flex justify-between items-center mx-10 px-3 py-3 lg:mx-20 lg:px-6 lg:py-6 navbar">
-				<div class="flex items-center justify-between md:w-auto w-fit">
-					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
-						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
-					</div>
-					<div
-						class="text-center font-extrabold text-white flex flex-col items-center justify-center mx-4 md:mx-10">
-						<a
-							href="puzzles.html"
-							class="text-2xl lg:text-4xl m-0 transition hover:text-green-800"
-							>Puzzles 2</a
-						>
-						<a
-							href="puzzles.html"
-							class="text-2xl lg:text-4xl m-0 transition hover:text-green-800"
-							>Puzzle U</a
-						>
-					</div>
-				</div>
-				<div class="hidden md:block">
-					<ul class="flex space-x-6 text-sm">
-						<li>
-							<a
-								href="./leaderboard.html"
-								class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-sky-700"
-								>Leaderboard</a
-							>
-						</li>
-						<li>
-							<a
-								href="./index.html"
-								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
-								>Home</a
-							>
-						</li>
-						<li>
-							<a
-								href="./contact.html"
-								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
-								>Contact</a
-							>
-						</li>
-					</ul>
-				</div>
-				<div class="block md:hidden">
-					<button id="menu-toggle" class="text-xl text-white hover:text-sky-400">&#9776;</button>
-				</div>
-			</nav>
-			<div
-				id="menu"
-				class="fixed top-0 right-0 h-full w-0 bg-zinc-900 text-white lato-bold transition-all duration-500 overflow-hidden z-40 md:hidden py-16 opacity-90">
-				<div class="relative p-4">
-					<button
-						id="close-menu"
-						class="absolute top-4 left-4 text-3xl transform transition-transform duration-500 hover:text-sky-400">
-						&#10005;
-					</button>
-					<div class="space-y-4 my-10">
-						<a href="leaderboard.html" class="block hover:text-sky-400">Leaderboard</a>
-						<a href="index.html" class="block hover:text-sky-400">Home</a>
-						<a href="contact.html" class="block hover:text-sky-400">Contact</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<main class="container px-4 md:px-5 py-4 w-full">
-			<div class="flex justify-center my-3 md:my-10 text-xl">
-				<em>Weekly puzzles to work your brain!</em>
-			</div>
-			<div
-				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-0">
-				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
-					<h2 class="text-4xl font-bold mb-4-italic">Birthday Conundrum</h2>
-					<p class="text-lg mt-4">
-						Cheryl's birthday is one of 10 dates (see image). 
-                        Cheryl tells the month to Albert and the day to Bernard separately.
-                        Albert says, "I don't know when Cheryl's birthday is, but I know that Bernard doesn't know either." 
-                        Bernard then replies, "At first I didn't know when Cheryl's birthday is, but now I know." 
-                        Finally, Albert says, "Now I also know when Cheryl's birthday is."<br>
-                        When is Cheryl's birthday?<br><br> 
-					</p> 
-                    <p class="text-md">
-                        <it>Enter your answer as name of the month followed by the date, e.g. October 25 (case insensitive)</it>
-                    </p>
-				</div>
-				<div class="w-auto mr-0">
-					<img
-						src="https://github.com/maths-assoc-bits-pilani/maths-assoc-bits-pilani.github.io/blob/main/assets/cheryls_birthday.png?raw=true"
-						class="w-full"
-						alt="Puzzle Image" />
-				</div>
-			</div>
-			<div
-				id="carouselExample"
-				class="carousel slide border-black border-4 py-6 md:py-10 md:px-20">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="container text-center py-6 md:py-10 px-4">
-							<h2 class="text-2xl mb-6 md:mb-10">Think you have the answer?</h2>
-							<form id="details-form">
-								<div class="mb-3 lg:px-40">
-									<label for="name" class="form-label">Name</label>
-									<input
-										type="text"
-										id="name"
-										class="form-control input-text"
-										placeholder="Your Name"
-										required />
-								</div>
-								<div class="mb-3 lg:px-40">
-									<label for="email" class="form-label">Email</label>
-									<input
-										type="email"
-										id="email"
-										class="form-control input-text"
-										placeholder="Your Email"
-										required />
-								</div>
-								<button type="submit" class="btn btn-primary">Next</button>
-							</form>
-							<div class="my-2 md:my-3 text-center">
-								<span>or</span>
-							</div>
-							<div class="text-center flex justify-center">
-								<div
-									id="g_id_onload"
-									data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
-									data-callback="handleCredentialResponse"
-									data-auto_prompt="false"></div>
-								<div
-									class="g_id_signin w-auto max-w-1/2 border-3 border-sky-500 rounded-lg"
-									data-type="standard"></div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="container text-center py-5 px-4">
-							<form id="response-form">
-								<div class="mb-3 lg:px-40">
-									<label for="response" class="form-label">Your Response</label>
-									<input
-										type="text"
-										id="response"
-										class="form-control input-text"
-										placeholder="Enter Your Response"
-										required />
-								</div>
-								<div class="flex justify-center gap-x-4">
-									<button
-										class="back-btn btn my-5 text-stone-950 bg-stone-50 hover:bg-stone-300 hover:text-stone-950">
-										Back
-									</button>
-									<button type="submit" class="btn btn-success my-5">
-										Submit
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="carousel-item h-auto md:py-10">
-						<div
-							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
-							<div class="w-1/2">
-								<h2 class="text-2xl mb-6">Solution</h2>
-								<p class="text-base text-left w-full">
-									Assume that the points are $x$ & $y$ respectively. We want to
-									know if $\frac{x}{y}$ is between $1$ and $2$. If we plot this,
-									the limits are $\frac{x}{y}=1$ and $\frac{x}{y}=2$.
-								</p>
-								<p class="text-base text-left w-full my-6">
-									Thus, the desired region is the area between lines $y=x$ &
-									$y=\frac{x}{2}$.
-								</p>
-                                <p class="text-base text-left w-full">
-								This region is 1/4 th of the rest.
-							</p>
-							</div>
-							<div class="w-1/2 flex justify-center">
-								<img
-									src="https://brainstellar.com/static/65c403f64f72da60c3b30ee42389a238/a8a0d/112_plot.drawio.png"
-									alt=""
-									class="flex" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-		<div class="correct-modal modal hidden">
-			<div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
-				<div class="tick-mark flex justify-center">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						x="0px"
-						y="0px"
-						width="100"
-						height="100"
-						viewBox="0 0 48 48">
-						<path
-							fill="#c8e6c9"
-							d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-						<path
-							fill="#4caf50"
-							d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
-					</svg>
-				</div>
-				<div class="correct-text text-center">
-					<h2 class="text-2xl mb-6">Correct!</h2>
-					<p class="text-base">Well done! Your answer is correct.</p>
-					<div class="flex justify-center">
-						<button class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4">OK</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="incorrect-modal modal hidden">
-			<div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
-				<div class="cross-mark flex justify-center">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						x="0px"
-						y="0px"
-						width="100"
-						height="100"
-						viewBox="0 0 48 48">
-						<path
-							fill="#f44336"
-							d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-						<path
-							fill="#fff"
-							d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"></path>
-						<path
-							fill="#fff"
-							d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"></path>
-					</svg>
-				</div>
-				<div class="incorrect-text flex flex-col justify-center text-center"></div>
-				<div class="flex justify-center">
-					<button class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4">OK</button>
-				</div>
-			</div>
-		</div>
-		<div class="attempts-complete modal hidden">
-			<div class="bg-white border-4 border-gray-500 rounded-lg p-8 max-w-md text-center">
-				<h2 class="text-2xl mb-6">No attempts left!</h2>
-				<p class="mb-4">You have used all your attempts! Come back next week.</p>
-				<div class="flex justify-center">
-					<button class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded">OK</button>
-				</div>
-			</div>
-		</div>
-		<script src="./scripts/index.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-		<script>
-			window.MathJax = {
-				tex: {
-					inlineMath: [
-						["$", "$"],
-						["\\(", "\\)"],
-					],
-				},
-			};
-		</script>
-		<script
-			id="MathJax-script"
-			async
-			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-	</body>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+  </head>
+  <body style="padding: 0; margin: 0">
+    <div class="puzzles-navbar bg-gray-800 border-sky-400 border-b-4">
+      <nav
+        class="flex justify-between items-center mx-10 px-3 py-3 lg:mx-20 lg:px-6 lg:py-6 navbar"
+      >
+        <div class="flex items-center justify-between md:w-auto w-fit">
+          <div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
+            <img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
+          </div>
+          <div
+            class="text-center font-extrabold text-white flex flex-col items-center justify-center mx-4 md:mx-10"
+          >
+            <a
+              href="puzzles.html"
+              class="text-2xl lg:text-4xl m-0 transition hover:text-green-800"
+              >Puzzles 2</a
+            >
+            <a
+              href="puzzles.html"
+              class="text-2xl lg:text-4xl m-0 transition hover:text-green-800"
+              >Puzzle U</a
+            >
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <ul class="flex space-x-6 text-sm">
+            <li>
+              <a
+                href="./leaderboard.html"
+                class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-sky-700"
+                >Leaderboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="./index.html"
+                class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="./contact.html"
+                class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="block md:hidden">
+          <button
+            id="menu-toggle"
+            class="text-xl text-white hover:text-sky-400"
+          >
+            &#9776;
+          </button>
+        </div>
+      </nav>
+      <div
+        id="menu"
+        class="fixed top-0 right-0 h-full w-0 bg-zinc-900 text-white lato-bold transition-all duration-500 overflow-hidden z-40 md:hidden py-16 opacity-90"
+      >
+        <div class="relative p-4">
+          <button
+            id="close-menu"
+            class="absolute top-4 left-4 text-3xl transform transition-transform duration-500 hover:text-sky-400"
+          >
+            &#10005;
+          </button>
+          <div class="space-y-4 my-10">
+            <a href="leaderboard.html" class="block hover:text-sky-400"
+              >Leaderboard</a
+            >
+            <a href="index.html" class="block hover:text-sky-400">Home</a>
+            <a href="contact.html" class="block hover:text-sky-400">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="container px-4 md:px-5 py-4 w-full">
+      <div class="flex justify-center my-3 md:my-10 text-xl">
+        <em>Weekly puzzles to work your brain!</em>
+      </div>
+      <div
+        class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-0"
+      >
+        <div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
+          <h2 class="text-4xl font-bold mb-4-italic">Birthday Conundrum</h2>
+          <p class="text-lg mt-4">
+            If Cheryl's birthday is one of the dates shown below:<br />
+            <img
+              src="https://media.discordapp.net/attachments/778128218128515074/1431699855935537294/image-removebg-preview_1.png?ex=68fe5de5&is=68fd0c65&hm=d8c02d04f8be2427c9d9ffe4cab88391e6e1c035dd8c29581b53f68bf6505116&=&format=webp&quality=lossless&width=1243&height=380"
+              alt="Cheryl's possible birthday dates"
+              style="max-width: 100%; height: auto; margin: 10px 0"
+            />
+            She tells the <b>month</b> to Albert and the <b>day</b> (the date
+            number, like 14 or 16 — not the weekday) to Bernard, then:<br /><br />
+
+            Albert says, “I don’t know the birthday, but I know Bernard doesn’t
+            know either.”<br />
+            Bernard then says, “I didn’t know at first, but now I do know.”<br />
+            Albert then says, “Now I also know Cheryl’s birthday.”<br /><br />
+
+            <b>When is Cheryl’s birthday?</b><br /><br />
+            Write your answer as <code>DD/MM</code> (leading zeroes are not
+            required, for example, November 9 is <code>9/11</code>).
+          </p>
+        </div>
+      </div>
+      <div
+        id="carouselExample"
+        class="carousel slide border-black border-4 py-6 md:py-10 md:px-20"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container text-center py-6 md:py-10 px-4">
+              <h2 class="text-2xl mb-6 md:mb-10">Think you have the answer?</h2>
+              <form id="details-form">
+                <div class="mb-3 lg:px-40">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    class="form-control input-text"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+                <div class="mb-3 lg:px-40">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control input-text"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Next</button>
+              </form>
+              <div class="my-2 md:my-3 text-center">
+                <span>or</span>
+              </div>
+              <div class="text-center flex justify-center">
+                <div
+                  id="g_id_onload"
+                  data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
+                  data-callback="handleCredentialResponse"
+                  data-auto_prompt="false"
+                ></div>
+                <div
+                  class="g_id_signin w-auto max-w-1/2 border-3 border-sky-500 rounded-lg"
+                  data-type="standard"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container text-center py-5 px-4">
+              <form id="response-form">
+                <div class="mb-3 lg:px-40">
+                  <label for="response" class="form-label">Your Response</label>
+                  <input
+                    type="text"
+                    id="response"
+                    class="form-control input-text"
+                    placeholder="Enter Your Response"
+                    required
+                  />
+                </div>
+                <div class="flex justify-center gap-x-4">
+                  <button
+                    class="back-btn btn my-5 text-stone-950 bg-stone-50 hover:bg-stone-300 hover:text-stone-950"
+                  >
+                    Back
+                  </button>
+                  <button type="submit" class="btn btn-success my-5">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="carousel-item h-auto md:py-10">
+            <div
+              class="container text-center w-full flex flex-row justify-center items-center gap-x-10"
+            >
+              <div class="w-1/2">
+                <p class="text-base text-left w-full">
+                  The birthday is <b>July 16</b>.
+                </p>
+
+                <p class="text-base text-left w-full my-6">
+                  The possible dates are: May {15, 16, 19}, June {17, 18}, July
+                  {14, 16}, August {14, 15, 17}.
+                </p>
+
+                <p class="text-base text-left w-full">
+                  <b>1. Albert's 1st Statement:</b> "I know Bernard doesn't know
+                  either."
+                </p>
+                <ul>
+                  <li>
+                    For Bernard (Day) to know immediately, the day must be
+                    <b>unique</b> (18 or 19).
+                  </li>
+                  <li>
+                    Albert (Month) knows the month must not contain these days.
+                    <b>May and June are eliminated</b>.
+                  </li>
+                  <li>Remaining Dates: July {14, 16}, August {14, 15, 17}.</li>
+                </ul>
+
+                <p class="text-base text-left w-full">
+                  <b>2. Bernard's Statement:</b> "I didn't know at first, but
+                  now I do know."
+                </p>
+                <ul>
+                  <li>
+                    Bernard now knows because the remaining dates eliminate the
+                    ambiguity from Step 1.
+                  </li>
+                  <li>
+                    If the day was 14 (in July and August), Bernard
+                    <b>would not know</b>. Thus, **14 is eliminated**.
+                  </li>
+                  <li>Remaining Dates: July 16, August 15, August 17.</li>
+                </ul>
+
+                <p class="text-base text-left w-full">
+                  <b>3. Albert's 2nd Statement:</b> "Now I also know Cheryl's
+                  birthday."
+                </p>
+                <ul>
+                  <li>Albert knows the month is July or August.</li>
+                  <li>
+                    If the month were August, Albert would still have two
+                    options (August 15 or 17).
+                  </li>
+                  <li>
+                    For Albert to <b>know for certain</b>, the month must be
+                    **July**, which has only one remaining option.
+                  </li>
+                </ul>
+
+                <p class="text-base text-left w-full my-6">
+                  Thus, the final date is <b>July 16</b>.
+                </p>
+              </div>
+              <div class="w-1/2 flex justify-center">
+                <img
+                  src="https://brainstellar.com/static/65c403f64f72da60c3b30ee42389a238/a8a0d/112_plot.drawio.png"
+                  alt=""
+                  class="flex"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="correct-modal modal hidden">
+      <div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
+        <div class="tick-mark flex justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#c8e6c9"
+              d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+            ></path>
+            <path
+              fill="#4caf50"
+              d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"
+            ></path>
+          </svg>
+        </div>
+        <div class="correct-text text-center">
+          <h2 class="text-2xl mb-6">Correct!</h2>
+          <p class="text-base">Well done! Your answer is correct.</p>
+          <div class="flex justify-center">
+            <button
+              class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="incorrect-modal modal hidden">
+      <div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
+        <div class="cross-mark flex justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#f44336"
+              d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="incorrect-text flex flex-col justify-center text-center"
+        ></div>
+        <div class="flex justify-center">
+          <button
+            class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="attempts-complete modal hidden">
+      <div
+        class="bg-white border-4 border-gray-500 rounded-lg p-8 max-w-md text-center"
+      >
+        <h2 class="text-2xl mb-6">No attempts left!</h2>
+        <p class="mb-4">
+          You have used all your attempts! Come back next week.
+        </p>
+        <div class="flex justify-center">
+          <button
+            class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </body>
 </html>
