@@ -140,5 +140,35 @@
 				}
 			});
 		</script>
+		<div class="flex justify-center my-6">
+			<button
+				id="refresh-leaderboard"
+				class="block hover:border-white transition duration-300 ease-in-out border-2 rounded-xl p-3 text-white bg-sky-500">
+				Update Leaderboard
+			</button>
+		</div>
+        <script>
+        const refreshLeaderboardBtn = document.getElementById("refresh-leaderboard");
+        async function refreshLeaderboard() {
+            const loader = document.getElementById("loading");
+            const body = document.getElementById("leaderboard-table-body");
+            loader.style.display = "block";
+            try {
+                const response = await fetch(`${API_BASE}/leaderboard`, { cache: "no-store" });
+                const items = await response.json();
+                body.replaceChildren();
+                items.forEach((item, idx) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${idx + 1}</td><td>${item.name}</td><td>${item.totalAttempts}</td><td>${item.problemsSolved}</td>`;
+                    body.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Unable to update leaderboard:", error);
+            } finally {
+                loader.style.display = "none";
+            }
+        }
+        refreshLeaderboardBtn.addEventListener("click", refreshLeaderboard);
+        </script>
 	</body>
 </html>

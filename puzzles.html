@@ -24,7 +24,8 @@
 	</head>
 	<body style="padding: 0; margin: 0">
 		<div class="puzzles-navbar bg-gray-800 border-sky-400 border-b-4">
-			<nav class="flex justify-between items-center mx-10 px-3 py-3 lg:mx-20 lg:px-6 lg:py-6 navbar">
+			<nav
+				class="flex justify-between items-center mx-10 px-3 py-3 lg:mx-20 lg:px-6 lg:py-6 navbar">
 				<div class="flex items-center justify-between md:w-auto w-fit">
 					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
 						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
@@ -69,7 +70,9 @@
 					</ul>
 				</div>
 				<div class="block md:hidden">
-					<button id="menu-toggle" class="text-xl text-white hover:text-sky-400">&#9776;</button>
+					<button id="menu-toggle" class="text-xl text-white hover:text-sky-400">
+						&#9776;
+					</button>
 				</div>
 			</nav>
 			<div
@@ -94,27 +97,31 @@
 				<em>Weekly puzzles to work your brain!</em>
 			</div>
 			<div
-				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-0">
-				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4">
+				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black mx-0 my-0 px-4 lg:px-10 py-4 lg:py-10 gap-x-10">
+				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4 gap-y-10">
 					<h2 class="text-4xl font-bold mb-4-italic">Birthday Conundrum</h2>
 					<p class="text-lg mt-4">
-						Cheryl's birthday is one of 10 dates (see image). 
-                        Cheryl tells the month to Albert and the day to Bernard separately.
-                        Albert says, "I don't know when Cheryl's birthday is, but I know that Bernard doesn't know either." 
-                        Bernard then replies, "At first I didn't know when Cheryl's birthday is, but now I know." 
-                        Finally, Albert says, "Now I also know when Cheryl's birthday is."<br>
-                        When is Cheryl's birthday?<br><br> 
+						If Cheryl's birthday is one of the dates shown in the image<br />
+
+						She tells the <b>month</b> to Albert and the <b>day</b> (the date number,
+						like 14 or 16 — not the weekday) to Bernard.<br /><br />
+
+						Albert says, “I don’t know the birthday, but I know Bernard doesn’t know it
+						either.”<br />
+						Bernard then says, “I didn’t know at first, but now I do know.”<br />
+						Albert then says, “Now I also know Cheryl’s birthday.”<br /><br />
+
+						<b>When is Cheryl’s birthday?</b><br /><br />
 					</p> 
-                    <p class="text-md">
-                        <it>Enter your answer as name of the month followed by the date, e.g. October 25 (case insensitive)</it>
+                    <p class="text-md italic"> 
+                        Write your answer as <code>DD/MM</code> (leading zeroes are not required,
+						for example, November 9 is <code>9/11</code>).
                     </p>
 				</div>
-				<div class="w-auto mr-0">
-					<img
-						src="https://github.com/maths-assoc-bits-pilani/maths-assoc-bits-pilani.github.io/blob/main/assets/cheryls_birthday.png?raw=true"
-						class="w-full"
-						alt="Puzzle Image" />
-				</div>
+				<img
+					src="https://media.discordapp.net/attachments/778128218128515074/1431699855935537294/image-removebg-preview_1.png?ex=68fe5de5&is=68fd0c65&hm=d8c02d04f8be2427c9d9ffe4cab88391e6e1c035dd8c29581b53f68bf6505116&=&format=webp&quality=lossless&width=1243&height=380"
+					alt="Cheryl's possible birthday dates"
+					class="w-1/2" />
 			</div>
 			<div
 				id="carouselExample"
@@ -187,25 +194,66 @@
 						<div
 							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
 							<div class="w-1/2">
-								<h2 class="text-2xl mb-6">Solution</h2>
 								<p class="text-base text-left w-full">
-									Assume that the points are $x$ & $y$ respectively. We want to
-									know if $\frac{x}{y}$ is between $1$ and $2$. If we plot this,
-									the limits are $\frac{x}{y}=1$ and $\frac{x}{y}=2$.
+									The birthday is <b>July 16</b>.
 								</p>
+
 								<p class="text-base text-left w-full my-6">
-									Thus, the desired region is the area between lines $y=x$ &
-									$y=\frac{x}{2}$.
+									The possible dates are: May {15, 16, 19}, June {17, 18}, July
+									{14, 16}, August {14, 15, 17}.
 								</p>
-                                <p class="text-base text-left w-full">
-								This region is 1/4 th of the rest.
-							</p>
-							</div>
-							<div class="w-1/2 flex justify-center">
-								<img
-									src="https://brainstellar.com/static/65c403f64f72da60c3b30ee42389a238/a8a0d/112_plot.drawio.png"
-									alt=""
-									class="flex" />
+
+								<p class="text-base text-left w-full">
+									<b>1. Albert's 1st Statement:</b> "I know Bernard doesn't know
+									either."
+								</p>
+								<ul>
+									<li>
+										For Bernard (Day) to know immediately, the day must be
+										<b>unique</b> (18 or 19).
+									</li>
+									<li>
+										Albert (Month) knows the month must not contain these days.
+										<b>May and June are eliminated</b>.
+									</li>
+									<li>Remaining Dates: July {14, 16}, August {14, 15, 17}.</li>
+								</ul>
+
+								<p class="text-base text-left w-full">
+									<b>2. Bernard's Statement:</b> "I didn't know at first, but now
+									I do know."
+								</p>
+								<ul>
+									<li>
+										Bernard now knows because the remaining dates eliminate the
+										ambiguity from Step 1.
+									</li>
+									<li>
+										If the day was 14 (in July and August), Bernard
+										<b>would not know</b>. Thus, **14 is eliminated**.
+									</li>
+									<li>Remaining Dates: July 16, August 15, August 17.</li>
+								</ul>
+
+								<p class="text-base text-left w-full">
+									<b>3. Albert's 2nd Statement:</b> "Now I also know Cheryl's
+									birthday."
+								</p>
+								<ul>
+									<li>Albert knows the month is July or August.</li>
+									<li>
+										If the month were August, Albert would still have two
+										options (August 15 or 17).
+									</li>
+									<li>
+										For Albert to <b>know for certain</b>, the month must be
+										<strong>July</strong>, which has only one remaining option.
+									</li>
+								</ul>
+
+								<p class="text-base text-left w-full my-6">
+									Thus, the final date is <b>July 16</b>.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -234,7 +282,10 @@
 					<h2 class="text-2xl mb-6">Correct!</h2>
 					<p class="text-base">Well done! Your answer is correct.</p>
 					<div class="flex justify-center">
-						<button class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4">OK</button>
+						<button
+							class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4">
+							OK
+						</button>
 					</div>
 				</div>
 			</div>
@@ -262,7 +313,10 @@
 				</div>
 				<div class="incorrect-text flex flex-col justify-center text-center"></div>
 				<div class="flex justify-center">
-					<button class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4">OK</button>
+					<button
+						class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4">
+						OK
+					</button>
 				</div>
 			</div>
 		</div>
@@ -271,7 +325,10 @@
 				<h2 class="text-2xl mb-6">No attempts left!</h2>
 				<p class="mb-4">You have used all your attempts! Come back next week.</p>
 				<div class="flex justify-center">
-					<button class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded">OK</button>
+					<button
+						class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded">
+						OK
+					</button>
 				</div>
 			</div>
 		</div>
