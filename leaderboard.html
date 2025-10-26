@@ -88,25 +88,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="my-5 lg:mx-16 md:mx-8 sm:mx-4 w-auto">
-			<h2 class="text-center mb-4 text-3xl">Leaderboard</h2>
+		<div class="my-5 lg:mx-16 md:mx-8 sm:mx-4 w-auto px-3">
+			<h2 class="text-center mb-4 lg:text-3xl text-2xl">Leaderboard</h2>
 			<!-- Loading indicator -->
 			<div id="loading" class="text-center my-4">
 				<div class="spinner-border text-sky-400" role="status">
 					<span class="visually-hidden">Loading...</span>
 				</div>
 			</div>
-			<table class="table table-bordered md:w-4/5 w-full mx-auto leaderboard-table">
-				<thead class="table-dark">
-					<tr>
-						<th>Rank</th>
-						<th>Name</th>
-						<th>Attempts</th>
-						<th>Puzzles Solved</th>
-					</tr>
-				</thead>
-				<tbody id="leaderboard-table-body"></tbody>
-			</table>
+            <table class="table table-bordered !w-full md:!w-4/5 md:!mx-auto text-sm lg:text-base leaderboard-table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Attempts</th>
+                        <th>Puzzles Solved</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-table-body"></tbody>
+            </table>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> 
         <script src="scripts/index.js"></script>
@@ -143,7 +143,7 @@
 		<div class="flex justify-center my-6">
 			<button
 				id="refresh-leaderboard"
-				class="block hover:border-white transition duration-300 ease-in-out border-2 rounded-xl p-3 text-white bg-sky-500">
+				class="text-sm lg:text-base block hover:border-white transition duration-300 ease-in-out border-2 rounded-xl p-3 text-white bg-sky-500">
 				Update Leaderboard
 			</button>
 		</div>

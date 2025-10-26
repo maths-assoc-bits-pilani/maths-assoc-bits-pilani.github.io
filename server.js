@@ -82,6 +82,36 @@ app.post('/auth/google', async (req, res) => {
   }
 });
 
+app.post('/check-submission', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required.' });
+    }
+    const existingCorrect = await Submission.findOne({
+      email,
+      week: CURRENT_WEEK,
+      isCorrect: true,
+    });
+    if (existingCorrect) {
+      return res.json({ hasSubmitted: true, isCorrect: true });
+    }
+    const attemptCount = await Submission.countDocuments({
+      email,
+      week: CURRENT_WEEK,
+    });
+    if (attemptCount >= 3) {
+      return res.json({ hasSubmitted: true, isCorrect: false, maxAttemptsReached: true });
+    }
+    return res.json({ hasSubmitted: false });
+  } catch (err) {
+    console.error('Error in /check-submission:', err);
+    return res
+      .status(500)
+      .json({ error: 'Server error. Please try again later.' });
+  }
+});
+
 app.post('/submit', async (req, res) => {
   try {
     const { name, email, answer } = req.body;
