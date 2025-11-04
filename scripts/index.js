@@ -23,6 +23,32 @@ window.addEventListener("click", (e) => {
 });
 
 const API_BASE = "https://math-assoc-api.onrender.com";
+// const API_BASE = 'http://localhost:3000';
+
+function toggleGoogleLoading(show) {
+	const loadingEl = document.getElementById("google-loading");
+	const signinContainer = document.getElementById("google-signin-container");
+	if (loadingEl && signinContainer) {
+		if (show) {
+			loadingEl.style.display = "block";
+			signinContainer.style.display = "none";
+		} else {
+			loadingEl.style.display = "none";
+			signinContainer.style.display = "flex";
+		}
+	}
+}
+
+window.addEventListener('load', () => {
+	setTimeout(() => {
+		const googleButton = document.querySelector('[role="button"][aria-labelledby]');
+		if (googleButton) {
+			googleButton.addEventListener('click', () => {
+				toggleGoogleLoading(true);
+			});
+		}
+	}, 1000);
+});
 
 async function checkSubmissionStatus(email) {
 	try {
@@ -51,9 +77,10 @@ function handleCredentialResponse(response) {
 			if (data.success) {
 				globalName = data.user.name;
 				globalEmail = data.user.email;
-
+				
 				const submissionStatus = await checkSubmissionStatus(globalEmail);
-
+				toggleGoogleLoading(false);
+				
 				if (submissionStatus.hasSubmitted && submissionStatus.isCorrect) {
 					const alreadySubmittedModal = document.querySelector(".already-submitted");
 					alreadySubmittedModal.classList.remove("hidden");
@@ -67,14 +94,16 @@ function handleCredentialResponse(response) {
 					carousel.next();
 				}
 			} else {
+				toggleGoogleLoading(false);
 				alert(data.error || "Google sign in failed. Please try again.");
 			}
 		})
 		.catch((err) => {
+			toggleGoogleLoading(false);
 			console.error("Error during Google sign in:", err);
 			alert("Server error. Please try again later.");
 		});
-}
+} 
 
 window.handleCredentialResponse = handleCredentialResponse;
 

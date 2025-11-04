@@ -132,7 +132,14 @@
 							<p class="max-w-2xl mx-auto text-base md:text-lg">
 								Sign in using your BITS Google account to submit your answer.
 							</p>
-							<div class="text-center flex justify-center mt-6">
+							<!-- Loading indicator -->
+							<div id="google-loading" class="text-center my-6" style="display: none;">
+								<div class="spinner-border text-sky-400" role="status">
+									<span class="visually-hidden">Signing in...</span>
+								</div>
+							</div>
+							<!-- Google Sign-in Button -->
+							<div id="google-signin-container" class="text-center flex justify-center mt-6">
 								<div
 									id="g_id_onload"
 									data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"

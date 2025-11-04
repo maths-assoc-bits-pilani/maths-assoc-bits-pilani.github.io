@@ -163,7 +163,7 @@ app.get('/leaderboard', async (req, res) => {
         },
       },
       { $sort: { problemsSolved: -1, totalAttempts: 1 } },
-      { $limit: 10 },
+      { $limit: 15 },
       {
         $project: {
           _id: 0,
