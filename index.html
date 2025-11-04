@@ -239,36 +239,8 @@
             currentIndex = (currentIndex - 1 + totalItems) % totalItems;
             updateCarousel();
         });
-
-        // Dark Mode Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-
-        if (
-            localStorage.getItem('color-theme') === 'dark' ||
-            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-            document.documentElement.classList.add('dark');
-            darkIcon.classList.remove('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            lightIcon.classList.remove('hidden');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            lightIcon.classList.toggle('hidden');
-            darkIcon.classList.toggle('hidden');
-
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            }
-        });
     </script>
+    <script src="./scripts/darkMode.js"></script>
 </body>
 
 </html>

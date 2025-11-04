@@ -166,3 +166,33 @@ a {
 	background-color: #c29f76; 
 	color: #1a1a1a;
 }
+
+/* Dark mode styles */
+.dark .leaderboard-table tbody tr {
+	background-color: #1f2937;
+	color: #e5e7eb;
+}
+
+.dark .leaderboard-table tbody tr:nth-child(1) {
+	background-color: #854d0e;
+	color: #fef3c7;
+}
+
+.dark .leaderboard-table tbody tr:nth-child(2) {
+	background-color: #475569;
+	color: #f1f5f9;
+}
+
+.dark .leaderboard-table tbody tr:nth-child(3) {
+	background-color: #92400e;
+	color: #fed7aa;
+}
+
+.dark .table-bordered {
+	border-color: #4b5563;
+}
+
+.dark .table-bordered th,
+.dark .table-bordered td {
+	border-color: #4b5563;
+}
