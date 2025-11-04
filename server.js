@@ -137,7 +137,7 @@ app.post('/submit', async (req, res) => {
         .status(400)
         .json({ error: 'Max attempts reached for this puzzle/week.' });
     }
-    const isCorrect = answer.trim() === CORRECT_ANSWER;
+    const isCorrect = answer.trim().toLowerCase() === CORRECT_ANSWER;
     const newSubmission = new Submission({
       name,
       email,
