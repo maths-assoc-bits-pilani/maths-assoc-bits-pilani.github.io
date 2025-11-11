@@ -117,25 +117,17 @@
       <div
 				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black dark:border-gray-600 dark:bg-gray-800 mx-0 my-0 px-4 lg:px-10 py-4 lg:py-10 gap-x-10">
 				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4 gap-y-10">
-          <h2 class="text-4xl font-bold mb-4-italic">Free and fair</h2>
+          <h2 class="text-4xl font-bold mb-4-italic">Basic math</h2>
           <p class="text-lg mt-4">
-						Dhaval, Kandarp and Rachit run for H-Rep and finish in a three-way tie. To
-						break it, they solicit their fellow students' second choices, which again
-						results in a three-way tie. <br />
-						The election commission is stymied until Dhaval steps forward and points
-						out, since the number of voters is odd, they can make two way decisions. He
-						therefore proposes that the students choose between Kandarp and Rachit, and
-						the winner would face Dhaval in a runoff. <br />
-            Do you think this is a fair election? <br />
-          </p>
-          <p class="text-md italic">
-						If you feel the election is fair, input <code>"YES"</code> (without quotes).
-						If one candidate seems to have an unfair advantage, input the name of the
-						candidate.
+						You are told about a polynomial $p(x)=a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots+a_{1}x+a_{0}$ where 
+                        $a_{i} \in \mathbb{Z}$, $a_{i}\geq {0}$, and $\max a_{i}=100$ (${0 \leq i \leq n}$). <br />
+						You can provide an integer query $x$ to get the output $p(x)$. <br />
+                        Let $\alpha$ be the minimum number of such queries you need to make to uniquely determine the polynomial, 
+                        and let $\beta$ be the minimum value of a query. Then $\alpha + \beta$ equals ____<br />
           </p>
         </div>
         <img
-          src="https://imgs.xkcd.com/comics/voting_referendum.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdawE6MdTffU9yHhGV_x3mk90dVba8_BI3fg&s"
           alt="Voting referendum"
 					class="w-full lg:w-1/3" />
       </div>
@@ -202,21 +194,20 @@
 							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
               <div class="w-1/2">
                 <p class="text-base w-full my-4">
-									<b
-										>Dhaval has an unfair advantage.</b
-									>
+                    We know that each $a_{i}$ is less than or equal to 100.  
                 </p>
 
                 <p class="text-base w-full my-4">
-									To see why, suppose Dhaval’s supporters mostly prefer Kandarp over Rachit (so that Kandarp would defeat Rachit in a two-candidate faceoff). Then Kandarp’s supporters must mostly prefer Rachit over Dhaval, otherwise Rachit would have received fewer than one-third of the second-place votes. Similarly, Rachit’s supporters are likely to prefer Dhaval over Kandarp.
+					Hence the number $a_{n}a_{n-1}\dots a_{1}a_{0}$ in base $b$, where $b\geq101$ when converted to base $10$ will be unique 
+                    and equal to $p(b)$.
                 </p>
 
                 <p class="text-base w-full my-4">
-                                    Hence, in this situation, Dhaval will defeat Kandarp in the election.
+                    So we require only one query with value 101 to uniquely determine the polynomial.
                 </p>
 
                 <p class="text-base w-full my-4">
-                                    If instead, Dhaval’s supporters prefer Rachit over Kandarp, then by a symmetric argument, Dhaval will defeat Rachit in the election as well.
+                    Thus, the final answer is $1 + 101 = 102$.
                 </p>
               </div>
             </div>
