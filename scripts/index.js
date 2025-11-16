@@ -39,11 +39,11 @@ function toggleGoogleLoading(show) {
 	}
 }
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
 	setTimeout(() => {
 		const googleButton = document.querySelector('[role="button"][aria-labelledby]');
 		if (googleButton) {
-			googleButton.addEventListener('click', () => {
+			googleButton.addEventListener("click", () => {
 				toggleGoogleLoading(true);
 			});
 		}
@@ -77,10 +77,10 @@ function handleCredentialResponse(response) {
 			if (data.success) {
 				globalName = data.user.name;
 				globalEmail = data.user.email;
-				
+
 				const submissionStatus = await checkSubmissionStatus(globalEmail);
 				toggleGoogleLoading(false);
-				
+
 				if (submissionStatus.hasSubmitted && submissionStatus.isCorrect) {
 					const alreadySubmittedModal = document.querySelector(".already-submitted");
 					alreadySubmittedModal.classList.remove("hidden");
@@ -103,7 +103,7 @@ function handleCredentialResponse(response) {
 			console.error("Error during Google sign in:", err);
 			alert("Server error. Please try again later.");
 		});
-} 
+}
 
 window.handleCredentialResponse = handleCredentialResponse;
 
@@ -153,7 +153,7 @@ responseForm.addEventListener("submit", async (e) => {
 				correctModal.classList.add("open");
 			} else {
 				attemptCount++;
-				if (attemptCount >= 3) {
+				if (attemptCount >= 4) {
 					const attemptsComplete = document.querySelector(".attempts-complete");
 					attemptsComplete.classList.remove("hidden");
 					attemptsComplete.classList.add("open");
@@ -200,3 +200,29 @@ document.addEventListener("click", (e) => {
 		carousel.to(1);
 	}
 });
+
+async function loadCurrentPuzzle() {
+	try {
+		const res = await fetch(`${API_BASE}/puzzle/current`);
+		const data = await res.json();
+
+		if (res.ok && data.success) {
+			// Update puzzle question in the DOM
+			document.querySelector(".puzzle-question").innerHTML = data.questionHtml;
+
+			if (data.questionImageUrl) {
+				document.querySelector(".puzzle-image").src = data.questionImageUrl;
+			}
+
+			// Re-render MathJax
+			if (window.MathJax) {
+				window.MathJax.typesetPromise();
+			}
+		}
+	} catch (error) {
+		console.error("Error loading puzzle:", error);
+	}
+}
+
+// Call on page load
+window.addEventListener("load", loadCurrentPuzzle);

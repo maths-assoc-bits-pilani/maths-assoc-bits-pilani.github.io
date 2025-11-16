@@ -1,336 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puzzles 2 Puzzle U</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Puzzles 2 Puzzle U</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 			rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-			}
-    </script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap"
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				darkMode: "class",
+			};
+		</script>
+		<script src="https://accounts.google.com/gsi/client" async defer></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap"
 			rel="stylesheet" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="./styles/fonts.css" />
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/fonts.css" />
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
-  </head>
-	<body style="padding: 0; margin: 0" class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+	</head>
+	<body
+		style="padding: 0; margin: 0"
+		class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
 		<div class="puzzles-navbar bg-gray-800 dark:bg-gray-950 border-sky-400 border-b-4">
-      <nav
+			<nav
 				class="flex justify-between items-center mx-10 px-3 py-3 lg:mx-20 lg:px-6 lg:py-6 navbar">
-        <div class="flex items-center justify-between md:w-auto w-fit">
-          <div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
-            <img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
-          </div>
-          <div
+				<div class="flex items-center justify-between md:w-auto w-fit">
+					<div class="border-sky-400 border-2 rounded p-1 h-fit w-fit">
+						<img src="./assets/massocicon.jpg" alt="Logo" class="h-8 w-8" />
+					</div>
+					<div
 						class="text-center font-extrabold text-white flex flex-col items-center justify-center mx-4 md:mx-10">
-            <a
-              href="puzzles.html"
-              class="text-2xl lg:text-4xl m-0 transition hover:text-sky-400"
+						<a
+							href="puzzles.html"
+							class="text-2xl lg:text-4xl m-0 transition hover:text-sky-400"
 							>Puzzles 2</a
 						>
-            <a
-              href="puzzles.html"
-              class="text-2xl lg:text-4xl m-0 transition hover:text-sky-400"
+						<a
+							href="puzzles.html"
+							class="text-2xl lg:text-4xl m-0 transition hover:text-sky-400"
 							>Puzzle U</a
 						>
-          </div>
-        </div>
-        <div class="hidden md:flex items-center">
-          <ul class="flex space-x-6 text-sm">
-            <li>
-              <a
-                href="./leaderboard.html"
-                class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-sky-700"
-                >Leaderboard</a
-              >
-            </li>
-            <li>
-              <a
-                href="./index.html"
-                class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="./contact.html"
-                class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
-                >Contact</a
-              >
-            </li>
-          </ul>
-          <button id="theme-toggle" class="ml-6 focus:outline-none text-white">
-						<svg id="theme-toggle-light-icon" class="hidden w-6 h-6" fill="currentColor"
+					</div>
+				</div>
+				<div class="hidden md:flex items-center">
+					<ul class="flex space-x-6 text-sm">
+						<li>
+							<a
+								href="./leaderboard.html"
+								class="block hover:text-sky-400 transition border-2 rounded-xl p-3 text-white bg-sky-700"
+								>Leaderboard</a
+							>
+						</li>
+						<li>
+							<a
+								href="./index.html"
+								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								>Home</a
+							>
+						</li>
+						<li>
+							<a
+								href="./contact.html"
+								class="block text-white hover:text-sky-400 transition border-gray border-1 rounded-xl p-3"
+								>Contact</a
+							>
+						</li>
+					</ul>
+					<button id="theme-toggle" class="ml-6 focus:outline-none text-white">
+						<svg
+							id="theme-toggle-light-icon"
+							class="hidden w-6 h-6"
+							fill="currentColor"
 							viewBox="0 0 24 24">
-              <path
-								d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20 L12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 Z">
-							</path>
-            </svg>
-						<svg id="theme-toggle-dark-icon" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path
-								d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20 L12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 Z">
-							</path>
-            </svg>
-          </button>
-        </div>
-        <div class="block md:hidden">
+							<path
+								d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20 L12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 Z"></path>
+						</svg>
+						<svg
+							id="theme-toggle-dark-icon"
+							class="hidden w-6 h-6"
+							fill="currentColor"
+							viewBox="0 0 24 24">
+							<path
+								d="M12,22 C17.5228475,22 22,17.5228475 22,12 C22,6.4771525 17.5228475,2 12,2 C6.4771525,2 2,6.4771525 2,12 C2,17.5228475 6.4771525,22 12,22 Z M12,20 L12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 Z"></path>
+						</svg>
+					</button>
+				</div>
+				<div class="block md:hidden">
 					<button id="menu-toggle" class="text-xl text-white hover:text-sky-400">
-            &#9776;
-          </button>
-        </div>
-      </nav>
-      <div
-        id="menu"
+						&#9776;
+					</button>
+				</div>
+			</nav>
+			<div
+				id="menu"
 				class="fixed top-0 right-0 h-full w-0 bg-zinc-900 text-white lato-bold transition-all duration-500 overflow-hidden z-40 md:hidden py-16 opacity-90">
-        <div class="relative p-4">
-          <button
-            id="close-menu"
+				<div class="relative p-4">
+					<button
+						id="close-menu"
 						class="absolute top-4 left-4 text-3xl transform transition-transform duration-500 hover:text-sky-400">
-            &#10005;
-          </button>
-          <div class="space-y-4 my-10">
+						&#10005;
+					</button>
+					<div class="space-y-4 my-10">
 						<a href="leaderboard.html" class="block hover:text-sky-400">Leaderboard</a>
-            <a href="index.html" class="block hover:text-sky-400">Home</a>
-            <a href="contact.html" class="block hover:text-sky-400">Contact</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <main class="container px-4 md:px-5 py-4 w-full dark:text-gray-100">
-      <div class="flex justify-center my-3 md:my-10 text-xl dark:text-gray-200">
-        <em>Weekly puzzles to work your brain!</em>
-      </div>
-      <div
+						<a href="index.html" class="block hover:text-sky-400">Home</a>
+						<a href="contact.html" class="block hover:text-sky-400">Contact</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<main class="container px-4 md:px-5 py-4 w-full dark:text-gray-100">
+			<div class="flex justify-center my-3 md:my-10 text-xl dark:text-gray-200">
+				<em>Weekly puzzles to work your brain!</em>
+			</div>
+			<div
 				class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black dark:border-gray-600 dark:bg-gray-800 mx-0 my-0 px-4 lg:px-10 py-4 lg:py-10 gap-x-10">
-				<div class="container py-10 px-4 w-full flex flex-col md:w-2/4 gap-y-10">
-          <h2 class="text-4xl font-bold mb-4-italic">Basic math</h2>
-          <p class="text-lg mt-4">
-						You are told about a polynomial $p(x)=a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots+a_{1}x+a_{0}$ where 
-                        $a_{i} \in \mathbb{Z}$, $a_{i}\geq {0}$, and $\max a_{i}=100$ (${0 \leq i \leq n}$). <br />
+				<div
+					class="container py-10 px-4 w-full flex flex-col md:w-2/4 gap-y-10 puzzle-question">
+					<h2 class="text-4xl font-bold mb-4-italic">Basic math</h2>
+					<p class="text-lg mt-4">
+						You are told about a polynomial
+						$p(x)=a_{n}x^{n}+a_{n-1}x^{n-1}+\ldots+a_{1}x+a_{0}$ where $a_{i} \in
+						\mathbb{Z}$, $a_{i}\geq {0}$, and $\max a_{i}=100$ (${0 \leq i \leq n}$).
+						<br />
 						You can provide an integer query $x$ to get the output $p(x)$. <br />
-                        Let $\alpha$ be the minimum number of such queries you need to make to uniquely determine the polynomial, 
-                        and let $\beta$ be the minimum value of a query. Then $\alpha + \beta$ equals ____<br />
-          </p>
-        </div>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdawE6MdTffU9yHhGV_x3mk90dVba8_BI3fg&s"
-          alt="Voting referendum"
-					class="w-full lg:w-1/3" />
-      </div>
-      <div
-        id="carouselExample"
-        class="carousel slide border-black dark:border-gray-600 dark:bg-gray-800 border-4 py-6 md:py-10 md:px-20"
-        data-bs-touch="false"
-        data-bs-keyboard="false"
-        data-bs-wrap="false"
-      >
-        <div class="carousel-inner dark:text-gray-100">
-          <div class="carousel-item active">
-            <div class="container text-center py-6 md:py-10 px-4">
-              <p class="max-w-2xl mx-auto text-base md:text-lg">
-                Sign in using your BITS Google account to submit your answer.
-              </p>
-              <!-- Loading indicator -->
+						Let $\alpha$ be the minimum number of such queries you need to make to
+						uniquely determine the polynomial, and let $\beta$ be the minimum value of a
+						query. Then $\alpha + \beta$ equals ____<br />
+					</p>
+				</div>
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdawE6MdTffU9yHhGV_x3mk90dVba8_BI3fg&s"
+					alt="Voting referendum"
+					class="w-full lg:w-1/3 puzzle-image" />
+			</div>
+			<div
+				id="carouselExample"
+				class="carousel slide border-black dark:border-gray-600 dark:bg-gray-800 border-4 py-6 md:py-10 md:px-20"
+				data-bs-touch="false"
+				data-bs-keyboard="false"
+				data-bs-wrap="false">
+				<div class="carousel-inner dark:text-gray-100">
+					<div class="carousel-item active">
+						<div class="container text-center py-6 md:py-10 px-4">
+							<p class="max-w-2xl mx-auto text-base md:text-lg">
+								Sign in using your BITS Google account to submit your answer.
+							</p>
+							<!-- Loading indicator -->
 							<div id="google-loading" class="text-center my-6" style="display: none">
-                <div class="spinner-border text-sky-400" role="status">
-                  <span class="visually-hidden">Signing in...</span>
-                </div>
-              </div>
-              <!-- Google Sign-in Button -->
-              <div
-                id="google-signin-container"
+								<div class="spinner-border text-sky-400" role="status">
+									<span class="visually-hidden">Signing in...</span>
+								</div>
+							</div>
+							<!-- Google Sign-in Button -->
+							<div
+								id="google-signin-container"
 								class="text-center flex justify-center mt-6">
-                <div
-                  id="g_id_onload"
-                  data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
-                  data-callback="handleCredentialResponse"
+								<div
+									id="g_id_onload"
+									data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
+									data-callback="handleCredentialResponse"
 									data-auto_prompt="false"></div>
-                <div
-                  class="g_id_signin w-auto max-w-1/2 border-3 border-sky-500 rounded-lg"
+								<div
+									class="g_id_signin w-auto max-w-1/2 border-3 border-sky-500 rounded-lg"
 									data-type="standard"></div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container text-center py-5 px-4">
-              <form id="response-form">
-                <div class="mb-3 lg:px-40">
-                  <label for="response" class="form-label">Your Response</label>
-                  <input
-                    type="text"
-                    id="response"
-                    class="form-control input-text"
-                    placeholder="Enter Your Response"
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="container text-center py-5 px-4">
+							<form id="response-form">
+								<div class="mb-3 lg:px-40">
+									<label for="response" class="form-label">Your Response</label>
+									<input
+										type="text"
+										id="response"
+										class="form-control input-text"
+										placeholder="Enter Your Response"
 										required />
-                </div>
-                <div class="flex justify-center gap-x-4">
-                  <button
+								</div>
+								<div class="flex justify-center gap-x-4">
+									<button
 										class="back-btn btn my-5 text-stone-950 bg-stone-50 hover:bg-stone-300 hover:text-stone-950">
-                    Back
-                  </button>
-                  <button type="submit" class="btn btn-success my-5">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="carousel-item h-auto md:py-10">
-            <div
+										Back
+									</button>
+									<button type="submit" class="btn btn-success my-5">
+										Submit
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="carousel-item h-auto md:py-10">
+						<div
 							class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
-              <div class="w-1/2">
-                <p class="text-base w-full my-4">
-                    We know that each $a_{i}$ is less than or equal to 100.  
-                </p>
+							<div class="w-1/2">
+								<p class="text-base w-full my-4">
+									We know that each $a_{i}$ is less than or equal to 100.
+								</p>
 
-                <p class="text-base w-full my-4">
-					Hence the number $a_{n}a_{n-1}\dots a_{1}a_{0}$ in base $b$, where $b\geq101$ when converted to base $10$ will be unique 
-                    and equal to $p(b)$.
-                </p>
+								<p class="text-base w-full my-4">
+									Hence the number $a_{n}a_{n-1}\dots a_{1}a_{0}$ in base $b$,
+									where $b\geq101$ when converted to base $10$ will be unique and
+									equal to $p(b)$.
+								</p>
 
-                <p class="text-base w-full my-4">
-                    So we require only one query with value 101 to uniquely determine the polynomial.
-                </p>
+								<p class="text-base w-full my-4">
+									So we require only one query with value 101 to uniquely
+									determine the polynomial.
+								</p>
 
-                <p class="text-base w-full my-4">
-                    Thus, the final answer is $1 + 101 = 102$.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <div class="correct-modal modal hidden">
-      <div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
-        <div class="tick-mark flex justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            width="100"
-            height="100"
+								<p class="text-base w-full my-4">
+									Thus, the final answer is $1 + 101 = 102$.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<div class="correct-modal modal hidden">
+			<div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
+				<div class="tick-mark flex justify-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="100"
+						height="100"
 						viewBox="0 0 48 48">
-            <path
-              fill="#c8e6c9"
+						<path
+							fill="#c8e6c9"
 							d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-            <path
-              fill="#4caf50"
+						<path
+							fill="#4caf50"
 							d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
-          </svg>
-        </div>
-        <div class="correct-text text-center">
-          <h2 class="text-2xl mb-6">Correct!</h2>
-          <p class="text-base">Well done! Your answer is correct.</p>
-          <div class="flex justify-center">
-            <button
+					</svg>
+				</div>
+				<div class="correct-text text-center">
+					<h2 class="text-2xl mb-6">Correct!</h2>
+					<p class="text-base">Well done! Your answer is correct.</p>
+					<div class="flex justify-center">
+						<button
 							class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4">
-              OK
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="incorrect-modal modal hidden">
-      <div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
-        <div class="cross-mark flex justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            width="100"
-            height="100"
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="incorrect-modal modal hidden">
+			<div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
+				<div class="cross-mark flex justify-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="100"
+						height="100"
 						viewBox="0 0 48 48">
-            <path
-              fill="#f44336"
+						<path
+							fill="#f44336"
 							d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-            <path
-              fill="#fff"
+						<path
+							fill="#fff"
 							d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"></path>
-            <path
-              fill="#fff"
+						<path
+							fill="#fff"
 							d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"></path>
-          </svg>
-        </div>
+					</svg>
+				</div>
 				<div class="incorrect-text flex flex-col justify-center text-center"></div>
-        <div class="flex justify-center">
-          <button
+				<div class="flex justify-center">
+					<button
 						class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4">
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="attempts-complete modal hidden">
+						OK
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="attempts-complete modal hidden">
 			<div class="bg-white border-4 border-gray-500 rounded-lg p-8 max-w-md text-center">
-        <h2 class="text-2xl mb-6">No attempts left!</h2>
+				<h2 class="text-2xl mb-6">No attempts left!</h2>
 				<p class="mb-4">You have used all your attempts! Come back next week.</p>
-        <div class="flex justify-center">
-          <button
+				<div class="flex justify-center">
+					<button
 						class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded">
-            OK
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="already-submitted modal hidden">
+						OK
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="already-submitted modal hidden">
 			<div class="bg-white border-4 border-blue-500 rounded-lg p-8 max-w-md text-center">
-        <div class="info-mark flex justify-center mb-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            width="100"
-            height="100"
+				<div class="info-mark flex justify-center mb-4">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="100"
+						height="100"
 						viewBox="0 0 48 48">
-            <path
-              fill="#2196f3"
+						<path
+							fill="#2196f3"
 							d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-            <path fill="#fff" d="M22 22h4v11h-4V22zM22 15h4v4h-4V15z"></path>
-          </svg>
-        </div>
-        <h2 class="text-2xl mb-4">Already Submitted!</h2>
-        <p class="mb-4">
-          You've already submitted a correct answer for this week's puzzle.
-        </p>
-        <div class="flex justify-center">
-          <button
+						<path fill="#fff" d="M22 22h4v11h-4V22zM22 15h4v4h-4V15z"></path>
+					</svg>
+				</div>
+				<h2 class="text-2xl mb-4">Already Submitted!</h2>
+				<p class="mb-4">
+					You've already submitted a correct answer for this week's puzzle.
+				</p>
+				<div class="flex justify-center">
+					<button
 						class="close-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded">
-            View Solution
-          </button>
-        </div>
-      </div>
-    </div>
-    <script src="./scripts/darkMode.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [
+						View Solution
+					</button>
+				</div>
+			</div>
+		</div>
+		<script src="./scripts/darkMode.js"></script>
+		<script src="./scripts/index.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [
 						["$", "$"],
 						["\\(", "\\)"],
-          ],
-        },
-      };
-    </script>
-    <script
-      id="MathJax-script"
-      async
+					],
+				},
+			};
+		</script>
+		<script
+			id="MathJax-script"
+			async
 			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  </body>
+	</body>
 </html>
