@@ -44,20 +44,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('User', userSchema);
 
-const puzzleSchema = new mongoose.Schema({
-  week: { type: String, required: true, unique: true },
-  questionHtml: { type: String, required: true },
-  questionImageUrl: { type: String },
-  solutionHtml: { type: String, required: true },
-  solutionImageUrl: { type: String },
-  correctAnswer: { type: String, required: true },
-  goesLiveAt: { type: Date, required: true },
-  isActive: { type: Boolean, default: true },
-  createdAt: { type: Date, default: Date.now },
-});
-
-const Puzzle = mongoose.model('Puzzle', puzzleSchema);
-
 app.get('/', (req, res) => {
   res.send('Welcome to the Puzzles Backend!');
 });
@@ -97,187 +83,73 @@ app.post('/auth/google', async (req, res) => {
   }
 });
 
-// Get current active puzzle
-async function getCurrentPuzzle() {
-  const now = new Date();
-  return await Puzzle.findOne({
-    isActive: true,
-    goesLiveAt: { $lte: now },
-  }).sort({ goesLiveAt: -1 });
-}
-
-// Get puzzle details (without solution)
-app.get('/puzzle/current', async (req, res) => {
-  try {
-    const puzzle = await getCurrentPuzzle();
-
-    if (!puzzle) {
-      return res.status(404).json({ error: 'No active puzzle found' });
-    }
-
-    res.json({
-      success: true,
-      week: puzzle.week,
-      questionHtml: puzzle.questionHtml,
-      questionImageUrl: puzzle.questionImageUrl,
-    });
-  } catch (error) {
-    console.error('Error fetching current puzzle:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// Check submission status (updated to use DB)
 app.post('/check-submission', async (req, res) => {
   try {
     const { email } = req.body;
-    const puzzle = await getCurrentPuzzle();
-
-    if (!puzzle) {
-      return res.status(404).json({ error: 'No active puzzle' });
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required.' });
     }
-
     const existingCorrect = await Submission.findOne({
       email,
-      week: puzzle.week,
+      week: CURRENT_WEEK,
       isCorrect: true,
     });
-
+    if (existingCorrect) {
+      return res.json({ hasSubmitted: true, isCorrect: true });
+    }
     const attemptCount = await Submission.countDocuments({
       email,
-      week: puzzle.week,
+      week: CURRENT_WEEK,
     });
-
-    res.json({
-      success: true,
-      alreadyCorrect: !!existingCorrect,
-      attemptCount,
-      maxAttemptsReached: attemptCount >= 3,
-      canSubmit: !existingCorrect && attemptCount < 3,
-    });
-  } catch (error) {
-    console.error('Error checking submission:', error);
-    res.status(500).json({ error: 'Server error' });
+    if (attemptCount >= 3) {
+      return res.json({ hasSubmitted: true, isCorrect: false, maxAttemptsReached: true });
+    }
+    return res.json({ hasSubmitted: false });
+  } catch (err) {
+    console.error('Error in /check-submission:', err);
+    return res
+      .status(500)
+      .json({ error: 'Server error. Please try again later.' });
   }
 });
 
-// Submit answer (updated to use DB)
 app.post('/submit', async (req, res) => {
   try {
     const { name, email, answer } = req.body;
-    const puzzle = await getCurrentPuzzle();
-
-    if (!puzzle) {
-      return res.status(404).json({ error: 'No active puzzle' });
+    if (!name || !email || !answer) {
+      return res.status(400).json({ error: 'Missing name, email, or answer.' });
     }
-
     const existingCorrect = await Submission.findOne({
       email,
-      week: puzzle.week,
+      week: CURRENT_WEEK,
       isCorrect: true,
     });
-
     if (existingCorrect) {
       return res.status(400).json({
-        error: 'You have already submitted a correct answer for this puzzle.',
+        error: 'Correct answer already submitted for this puzzle/week.',
       });
     }
-
     const attemptCount = await Submission.countDocuments({
       email,
-      week: puzzle.week,
+      week: CURRENT_WEEK,
     });
-
     if (attemptCount >= 3) {
-      return res.status(400).json({
-        error: 'You have reached the maximum number of attempts for this puzzle.',
-      });
+      return res
+        .status(400)
+        .json({ error: 'Max attempts reached for this puzzle/week.' });
     }
-
-    const isCorrect = answer.trim() === puzzle.correctAnswer.trim();
-
+    const isCorrect = answer.trim().toLowerCase() === CORRECT_ANSWER;
     const newSubmission = new Submission({
       name,
       email,
-      week: puzzle.week,
+      week: CURRENT_WEEK,
       isCorrect,
     });
-
     await newSubmission.save();
-
-    if (isCorrect) {
-      let user = await User.findOne({ email });
-      if (user) {
-        user.score += 1;
-        await user.save();
-      } else {
-        user = new User({ name, email, score: 1 });
-        await user.save();
-      }
-
-      await updateLeaderboard();
-    }
-
-    res.json({
-      success: true,
-      isCorrect,
-      attemptsLeft: 3 - (attemptCount + 1),
-    });
+    res.json({ success: true, isCorrect });
   } catch (error) {
-    console.error('Error during submission:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// Get solution (updated to use DB)
-app.post('/get-solution', async (req, res) => {
-  try {
-    const { email, idToken } = req.body;
-
-    const ticket = await client.verifyIdToken({
-      idToken,
-      audience: GOOGLE_CLIENT_ID,
-    });
-    const payload = ticket.getPayload();
-
-    if (payload.email !== email) {
-      return res.status(403).json({ error: 'Email mismatch' });
-    }
-
-    const puzzle = await getCurrentPuzzle();
-
-    if (!puzzle) {
-      return res.status(404).json({ error: 'No active puzzle' });
-    }
-
-    const correctSubmission = await Submission.findOne({
-      email,
-      week: puzzle.week,
-      isCorrect: true,
-    });
-
-    const attemptCount = await Submission.countDocuments({
-      email,
-      week: puzzle.week,
-    });
-
-    const canViewSolution = correctSubmission || attemptCount >= 3;
-
-    if (!canViewSolution) {
-      return res.status(403).json({
-        error:
-          'You must submit a correct answer or exhaust all attempts to view the solution.',
-      });
-    }
-
-    res.json({
-      success: true,
-      solutionHtml: puzzle.solutionHtml,
-      solutionImageUrl: puzzle.solutionImageUrl,
-    });
-  } catch (error) {
-    console.error('Error in /get-solution:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error in /submit route:', error);
+    res.status(500).json({ error: 'Server error. Please try again later.' });
   }
 });
 
@@ -310,69 +182,6 @@ app.get('/leaderboard', async (req, res) => {
   }
 });
 
-app.post('/admin/add-puzzle', async (req, res) => {
-  try {
-    const { adminKey, week, questionHtml, questionImageUrl, solutionHtml, solutionImageUrl, correctAnswer, goesLiveAt } = req.body;
-
-    if (adminKey !== process.env.ADMIN_SECRET_KEY) {
-      return res.status(403).json({ error: 'Unauthorized' });
-    }
-
-    const existingPuzzle = await Puzzle.findOne({ week });
-    if (existingPuzzle) {
-      return res.status(400).json({ error: 'Puzzle for this week already exists' });
-    }
-
-    const newPuzzle = new Puzzle({
-      week,
-      questionHtml,
-      questionImageUrl,
-      solutionHtml,
-      solutionImageUrl,
-      correctAnswer,
-      goesLiveAt: new Date(goesLiveAt),
-      isActive: true,
-    });
-
-    await newPuzzle.save();
-
-    res.json({
-      success: true,
-      message: `Puzzle for ${week} added successfully!`,
-      puzzle: newPuzzle,
-    });
-  } catch (error) {
-    console.error('Error adding puzzle:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
-});
-
-// Admin endpoint to list all puzzles
-app.post('/admin/list-puzzles', async (req, res) => {
-  try {
-    const { adminKey } = req.body;
-
-    if (adminKey !== process.env.ADMIN_SECRET_KEY) {
-      return res.status(403).json({ error: 'Unauthorized: Invalid admin key' });
-    }
-
-    const puzzles = await Puzzle.find({}).sort({ goesLiveAt: -1 });
-
-    res.json({
-      success: true,
-      puzzles: puzzles.map(p => ({
-        week: p.week,
-        goesLiveAt: p.goesLiveAt,
-        isActive: p.isActive,
-        createdAt: p.createdAt
-      }))
-    });
-  } catch (error) {
-    console.error('Error listing puzzles:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
 });
