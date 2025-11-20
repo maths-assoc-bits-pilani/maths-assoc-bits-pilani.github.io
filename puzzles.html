@@ -95,12 +95,11 @@
     <div
       class="container flex flex-col md:flex-row md:items-center my-5 border-4 border-black dark:border-gray-600 dark:bg-gray-800 mx-0 my-0 px-4 lg:px-10 py-4 lg:py-10 gap-x-10">
       <div class="container py-10 px-4 w-full flex flex-col md:w-2/4 gap-y-10">
-        <h2 class="text-4xl font-bold mb-4-italic">Basic math</h2>
+        <h2 class="text-4xl font-bold mb-4-italic">Odd Sevens Out</h2>
         <p class="text-lg mt-4">
           Let $a_n$ be the number of $n$-digits numbers made from $5,6,7,8,9$ which have an odd number of $7$'s. <br>
           Find $2a_{100}$ (do not include any parentheses in your answer, in case your answer contains an exponentiation
-          sign
-          you may use $\hat{}$ symbol for exponentiation).
+          sign you may use $\hat{}$ symbol for exponentiation).
         </p>
       </div>
       <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdawE6MdTffU9yHhGV_x3mk90dVba8_BI3fg&s"
@@ -153,24 +152,24 @@
           <div class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
             <div class="w-1/2">
               <p class="text-base w-full my-4">
-                $a_n$ denotes the number of $n$-digit numbers made from $5,6,7,8,9$ which have an odd number of $7$'s.
+                $a_n$ denotes the number of $n$-digit numbers made from $5,6,7,8,9$ which have an odd number of $7$'s.<br/>
 
                 Let $b_n$ denote the number of $n$-digit numbers made from $5,6,7,8,9$ which have an even number of
                 $7$'s. Let there be $n$-spots for the $n$-digit number $\\\\...\\$, the first $(n-1)$ spots can be
                 filled in $a_{n-1}$ ways which is followed by the last spot which can be filled in $4$ ways, if the last
-                spot is a $7$ then we can fill the remaining $(n-1)$ spots in $b_{n-1}$ ways.
+                spot is a $7$ then we can fill the remaining $(n-1)$ spots in $b_{n-1}$ ways.<br/>
 
                 Thus, we have the recurrence relation $a_n=4a_{n-1}+b_{n-1}$. Similarly, for $b_n$ the first $(n-1)$
                 spots can be filled
                 in $b_{n-1}$ ways which is followed by the last spot which can be filled in $4$ ways, if the last spot
                 is a $7$ then we can fill the remaining $(n-1)$ spots in $a_{n-1}$ ways, thus we have the recurrence
-                relation $b_n=4b_{n-1}+a_{n-1}$.
+                relation $b_n=4b_{n-1}+a_{n-1}$.<br/>
 
-                We can simply compute $a_1$ and $b_1$ without the recurrence. $a_1=1$, $b_1=4$.
+                We can simply compute $a_1$ and $b_1$ without the recurrence. $a_1=1$, $b_1=4$.<br/>
 
                 Now, $(a_n+b_n)=5(a_{n-1}+b_{n-1})$ and $(b_n-a_n)=3(b_{n-1}-a_{n-1})$. From this we know that
                 $(a_n+b_n)$ forms a G.P. with common ratio $5$ and first term $5$ and $(b_n-a_n)$ forms a G.P. with
-                common ratio $3$ and first term 3.
+                common ratio $3$ and first term 3.<br/>
 
                 Thus, $(a_n+b_n)=5^n$ and $(b_n-a_n)=3^n$. This gives us that $a_n=\frac{5^n-3^n}{2}$. Thus,
                 $2a_{100}=5^{100}-3^{100}$.

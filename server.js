@@ -24,8 +24,8 @@ mongoose
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
 // change this each week
-const CURRENT_WEEK = 'week4';
-const CORRECT_ANSWER = '102'; // should always be lowercase
+const CURRENT_WEEK = 'week5';
+const CORRECT_ANSWER = '5^100-3^100'; // should always be lowercase
 
 const submissionSchema = new mongoose.Schema({
   name: { type: String, required: true },
