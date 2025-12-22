@@ -67,7 +67,7 @@ async function checkSubmissionStatus(email) {
 
 function handleCredentialResponse(response) {
 	const token = response.credential;
-	fetch(`${API_BASE}/auth/google`, {
+	fetch(`${API_BASE}/verify-google`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({ token }),
