@@ -3,15 +3,11 @@ const menuToggle = document.getElementById("menu-toggle");
 const closeMenu = document.getElementById("close-menu");
 
 const openMenu = () => {
-	menu.classList.remove("w-0");
-	menu.classList.add("w-1/2");
-	closeMenu.classList.remove("rotate-45");
+	menu.classList.remove("translate-x-full");
 };
 
 const closeMenuFunc = () => {
-	menu.classList.add("w-0");
-	menu.classList.remove("w-1/2");
-	closeMenu.classList.add("rotate-45");
+	menu.classList.add("translate-x-full");
 };
 
 menuToggle.addEventListener("click", openMenu);
