@@ -18,6 +18,9 @@ async function loadDashboard() {
         const data = await res.json();
 
         if (data.success) {
+            // Store admin key in sessionStorage for preview pages
+            sessionStorage.setItem('adminKey', adminKey);
+            
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('dashboard-content').classList.remove('hidden');
             renderPendingArticles(data.articles);
@@ -89,7 +92,7 @@ function renderPendingArticles(articles) {
             <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">${article.excerpt}</p>
             
             <div class="flex gap-4 border-t border-gray-100 dark:border-gray-800 pt-4">
-                <a href="/infinity-insights/article.html?slug=${article.slug}" target="_blank" 
+                <a href="/infinity-insights/article.html?slug=${article.slug}&preview=true" target="_blank" 
                    class="text-sky-500 hover:underline font-bold text-sm flex items-center">
                    👁 Preview Article
                 </a>

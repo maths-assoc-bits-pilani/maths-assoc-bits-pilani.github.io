@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
+    const isPreview = urlParams.get('preview') === 'true';
     const container = document.getElementById('article-container');
 
     if (!slug) {
@@ -10,10 +11,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const res = await fetch(`${API_BASE}/articles/${slug}`);
+        let url = `${API_BASE}/articles/${slug}`;
+        let headers = {};
+
+        // If preview mode, use admin endpoint with stored key
+        if (isPreview) {
+            const adminKey = sessionStorage.getItem('adminKey');
+            if (!adminKey) {
+                container.innerHTML = '<p class="text-red-500 text-center">Please access preview from the admin dashboard.</p>';
+                return;
+            }
+            url = `${API_BASE}/articles/preview/${slug}`;
+            headers['x-admin-key'] = adminKey;
+        }
+
+        const res = await fetch(url, { headers });
+        const data = await res.json();
         if (!res.ok) throw new Error('Article not found');
-        
-        const article = await res.json();
+
+        const article = isPreview ? data.article : data;
         renderArticle(article, container);
     } catch (error) {
         console.error(error);
