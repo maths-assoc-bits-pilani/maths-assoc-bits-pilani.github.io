@@ -1,4 +1,3 @@
-// API_BASE is now imported from config.js
 
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);

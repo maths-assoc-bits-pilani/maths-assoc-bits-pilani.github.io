@@ -1,4 +1,3 @@
-// API_BASE is imported from config.js
 
 let adminKey = "";
 

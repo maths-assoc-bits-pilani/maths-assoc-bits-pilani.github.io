@@ -40,7 +40,7 @@
 	</head>
 
 	<body
-		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
+		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 min-h-screen flex flex-col">
 		<!-- Navbar -->
 		<div
 			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
@@ -117,7 +117,7 @@
 		</div>
 
 		<!-- Main Content -->
-		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex-grow">
 			<!-- Highlighted Article (Hero) -->
 			<section id="hero-article" class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-16 hidden">
 			</section>
@@ -131,201 +131,18 @@
 				</div>
 
 				<div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-16">
-					<!-- Article Card 1 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1614730341194-75c6074065db?q=80&w=1000&auto=format&fit=crop"
-								alt="Pi"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Number Theory</span>
-								<span>&bull;</span>
-								<span>Dec 20, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">The Transcendence of Pi</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								Why is Pi impossible to construct with a ruler and compass? Delving into the history
-								of squaring the circle.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Sarah Jenkins</span
-							>
-						</div>
-					</article>
-
-					<!-- Article Card 2 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1633455326622-6e43896b1c9d?q=80&w=1000&auto=format&fit=crop"
-								alt="Topology"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Topology</span>
-								<span>&bull;</span>
-								<span>Dec 18, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">Coffee Mugs and Donuts</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								An introduction to homeomorphism and why topologists can't tell the difference
-								between their breakfast and their drink.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Dr. Alan Grant</span
-							>
-						</div>
-					</article>
-
-					<!-- Article Card 3 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=1000&auto=format&fit=crop"
-								alt="Calculus"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Calculus</span>
-								<span>&bull;</span>
-								<span>Dec 15, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">The Limits of Infinity</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								Understanding how we handle the concept of infinity in calculus through limits and
-								series.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Ramanujan Fan</span
-							>
-						</div>
-					</article>
-
-					<!-- Article Card 4 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=1000&auto=format&fit=crop"
-								alt="Graph Theory"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Graph Theory</span>
-								<span>&bull;</span>
-								<span>Dec 10, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">The Seven Bridges of Königsberg</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								How a simple walking puzzle gave birth to the field of Graph Theory.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Euler's Ghost</span
-							>
-						</div>
-					</article>
-
-					<!-- Article Card 5 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop"
-								alt="Algebra"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Algebra</span>
-								<span>&bull;</span>
-								<span>Dec 05, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">Symmetry and Groups</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								Why symmetry is more than just aesthetics—it's the language of the universe.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Noether</span
-							>
-						</div>
-					</article>
-
-					<!-- Article Card 6 -->
-					<article
-						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
-						<a href="#" class="block overflow-hidden mb-6">
-							<img
-								src="https://images.unsplash.com/photo-1509869175650-a1d97972541a?q=80&w=1000&auto=format&fit=crop"
-								alt="Combinatorics"
-								class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-						</a>
-						<div class="flex-1">
-							<div
-								class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-								<span class="text-black dark:text-white">Combinatorics</span>
-								<span>&bull;</span>
-								<span>Dec 01, 2025</span>
-							</div>
-							<h3
-								class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-								<a href="#">Counting Without Counting</a>
-							</h3>
-							<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-								Mastering the art of permutations, combinations, and the pigeonhole principle.
-							</p>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-							<span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500"
-								>By Pascal</span
-							>
-						</div>
-					</article>
+					<!-- Loading State - Will be replaced by JS -->
+					<div class="col-span-full text-center py-12">
+						<div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-gray-100"></div>
+						<p class="mt-4 text-gray-500">Loading articles...</p>
+					</div>
 				</div>
 			</section>
 		</main>
 
 		<!-- Footer -->
 		<footer
-			class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-20 py-12">
+			class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-auto py-12">
 			<div class="max-w-7xl mx-auto px-4 text-center">
 				<p class="font-serif text-gray-500 dark:text-gray-400 italic">
 					"Mathematics is the music of reason."

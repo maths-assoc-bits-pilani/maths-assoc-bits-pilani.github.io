@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // API_BASE is now imported from config.js
 
     // Initialize EasyMDE
     const easyMDE = new EasyMDE({
