@@ -37,7 +37,10 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
 </head>
 
-<body class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
+<body class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 relative">
+    <!-- Background Canvas -->
+    <canvas id="math-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+    
     <!-- Navbar -->
     <div class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +48,7 @@
                 <!-- Logo / Brand -->
                 <div class="flex items-center gap-4">
                     <div class="border border-gray-900 dark:border-gray-100 p-1">
-                        <img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 grayscale" />
+                        <img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
                     </div>
                     <div class="flex flex-col leading-none">
                         <a href="/index.html" class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
@@ -91,7 +94,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="py-20 px-6 text-center">
+    <section class="py-20 px-6 text-center relative z-10">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
                 Mathematics Association
@@ -103,7 +106,7 @@
     </section>
 
     <!-- Collage Section: Blog & Puzzles -->
-    <section class="py-20 bg-gray-50 dark:bg-black">
+    <section class="py-20 bg-transparent relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 
@@ -145,7 +148,7 @@
     </section>
 
     <!-- Events Carousel Section -->
-    <section class="py-16 bg-gray-50 dark:bg-black">
+    <section class="py-16 bg-transparent relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-serif font-extrabold text-center mb-12 text-gray-900 dark:text-white tracking-tight">Our Events</h2>
             
@@ -217,7 +220,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black dark:border-t dark:border-gray-800 text-white py-12">
+    <footer class="bg-gray-900 dark:bg-black dark:border-t dark:border-gray-800 text-white py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="mb-8">
                 <img src="/assets/massocicon.jpg" alt="Logo" class="h-12 w-12 rounded-full mx-auto grayscale opacity-80" />
@@ -232,6 +235,8 @@
     </footer>
 
     <script src="/scripts/darkMode.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/background.js"></script>
     <script>
         // Mobile Menu Logic (Inline to avoid dependency issues if scripts/index.js is complex)
         const menu = document.getElementById("menu");

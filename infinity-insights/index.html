@@ -49,11 +49,11 @@
 					<!-- Logo / Brand -->
 					<div class="flex items-center gap-4">
 						<div class="border border-gray-900 dark:border-gray-100 p-1">
-							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 grayscale" />
+							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
 						</div>
 						<div class="flex flex-col leading-none">
 							<a
-								href="/puzzles/index.html"
+								href="/infinity-insights/index.html"
 								class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
 								Infinity Insights
 							</a>
@@ -68,6 +68,7 @@
 					<div
 						class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
 						<a href="/index.html" class="hover:text-gray-500 transition-colors">Home</a>
+						<a href="/infinity-insights/write.html" class="hover:text-gray-500 transition-colors">Write</a>
 						<a href="/contact.html" class="hover:text-gray-500 transition-colors">Contact</a>
 
 						<!-- Theme Toggle -->
@@ -118,48 +119,7 @@
 		<!-- Main Content -->
 		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
 			<!-- Highlighted Article (Hero) -->
-			<section class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-16">
-				<a
-					href="articles/fractals.html"
-					class="group grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-					<!-- Image -->
-					<div class="lg:col-span-7 overflow-hidden">
-						<img
-							src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop"
-							alt="Fractals"
-							class="w-full h-[400px] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" />
-					</div>
-
-					<!-- Content -->
-					<div class="lg:col-span-5 flex flex-col justify-center">
-						<div
-							class="flex items-center gap-3 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4">
-							<span
-								class="text-black dark:text-white border-b border-black dark:border-white pb-0.5"
-								>Chaos Theory</span
-							>
-							<span>&bull;</span>
-							<span>Dec 23, 2025</span>
-						</div>
-
-						<h1
-							class="text-4xl lg:text-5xl font-bold mb-6 leading-tight group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-							The Infinite Complexity of Fractals
-						</h1>
-
-						<p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-							Explore the fascinating world of self-similar patterns, where simple mathematical
-							rules generate infinite complexity and beauty found in nature.
-						</p>
-
-						<div class="flex items-center gap-3">
-							<div class="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-								<img src="https://ui-avatars.com/api/?name=Hamza&background=random" alt="Author" />
-							</div>
-							<span class="text-sm font-sans font-bold uppercase tracking-wide">By Hamza</span>
-						</div>
-					</div>
-				</a>
+			<section id="hero-article" class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-16 hidden">
 			</section>
 
 			<!-- Articles Grid -->
@@ -170,7 +130,7 @@
 					</h2>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-16">
+				<div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-16">
 					<!-- Article Card 1 -->
 					<article
 						class="flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group">
@@ -377,6 +337,8 @@
 		</footer>
 
 		<script src="/scripts/darkMode.js"></script>
+		<script src="/scripts/config.js"></script>
 		<script src="/scripts/index.js"></script>
+		<script src="/scripts/articles.js"></script>
 	</body>
 </html>

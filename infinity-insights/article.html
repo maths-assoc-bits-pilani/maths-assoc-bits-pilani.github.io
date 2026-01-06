@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Article | Infinity Insights</title>
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				darkMode: "class",
+				theme: {
+					extend: {
+						fontFamily: {
+							serif: ["Merriweather", "serif"],
+							sans: ["Lato", "sans-serif"],
+						},
+						colors: {
+							gray: {
+								850: "#1f2937",
+								950: "#030712",
+							},
+						},
+					},
+				},
+			};
+		</script>
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+			rel="stylesheet" />
+
+		<link rel="stylesheet" href="/styles/styles.css" />
+		
+		<!-- MathJax -->
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [['$', '$'], ['\\(', '\\)']],
+					displayMath: [['$$', '$$'], ['\\[', '\\]']]
+				},
+				svg: {
+					fontCache: 'global'
+				}
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+        
+        <!-- Marked for Markdown Parsing -->
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <!-- DOMPurify for sanitization -->
+        <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+		<!-- Favicons -->
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+	</head>
+
+	<body
+		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
+		<!-- Navbar -->
+		<div
+			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between items-center h-20">
+					<!-- Logo / Brand -->
+					<div class="flex items-center gap-4">
+						<div class="border border-gray-900 dark:border-gray-100 p-1">
+							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
+						</div>
+						<div class="flex flex-col leading-none">
+							<a
+								href="/infinity-insights/index.html"
+								class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
+								Infinity Insights
+							</a>
+							<span
+								class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+								>Maths Assoc BITS Pilani</span
+							>
+						</div>
+					</div>
+
+					<!-- Desktop Menu -->
+					<div
+						class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
+						<a href="/index.html" class="hover:text-gray-500 transition-colors">Home</a>
+						<a href="/infinity-insights/index.html" class="hover:text-gray-500 transition-colors">Blog</a>
+						<a href="/infinity-insights/write.html" class="hover:text-gray-500 transition-colors">Write</a>
+
+						<!-- Theme Toggle -->
+						<button
+							id="theme-toggle"
+							class="focus:outline-none hover:text-gray-500 transition-colors">
+							<svg
+								id="theme-toggle-light-icon"
+								class="hidden w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20">
+								<path
+									d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+									fill-rule="evenodd"
+									clip-rule="evenodd"></path>
+							</svg>
+							<svg
+								id="theme-toggle-dark-icon"
+								class="hidden w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20">
+								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<!-- Article Content -->
+		<main id="article-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="animate-pulse space-y-8">
+                <div class="h-8 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
+                <div class="h-64 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                <div class="space-y-4">
+                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-full"></div>
+                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-5/6"></div>
+                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-4/6"></div>
+                </div>
+            </div>
+		</main>
+
+		<script src="/scripts/darkMode.js"></script>
+		<script src="/scripts/config.js"></script>
+        <script src="/scripts/article-view.js"></script>
+	</body>
+</html>

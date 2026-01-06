@@ -18,8 +18,8 @@ window.addEventListener("click", (e) => {
 	}
 });
 
-const API_BASE = "https://math-assoc-api.onrender.com";
-// const API_BASE = 'http://localhost:3000';
+// const API_BASE = "https://math-assoc-api.onrender.com";
+// const API_BASE = 'http://localhost:5000';
 
 function toggleGoogleLoading(show) {
 	const loadingEl = document.getElementById("google-loading");
