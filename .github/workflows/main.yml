@@ -1,0 +1,22 @@
+name: Deploy with Production API
+
+on:
+  push:
+    branches:
+      - frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Replace API URL with production
+        run: |
+          sed -i 's|http://localhost:5000|https://math-assoc-api.onrender.com|g' scripts/config.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
