@@ -90,10 +90,12 @@ async function checkSubmissionStatus(email) {
 
 function handleCredentialResponse(response) {
 	const token = response.credential;
+    console.log("ID Token received: ", token ? "Yes" : "No");
+    
 	fetch(`${API_BASE}/verify-google`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ token }),
+		body: JSON.stringify({ idToken: token }),
 	})
 		.then((res) => res.json())
 		.then(async (data) => {
