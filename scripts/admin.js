@@ -18,8 +18,7 @@ async function loadDashboard() {
         const data = await res.json();
 
         if (data.success) {
-            // Store admin key in sessionStorage for preview pages
-            sessionStorage.setItem('adminKey', adminKey);
+            localStorage.setItem('adminKey', adminKey);
             
             document.getElementById('auth-section').classList.add('hidden');
             document.getElementById('dashboard-content').classList.remove('hidden');

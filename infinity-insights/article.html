@@ -66,7 +66,6 @@
 			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
 			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between items-center h-20">
-					<!-- Logo / Brand -->
 					<div class="flex items-center gap-4">
 						<div class="border border-gray-900 dark:border-gray-100 p-1">
 							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
@@ -114,8 +113,28 @@
 							</svg>
 						</button>
 					</div>
+
+					<!-- Mobile Menu Button -->
+					<div class="md:hidden">
+						<button id="menu-toggle" class="text-2xl hover:text-gray-500 transition-colors">
+							&#9776;
+						</button>
+					</div>
 				</div>
 			</nav>
+		</div>
+
+		<!-- Mobile Menu Overlay -->
+		<div
+			id="menu"
+			class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
+			<button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">
+				&times;
+			</button>
+			<a href="/index.html" class="hover:text-gray-400">Home</a>
+			<a href="/infinity-insights/index.html" class="hover:text-gray-400">Blog</a>
+			<a href="/infinity-insights/write.html" class="hover:text-gray-400">Write</a>
+			<a href="/contact.html" class="hover:text-gray-400">Contact</a>
 		</div>
 
 		<!-- Article Content -->
@@ -133,6 +152,7 @@
 
 		<script src="/scripts/darkMode.js"></script>
 		<script src="/scripts/config.js"></script>
+		<script src="/scripts/index.js"></script>
         <script src="/scripts/article-view.js"></script>
 	</body>
 </html>

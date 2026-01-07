@@ -82,15 +82,15 @@
                 </div>
             </div>
         </nav>
+    </div>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="menu" class="fixed inset-0 bg-black/95 text-white z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
-            <button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">&times;</button>
-            <a href="/puzzles/index.html" class="hover:text-gray-400">Puzzles</a>
-            <a href="/infinity-insights/index.html" class="hover:text-gray-400">Infinity Insights</a>
-            <a href="/about.html" class="hover:text-gray-400">About</a>
-            <a href="/contact.html" class="hover:text-gray-400">Contact</a>
-        </div>
+    <!-- Mobile Menu Overlay -->
+    <div id="menu" class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
+        <button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">&times;</button>
+        <a href="/puzzles/index.html" class="hover:text-gray-400">Puzzles</a>
+        <a href="/infinity-insights/index.html" class="hover:text-gray-400">Blog</a>
+        <a href="/about.html" class="hover:text-gray-400">About</a>
+        <a href="/contact.html" class="hover:text-gray-400">Contact</a>
     </div>
 
     <!-- Hero Section -->
@@ -237,45 +237,7 @@
     <script src="/scripts/darkMode.js"></script>
     <script src="/scripts/config.js"></script>
     <script src="/scripts/background.js"></script>
-    <script>
-        // Mobile Menu Logic (Inline to avoid dependency issues if scripts/index.js is complex)
-        const menu = document.getElementById("menu");
-        const menuToggle = document.getElementById("menu-toggle");
-        const closeMenu = document.getElementById("close-menu");
-
-        if (menu && menuToggle && closeMenu) {
-            menuToggle.addEventListener("click", () => {
-                menu.classList.remove("translate-x-full");
-            });
-            closeMenu.addEventListener("click", () => {
-                menu.classList.add("translate-x-full");
-            });
-        }
-
-        // Carousel Logic
-        const carouselInner = document.getElementById('carousel-inner');
-        const prevButton = document.getElementById('prev-button');
-        const nextButton = document.getElementById('next-button');
-        const items = document.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            carouselInner.style.transform = `translateX(${offset}%)`;
-        }
-
-        if (prevButton && nextButton && items.length > 0) {
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % items.length;
-                updateCarousel();
-            });
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + items.length) % items.length;
-                updateCarousel();
-            });
-        }
-    </script>
+    <script src="/scripts/index.js"></script>
 </body>
 
 </html>

@@ -1,22 +1,52 @@
+// Mobile Menu Logic
 const menu = document.getElementById("menu");
 const menuToggle = document.getElementById("menu-toggle");
 const closeMenu = document.getElementById("close-menu");
 
-const openMenu = () => {
-	menu.classList.remove("translate-x-full");
-};
+if (menu && menuToggle && closeMenu) {
+	const openMenu = () => {
+		menu.classList.remove("translate-x-full");
+		document.body.style.overflow = "hidden";
+	};
 
-const closeMenuFunc = () => {
-	menu.classList.add("translate-x-full");
-};
+	const closeMenuFunc = () => {
+		menu.classList.add("translate-x-full");
+		document.body.style.overflow = "";
+	};
 
-menuToggle.addEventListener("click", openMenu);
-closeMenu.addEventListener("click", closeMenuFunc);
-window.addEventListener("click", (e) => {
-	if (!menu.contains(e.target) && e.target !== menuToggle && e.target !== closeMenu) {
-		closeMenuFunc();
+	menuToggle.addEventListener("click", openMenu);
+	closeMenu.addEventListener("click", closeMenuFunc);
+	window.addEventListener("click", (e) => {
+		if (!menu.contains(e.target) && e.target !== menuToggle && e.target !== closeMenu) {
+			closeMenuFunc();
+		}
+	});
+}
+
+// Carousel Logic (for main page)
+const carouselInner = document.getElementById('carousel-inner');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
+const carouselItems = document.querySelectorAll('.carousel-item');
+
+if (carouselInner && prevButton && nextButton && carouselItems.length > 0) {
+	let currentIndex = 0;
+
+	function updateCarousel() {
+		const offset = -currentIndex * 100;
+		carouselInner.style.transform = `translateX(${offset}%)`;
 	}
-});
+
+	nextButton.addEventListener('click', () => {
+		currentIndex = (currentIndex + 1) % carouselItems.length;
+		updateCarousel();
+	});
+
+	prevButton.addEventListener('click', () => {
+		currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+		updateCarousel();
+	});
+}
 
 function toggleGoogleLoading(show) {
 	const loadingEl = document.getElementById("google-loading");
