@@ -85,7 +85,7 @@ a {
 /* Our Events Section */
 .events-title {
 	display: flex;
-	justify-content: center;
+	justify-content: center; 
 }
 .card {
 	display: flex;

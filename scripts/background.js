@@ -7,9 +7,9 @@ let mouseY = -1000;
 let dots = [];
 
 // Configuration
-const SPACING = 30;
+const SPACING = 22;
 const DOT_RADIUS = 1.5;
-const HOVER_RADIUS = 80;
+const HOVER_RADIUS = 60; 
 const MAX_SCALE = 2; // Additional radius when hovered
 const EASING = 0.15; // Controls the speed of the transition (lower is smoother/slower)
 
@@ -58,7 +58,7 @@ function draw() {
     const highR = isDark ? 56 : 14;
     const highG = isDark ? 189 : 165;
     const highB = isDark ? 248 : 233;
-    const highA = 0.5; // More transparent highlight as requested
+    const highA = 0.9; // More transparent highlight as requested
 
     ctx.clearRect(0, 0, width, height);
 
@@ -88,6 +88,22 @@ function draw() {
         const finalA = baseA + (highA - baseA) * mix;
 
         ctx.fillStyle = `rgba(${Math.round(finalR)}, ${Math.round(finalG)}, ${Math.round(finalB)}, ${finalA})`;
+        
+        // Add glow effect for highlighted dots
+        if (dot.currentScale > 0.1) {
+            const glowRadius = r * 3;
+            const gradient = ctx.createRadialGradient(dot.x, dot.y, r * 0.5, dot.x, dot.y, glowRadius);
+            gradient.addColorStop(0, `rgba(${Math.round(highR)}, ${Math.round(highG)}, ${Math.round(highB)}, ${dot.currentScale * 0.4})`);
+            gradient.addColorStop(1, `rgba(${Math.round(highR)}, ${Math.round(highG)}, ${Math.round(highB)}, 0)`);
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, glowRadius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Reset fill style for the main dot
+            ctx.fillStyle = `rgba(${Math.round(finalR)}, ${Math.round(finalG)}, ${Math.round(finalB)}, ${finalA})`;
+        }
         
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, r, 0, Math.PI * 2);

@@ -37,62 +37,32 @@
 		
 		<!-- Custom Styles -->
 		<link rel="stylesheet" href="/styles/styles.css" />
-		<style>
-			/* EasyMDE Dark Mode Overrides */
-			.dark .EasyMDEContainer .CodeMirror {
-				background-color: #1f2937;
-				color: #e5e7eb;
-				border-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-toolbar {
-				background-color: #111827;
-				border-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-toolbar i {
-				color: #e5e7eb;
-			}
-			.dark .EasyMDEContainer .editor-toolbar button:hover {
-				background-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-preview {
-				background-color: #1f2937;
-				color: #e5e7eb;
-			}
-			.dark .EasyMDEContainer .editor-statusbar {
-				color: #9ca3af;
-			}
-			
-			/* Fix Cursor Color in Dark Mode */
-			.dark .CodeMirror-cursor {
-				border-left-color: #e5e7eb !important;
-				border-color: #e5e7eb !important;
-			}
-
-			/* MathJax Preview Styles */
-			.editor-preview {
-				font-family: 'Merriweather', serif;
-				line-height: 1.8;
-			}
-		</style>
 
 		<!-- Favicons -->
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon/favicon.ico" />
 		
-		<!-- MathJax -->
+		<!-- MathJax with CHTML renderer -->
 		<script>
 			window.MathJax = {
 				tex: {
 					inlineMath: [['$', '$'], ['\\(', '\\)']],
 					displayMath: [['$$', '$$'], ['\\[', '\\]']]
 				},
-				svg: {
-					fontCache: 'global'
+				chtml: {
+					scale: 1,
+					minScale: 0.5
 				}
 			};
 		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		
+		<!-- Marked for Markdown Parsing (for preview) -->
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script>
+			marked.setOptions({ breaks: true, gfm: true });
+		</script>
 	</head>
 
 	<body
