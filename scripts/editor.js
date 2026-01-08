@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // Handle Form Submission
     const form = document.getElementById('article-form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
