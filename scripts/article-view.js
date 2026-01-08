@@ -73,7 +73,7 @@ function renderArticle(article, container) {
                 <span>&bull;</span>
                 <span>${date}</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">${title}</h1>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${title}</h1>
             <div class="flex items-center justify-center gap-3">
                 <div class="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex items-center justify-center text-xs font-bold">
                     ${authorName.charAt(0)}
@@ -88,7 +88,7 @@ function renderArticle(article, container) {
         </div>
         ` : ''}
 
-        <article class="prose prose-lg dark:prose-invert mx-auto font-serif">
+        <article class="prose md:prose-lg dark:prose-invert mx-auto font-serif">
             ${htmlContent}
         </article>
 
