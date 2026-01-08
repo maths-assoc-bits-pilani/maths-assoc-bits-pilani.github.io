@@ -37,6 +37,102 @@
 		
 		<!-- Custom Styles -->
 		<link rel="stylesheet" href="/styles/styles.css" />
+		<style>
+			/* EasyMDE Dark Mode Overrides */
+			.dark .EasyMDEContainer .CodeMirror {
+				background-color: #1f2937;
+				color: #e5e7eb;
+				border-color: #374151;
+			}
+			.dark .EasyMDEContainer .editor-toolbar {
+				background-color: #111827;
+				border-color: #374151;
+			}
+			.dark .EasyMDEContainer .editor-toolbar i {
+				color: #e5e7eb;
+			}
+			.dark .EasyMDEContainer .editor-toolbar button:hover {
+				background-color: #374151;
+			}
+			.dark .EasyMDEContainer .editor-preview {
+				background-color: #1f2937;
+				color: #e5e7eb;
+			}
+			.dark .EasyMDEContainer .editor-statusbar {
+				color: #9ca3af;
+			}
+			
+			/* Fix Cursor Color in Dark Mode */
+			.dark .CodeMirror-cursor {
+				border-left-color: #e5e7eb !important;
+				border-color: #e5e7eb !important;
+			}
+
+			/* MathJax Preview Styles */
+			.editor-preview, .editor-preview-side {
+				font-family: 'Merriweather', serif;
+				line-height: 1.8;
+			}
+			
+			/* Heading styles for preview */
+			.editor-preview h1, .editor-preview-side h1 {
+				font-size: 2.25rem;
+				font-weight: 700;
+				margin-top: 1.5rem;
+				margin-bottom: 1rem;
+				line-height: 1.2;
+			}
+			.editor-preview h2, .editor-preview-side h2 {
+				font-size: 1.75rem;
+				font-weight: 700;
+				margin-top: 1.5rem;
+				margin-bottom: 0.75rem;
+				line-height: 1.3;
+			}
+			.editor-preview h3, .editor-preview-side h3 {
+				font-size: 1.5rem;
+				font-weight: 600;
+				margin-top: 1.25rem;
+				margin-bottom: 0.5rem;
+			}
+			.editor-preview h4, .editor-preview-side h4 {
+				font-size: 1.25rem;
+				font-weight: 600;
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+			}
+			.editor-preview p, .editor-preview-side p {
+				margin-bottom: 1rem;
+			}
+			.editor-preview code, .editor-preview-side code {
+				background: rgba(0,0,0,0.1);
+				padding: 0.2em 0.4em;
+				border-radius: 3px;
+				font-size: 0.9em;
+			}
+			.dark .editor-preview code, .dark .editor-preview-side code {
+				background: rgba(255,255,255,0.1);
+			}
+			.editor-preview pre, .editor-preview-side pre {
+				background: #1f2937;
+				color: #e5e7eb;
+				padding: 1rem;
+				border-radius: 0.5rem;
+				overflow-x: auto;
+				margin-bottom: 1rem;
+			}
+			.editor-preview blockquote, .editor-preview-side blockquote {
+				border-left: 4px solid #d1d5db;
+				padding-left: 1rem;
+				margin-left: 0;
+				color: #6b7280;
+				font-style: italic;
+			}
+			.dark .editor-preview blockquote, .dark .editor-preview-side blockquote {
+				border-left-color: #4b5563;
+				color: #9ca3af;
+			}
+		</style>
 
 		<!-- Favicons -->
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -56,7 +152,7 @@
 				}
 			};
 		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		
 		<!-- Marked for Markdown Parsing (for preview) -->
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
