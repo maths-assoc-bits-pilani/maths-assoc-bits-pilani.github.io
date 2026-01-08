@@ -4,8 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Article | Infinity Insights</title>
-		<!-- Tailwind CSS -->
-		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Tailwind CSS with Typography Plugin -->
+		<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 		<script>
 			tailwind.config = {
 				darkMode: "class",
@@ -21,6 +21,13 @@
 								950: "#030712",
                             }
 						},
+						typography: {
+							DEFAULT: {
+								css: {
+									maxWidth: 'none',
+								},
+							},
+						},
 					},
 				},
 			};
@@ -34,19 +41,19 @@
 
 		<link rel="stylesheet" href="/styles/styles.css" />
 		
-		<!-- MathJax -->
 		<script>
 			window.MathJax = {
 				tex: {
 					inlineMath: [['$', '$'], ['\\(', '\\)']],
 					displayMath: [['$$', '$$'], ['\\[', '\\]']]
 				},
-				svg: {
-					fontCache: 'global'
+				chtml: {
+					scale: 1,
+					minScale: 0.5
 				}
 			};
 		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         
         <!-- Marked for Markdown Parsing -->
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

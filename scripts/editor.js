@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             coverImage: document.getElementById('cover-image').value,
             tags: document.getElementById('tags').value.split(',').map(tag => tag.trim()).filter(t => t),
             content: easyMDE.value(),
-            // TODO: Add author info if auth is implemented
         };
 
         try {
