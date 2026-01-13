@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        let url = `${API_BASE}/articles/slug/${slug}`;
+        let url = `${API_BASE}/articles/${slug}`;
         let headers = {};
 
         // If preview mode, use admin endpoint with stored key
@@ -179,7 +179,7 @@ async function saveArticle() {
     }
 
     try {
-        const res = await fetch(`${API_BASE}/articles/${currentArticle._id}/edit`, {
+        const res = await fetch(`${API_BASE}/articles/${currentArticle._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
