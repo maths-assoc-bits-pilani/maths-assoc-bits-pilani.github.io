@@ -1,163 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Infinity Insights | Maths Assoc BITS Pilani</title>
-		<!-- Tailwind CSS -->
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				darkMode: "class",
-				theme: {
-					extend: {
-						fontFamily: {
-							serif: ["Merriweather", "serif"],
-							sans: ["Lato", "sans-serif"],
-						},
-						colors: {
-							gray: {
-								850: "#1f2937",
-								950: "#030712",
-							},
-						},
-					},
-				},
-			};
-		</script>
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
-			rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinity Insights | Maths Assoc BITS Pilani</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                850: '#1f2937',
+                950: '#030712',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-		<link rel="stylesheet" href="/styles/styles.css" />
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-	</head>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96-2.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon-2.ico" />
+  </head>
 
-	<body
-		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 min-h-screen flex flex-col">
-		<!-- Navbar -->
-		<div
-			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex justify-between items-center h-20">
-					<!-- Logo / Brand -->
-					<div class="flex items-center gap-4">
-						<div class="border border-gray-900 dark:border-gray-100 p-1">
-							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
-						</div>
-						<div class="flex flex-col leading-none">
-							<a
-								href="/infinity-insights/index.html"
-								class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
-								Infinity Insights
-							</a>
-							<span
-								class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
-								>Maths Assoc BITS Pilani</span
-							>
-						</div>
-					</div>
+  <body
+    class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 min-h-screen flex flex-col"
+  >
+    <!-- Navbar -->
+    <div
+      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+    >
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo / Brand -->
+          <div class="flex items-center gap-4">
+            <div class="border border-gray-900 dark:border-gray-100 p-1">
+              <img
+                src="/assets/massocicon.jpg"
+                alt="Logo"
+                class="h-8 w-8 dark:grayscale"
+              />
+            </div>
+            <div class="flex flex-col leading-none">
+              <a
+                href="/infinity-insights/index.html"
+                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+              >
+                Infinity Insights
+              </a>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                >Maths Assoc BITS Pilani</span
+              >
+            </div>
+          </div>
 
-					<!-- Desktop Menu -->
-					<div
-						class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
-						<a href="/index.html" class="hover:text-gray-500 transition-colors">Home</a>
-						<a href="/infinity-insights/write.html" class="hover:text-gray-500 transition-colors">Write</a>
-						<a href="/contact.html" class="hover:text-gray-500 transition-colors">Contact</a>
+          <!-- Desktop Menu -->
+          <div
+            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+          >
+            <a href="/index.html" class="hover:text-gray-500 transition-colors"
+              >Home</a
+            >
+            <a
+              href="/infinity-insights/write.html"
+              class="hover:text-gray-500 transition-colors"
+              >Write</a
+            >
+            <a
+              href="/contact.html"
+              class="hover:text-gray-500 transition-colors"
+              >Contact</a
+            >
 
-						<!-- Theme Toggle -->
-						<button
-							id="theme-toggle"
-							class="focus:outline-none hover:text-gray-500 transition-colors">
-							<svg
-								id="theme-toggle-light-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path
-									d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-									fill-rule="evenodd"
-									clip-rule="evenodd"></path>
-							</svg>
-							<svg
-								id="theme-toggle-dark-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-							</svg>
-						</button>
-					</div>
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="focus:outline-none hover:text-gray-500 transition-colors"
+            >
+              <svg
+                id="theme-toggle-light-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-dark-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
 
-						<!-- Mobile Menu Button -->
-					<div class="md:hidden">
-						<button id="menu-toggle" class="text-2xl hover:text-gray-500 transition-colors">
-							&#9776;
-						</button>
-					</div>
-				</div>
-			</nav>
-		</div>
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="menu-toggle"
+              class="text-2xl hover:text-gray-500 transition-colors"
+            >
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
 
-		<!-- Mobile Menu Overlay -->
-		<div
-			id="menu"
-			class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
-			<button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">
-				&times;
-			</button>
-			<a href="/index.html" class="hover:text-gray-400">Home</a>
-			<a href="/infinity-insights/index.html" class="hover:text-gray-400">Blog</a>
-			<a href="/infinity-insights/write.html" class="hover:text-gray-400">Write</a>
-			<a href="/contact.html" class="hover:text-gray-400">Contact</a>
-		</div>
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="menu"
+      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+      >
+        &times;
+      </button>
+      <a href="/index.html" class="hover:text-gray-400">Home</a>
+      <a href="/infinity-insights/index.html" class="hover:text-gray-400"
+        >Blog</a
+      >
+      <a href="/infinity-insights/write.html" class="hover:text-gray-400"
+        >Write</a
+      >
+      <a href="/contact.html" class="hover:text-gray-400">Contact</a>
+    </div>
 
-		<!-- Main Content -->
-		<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex-grow">
-			<!-- Highlighted Article (Hero) -->
-			<section id="hero-article" class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-16 hidden">
-			</section>
+    <!-- Main Content -->
+    <main
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex-grow"
+    >
+      <!-- Highlighted Article (Hero) -->
+      <section
+        id="hero-article"
+        class="mb-20 border-b border-gray-200 dark:border-gray-800 pb-16 hidden"
+      ></section>
 
-			<!-- Articles Grid -->
-			<section>
-				<div class="flex items-center justify-between mb-12">
-					<h2 class="text-2xl font-bold border-l-4 border-black dark:border-white pl-4">
-						Latest Insights
-					</h2>
-				</div>
+      <!-- Articles Grid -->
+      <section>
+        <div class="flex items-center justify-between mb-12">
+          <h2
+            class="text-2xl font-bold border-l-4 border-black dark:border-white pl-4"
+          >
+            Latest Insights
+          </h2>
+        </div>
 
-				<div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-16">
-					<!-- Loading State - Will be replaced by JS -->
-					<div class="col-span-full text-center py-12">
-						<div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-gray-100"></div>
-						<p class="mt-4 text-gray-500">Loading articles...</p>
-					</div>
-				</div>
-			</section>
-		</main>
+        <div
+          id="articles-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-16"
+        >
+          <!-- Loading State - Will be replaced by JS -->
+          <div class="col-span-full text-center py-12">
+            <div
+              class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-gray-100"
+            ></div>
+            <p class="mt-4 text-gray-500">Loading articles...</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-		<!-- Footer -->
-		<footer
-			class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-auto py-12">
-			<div class="max-w-7xl mx-auto px-4 text-center">
-				<p class="font-serif text-gray-500 dark:text-gray-400 italic">
-					"Mathematics is the music of reason."
-				</p>
-				<p class="text-xs font-sans font-bold uppercase tracking-widest mt-4 text-gray-400">
-					&copy; 2026 Maths Association BITS Pilani
-				</p>
-			</div>
-		</footer>
+    <!-- Footer -->
+    <footer
+      class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-auto py-12"
+    >
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="font-serif text-gray-500 dark:text-gray-400 italic">
+          "Mathematics is the music of reason."
+        </p>
+        <p
+          class="text-xs font-sans font-bold uppercase tracking-widest mt-4 text-gray-400"
+        >
+          &copy; 2026 Maths Association BITS Pilani
+        </p>
+      </div>
+    </footer>
 
-		<script src="/scripts/darkMode.js"></script>
-		<script src="/scripts/config.js"></script>
-		<script src="/scripts/index.js"></script>
-		<script src="/scripts/articles.js"></script>
-	</body>
+    <script src="/scripts/darkMode.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/articles.js"></script>
+  </body>
 </html>

@@ -1,303 +1,403 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Write Article | Infinity Insights</title>
-		<!-- Tailwind CSS -->
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				darkMode: "class",
-				theme: {
-					extend: {
-						fontFamily: {
-							serif: ["Merriweather", "serif"],
-							sans: ["Lato", "sans-serif"],
-						},
-						colors: {
-							gray: {
-								850: "#1f2937",
-								950: "#030712",
-							},
-						},
-					},
-				},
-			};
-		</script>
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
-			rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Write Article | Infinity Insights</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                850: '#1f2937',
+                950: '#030712',
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-		<!-- EasyMDE CSS -->
-		<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
-		
-		<!-- Custom Styles -->
-		<link rel="stylesheet" href="/styles/styles.css" />
-		<style>
-			/* EasyMDE Dark Mode Overrides */
-			.dark .EasyMDEContainer .CodeMirror {
-				background-color: #1f2937;
-				color: #e5e7eb;
-				border-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-toolbar {
-				background-color: #111827;
-				border-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-toolbar i {
-				color: #e5e7eb;
-			}
-			.dark .EasyMDEContainer .editor-toolbar button:hover {
-				background-color: #374151;
-			}
-			.dark .EasyMDEContainer .editor-preview {
-				background-color: #1f2937;
-				color: #e5e7eb;
-			}
-			.dark .EasyMDEContainer .editor-statusbar {
-				color: #9ca3af;
-			}
-			
-			/* Fix Cursor Color in Dark Mode */
-			.dark .CodeMirror-cursor {
-				border-left-color: #e5e7eb !important;
-				border-color: #e5e7eb !important;
-			}
+    <!-- EasyMDE CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/easymde/dist/easymde.min.css"
+    />
 
-			/* MathJax Preview Styles */
-			.editor-preview, .editor-preview-side {
-				font-family: 'Merriweather', serif;
-				line-height: 1.8;
-			}
-			
-			/* Heading styles for preview */
-			.editor-preview h1, .editor-preview-side h1 {
-				font-size: 2.25rem;
-				font-weight: 700;
-				margin-top: 1.5rem;
-				margin-bottom: 1rem;
-				line-height: 1.2;
-			}
-			.editor-preview h2, .editor-preview-side h2 {
-				font-size: 1.75rem;
-				font-weight: 700;
-				margin-top: 1.5rem;
-				margin-bottom: 0.75rem;
-				line-height: 1.3;
-			}
-			.editor-preview h3, .editor-preview-side h3 {
-				font-size: 1.5rem;
-				font-weight: 600;
-				margin-top: 1.25rem;
-				margin-bottom: 0.5rem;
-			}
-			.editor-preview h4, .editor-preview-side h4 {
-				font-size: 1.25rem;
-				font-weight: 600;
-				margin-top: 1rem;
-				margin-bottom: 0.5rem;
-			}
-			.editor-preview p, .editor-preview-side p {
-				margin-bottom: 1rem;
-			}
-			.editor-preview code, .editor-preview-side code {
-				background: rgba(0,0,0,0.1);
-				padding: 0.2em 0.4em;
-				border-radius: 3px;
-				font-size: 0.9em;
-			}
-			.dark .editor-preview code, .dark .editor-preview-side code {
-				background: rgba(255,255,255,0.1);
-			}
-			.editor-preview pre, .editor-preview-side pre {
-				background: #1f2937;
-				color: #e5e7eb;
-				padding: 1rem;
-				border-radius: 0.5rem;
-				overflow-x: auto;
-				margin-bottom: 1rem;
-			}
-			.editor-preview blockquote, .editor-preview-side blockquote {
-				border-left: 4px solid #d1d5db;
-				padding-left: 1rem;
-				margin-left: 0;
-				color: #6b7280;
-				font-style: italic;
-			}
-			.dark .editor-preview blockquote, .dark .editor-preview-side blockquote {
-				border-left-color: #4b5563;
-				color: #9ca3af;
-			}
-		</style>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <style>
+      /* EasyMDE Dark Mode Overrides */
+      .dark .EasyMDEContainer .CodeMirror {
+        background-color: #1f2937;
+        color: #e5e7eb;
+        border-color: #374151;
+      }
+      .dark .EasyMDEContainer .editor-toolbar {
+        background-color: #111827;
+        border-color: #374151;
+      }
+      .dark .EasyMDEContainer .editor-toolbar i {
+        color: #e5e7eb;
+      }
+      .dark .EasyMDEContainer .editor-toolbar button:hover {
+        background-color: #374151;
+      }
+      .dark .EasyMDEContainer .editor-preview {
+        background-color: #1f2937;
+        color: #e5e7eb;
+      }
+      .dark .EasyMDEContainer .editor-statusbar {
+        color: #9ca3af;
+      }
 
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		
-		<!-- MathJax with CHTML renderer -->
-		<script>
-			window.MathJax = {
-				tex: {
-					inlineMath: [['$', '$'], ['\\(', '\\)']],
-					displayMath: [['$$', '$$'], ['\\[', '\\]']]
-				},
-				chtml: {
-					scale: 1,
-					minScale: 0.5
-				}
-			};
-		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		
-		<!-- Marked for Markdown Parsing (for preview) -->
-		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-		<script>
-			marked.setOptions({ breaks: true, gfm: true });
-		</script>
-	</head>
+      /* Fix Cursor Color in Dark Mode */
+      .dark .CodeMirror-cursor {
+        border-left-color: #e5e7eb !important;
+        border-color: #e5e7eb !important;
+      }
 
-	<body
-		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
-		<!-- Navbar -->
-		<div
-			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex justify-between items-center h-20">
-					<!-- Logo / Brand -->
-					<div class="flex items-center gap-4">
-						<div class="border border-gray-900 dark:border-gray-100 p-1">
-							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
-						</div>
-						<div class="flex flex-col leading-none">
-							<a
-								href="/infinity-insights/index.html"
-								class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
-								Infinity Insights
-							</a>
-							<span
-								class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
-								>Editor</span
-							>
-						</div>
-					</div>
+      /* MathJax Preview Styles */
+      .editor-preview,
+      .editor-preview-side {
+        font-family: 'Merriweather', serif;
+        line-height: 1.8;
+      }
 
-					<!-- Desktop Menu -->
-					<div
-						class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
-						<a href="/infinity-insights/index.html" class="hover:text-gray-500 transition-colors">Back to Blog</a>
-						
-						<!-- Theme Toggle -->
-						<button
-							id="theme-toggle"
-							class="focus:outline-none hover:text-gray-500 transition-colors">
-							<svg
-								id="theme-toggle-light-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path
-									d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-									fill-rule="evenodd"
-									clip-rule="evenodd"></path>
-							</svg>
-							<svg
-								id="theme-toggle-dark-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-							</svg>
-						</button>
-					</div>
+      /* Heading styles for preview */
+      .editor-preview h1,
+      .editor-preview-side h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      .editor-preview h2,
+      .editor-preview-side h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+      .editor-preview h3,
+      .editor-preview-side h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+      .editor-preview h4,
+      .editor-preview-side h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .editor-preview p,
+      .editor-preview-side p {
+        margin-bottom: 1rem;
+      }
+      .editor-preview code,
+      .editor-preview-side code {
+        background: rgba(0, 0, 0, 0.1);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      .dark .editor-preview code,
+      .dark .editor-preview-side code {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .editor-preview pre,
+      .editor-preview-side pre {
+        background: #1f2937;
+        color: #e5e7eb;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+      }
+      .editor-preview blockquote,
+      .editor-preview-side blockquote {
+        border-left: 4px solid #d1d5db;
+        padding-left: 1rem;
+        margin-left: 0;
+        color: #6b7280;
+        font-style: italic;
+      }
+      .dark .editor-preview blockquote,
+      .dark .editor-preview-side blockquote {
+        border-left-color: #4b5563;
+        color: #9ca3af;
+      }
+    </style>
 
-					<!-- Mobile Menu Button -->
-					<div class="md:hidden">
-						<button id="menu-toggle" class="text-2xl hover:text-gray-500 transition-colors">
-							&#9776;
-						</button>
-					</div>
-				</div>
-			</nav>
-		</div>
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96-2.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon-2.ico" />
 
-		<!-- Mobile Menu Overlay -->
-		<div
-			id="menu"
-			class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
-			<button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">
-				&times;
-			</button>
-			<a href="/index.html" class="hover:text-gray-400">Home</a>
-			<a href="/infinity-insights/index.html" class="hover:text-gray-400">Blog</a>
-			<a href="/contact.html" class="hover:text-gray-400">Contact</a>
-		</div>
+    <!-- MathJax with CHTML renderer -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        chtml: {
+          scale: 1,
+          minScale: 0.5,
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-		<!-- Editor Content -->
-		<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-			<form id="article-form" class="space-y-8">
-				<!-- Metadata Section -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<div class="space-y-4">
-						<div>
-							<label for="title" class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Title</label>
-							<input type="text" id="title" name="title" required
-								class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white py-2 text-2xl font-bold outline-none transition-colors placeholder-gray-300 dark:placeholder-gray-700"
-								placeholder="Enter article title..." />
-						</div>
-						<div>
-							<label for="excerpt" class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Excerpt</label>
-							<textarea id="excerpt" name="excerpt" required rows="3"
-								class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all resize-none"
-								placeholder="A short summary for the card preview..."></textarea>
-						</div>
-					</div>
-					
-					<div class="space-y-4">
-						<div>
-							<label for="cover-image" class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Cover Image URL</label>
-							<input type="url" id="cover-image" name="coverImage"
-								class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all"
-								placeholder="https://..." />
-						</div>
-						<div>
-							<label for="tags" class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Tags (comma separated)</label>
-							<input type="text" id="tags" name="tags" required
-								class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all"
-								placeholder="Algebra, Number Theory, History" />
-						</div>
-					</div>
-				</div>
+    <!-- Marked for Markdown Parsing (for preview) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      marked.setOptions({ breaks: true, gfm: true });
+    </script>
+  </head>
 
-				<!-- Main Editor -->
-				<div class="space-y-2">
-					<label class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Content (Markdown + LaTeX)</label>
-					<textarea id="editor"></textarea>
-					<p class="text-xs text-gray-500 dark:text-gray-400 italic">
-						Use <code>$...$</code> for inline math and <code>$$...$$</code> for block math.
-					</p>
-				</div>
+  <body
+    class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800"
+  >
+    <!-- Navbar -->
+    <div
+      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+    >
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo / Brand -->
+          <div class="flex items-center gap-4">
+            <div class="border border-gray-900 dark:border-gray-100 p-1">
+              <img
+                src="/assets/massocicon.jpg"
+                alt="Logo"
+                class="h-8 w-8 dark:grayscale"
+              />
+            </div>
+            <div class="flex flex-col leading-none">
+              <a
+                href="/infinity-insights/index.html"
+                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+              >
+                Infinity Insights
+              </a>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                >Editor</span
+              >
+            </div>
+          </div>
 
-				<!-- Actions -->
-				<div class="flex justify-end gap-4 pt-8 border-t border-gray-200 dark:border-gray-800">
-					<button type="button" class="px-6 py-3 font-sans font-bold uppercase tracking-wide text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
-						Save Draft
-					</button>
-					<button type="submit" class="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-sans font-bold uppercase tracking-wide text-sm rounded hover:opacity-90 transition-opacity">
-						Submit for Review
-					</button>
-				</div>
-			</form>
-		</main>
+          <!-- Desktop Menu -->
+          <div
+            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+          >
+            <a
+              href="/infinity-insights/index.html"
+              class="hover:text-gray-500 transition-colors"
+              >Back to Blog</a
+            >
 
-		<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-		<script src="/scripts/darkMode.js"></script>
-		<script src="/scripts/config.js"></script>
-		<script src="/scripts/index.js"></script>
-		<script src="/scripts/editor.js"></script>
-	</body>
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="focus:outline-none hover:text-gray-500 transition-colors"
+            >
+              <svg
+                id="theme-toggle-light-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-dark-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="menu-toggle"
+              class="text-2xl hover:text-gray-500 transition-colors"
+            >
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="menu"
+      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+      >
+        &times;
+      </button>
+      <a href="/index.html" class="hover:text-gray-400">Home</a>
+      <a href="/infinity-insights/index.html" class="hover:text-gray-400"
+        >Blog</a
+      >
+      <a href="/contact.html" class="hover:text-gray-400">Contact</a>
+    </div>
+
+    <!-- Editor Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <form id="article-form" class="space-y-8">
+        <!-- Metadata Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-4">
+            <div>
+              <label
+                for="title"
+                class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2"
+                >Title</label
+              >
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-black dark:focus:border-white py-2 text-2xl font-bold outline-none transition-colors placeholder-gray-300 dark:placeholder-gray-700"
+                placeholder="Enter article title..."
+              />
+            </div>
+            <div>
+              <label
+                for="excerpt"
+                class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2"
+                >Excerpt</label
+              >
+              <textarea
+                id="excerpt"
+                name="excerpt"
+                required
+                rows="3"
+                class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all resize-none"
+                placeholder="A short summary for the card preview..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label
+                for="cover-image"
+                class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2"
+                >Cover Image URL</label
+              >
+              <input
+                type="url"
+                id="cover-image"
+                name="coverImage"
+                class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all"
+                placeholder="https://..."
+              />
+            </div>
+            <div>
+              <label
+                for="tags"
+                class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2"
+                >Tags (comma separated)</label
+              >
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                required
+                class="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all"
+                placeholder="Algebra, Number Theory, History"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Editor -->
+        <div class="space-y-2">
+          <label
+            class="block text-sm font-sans font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400"
+            >Content (Markdown + LaTeX)</label
+          >
+          <textarea id="editor"></textarea>
+          <p class="text-xs text-gray-500 dark:text-gray-400 italic">
+            Use <code>$...$</code> for inline math and <code>$$...$$</code> for
+            block math.
+          </p>
+        </div>
+
+        <!-- Actions -->
+        <div
+          class="flex justify-end gap-4 pt-8 border-t border-gray-200 dark:border-gray-800"
+        >
+          <button
+            type="button"
+            class="px-6 py-3 font-sans font-bold uppercase tracking-wide text-sm text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+          >
+            Save Draft
+          </button>
+          <button
+            type="submit"
+            class="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-sans font-bold uppercase tracking-wide text-sm rounded hover:opacity-90 transition-opacity"
+          >
+            Submit for Review
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script src="/scripts/darkMode.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/editor.js"></script>
+  </body>
 </html>

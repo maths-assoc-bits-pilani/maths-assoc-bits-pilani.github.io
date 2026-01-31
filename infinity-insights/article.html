@@ -1,212 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Article | Infinity Insights</title>
-		<!-- Tailwind CSS with Typography Plugin -->
-		<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-		<script>
-			tailwind.config = {
-				darkMode: "class",
-				theme: {
-					extend: {
-						fontFamily: {
-							serif: ["Merriweather", "serif"],
-							sans: ["Lato", "sans-serif"],
-						},
-						colors: {
-							gray: {
-								850: "#1f2937",
-								950: "#030712",
-                            }
-						},
-						typography: {
-							DEFAULT: {
-								css: {
-									maxWidth: 'none',
-								},
-							},
-						},
-					},
-				},
-			};
-		</script>
-		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
-			rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article | Infinity Insights</title>
+    <!-- Tailwind CSS with Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                850: '#1f2937',
+                950: '#030712',
+              },
+            },
+            typography: {
+              DEFAULT: {
+                css: {
+                  maxWidth: 'none',
+                },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-		<link rel="stylesheet" href="/styles/styles.css" />
-		
-		<!-- MathJax -->
-		<script>
-			window.MathJax = {
-				tex: {
-					inlineMath: [['$', '$'], ['\\(', '\\)']],
-					displayMath: [['$$', '$$'], ['\\[', '\\]']]
-				},
-				chtml: {
-					scale: 1,
-					minScale: 0.5
-				}
-			};
-		</script>
-		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		
-		<!-- Inline MathJax scaling -->
-		<style>
-			mjx-container:not([display="true"]) {
-				font-size: 1.2em !important;
-			}
-			
-			/* Responsive prose typography */
-			.prose h1 {
-				font-size: 1.75rem;
-				margin-top: 1.5rem;
-				margin-bottom: 0.75rem;
-			}
-			.prose h2 {
-				font-size: 1.5rem;
-				margin-top: 1.25rem;
-				margin-bottom: 0.5rem;
-			}
-			.prose h3 {
-				font-size: 1.25rem;
-				margin-top: 1rem;
-				margin-bottom: 0.5rem;
-			}
-			.prose p {
-				margin-bottom: 1rem;
-			}
-			
-			/* Larger sizes on desktop */
-			@media (min-width: 768px) {
-				.prose h1 {
-					font-size: 2.25rem;
-					margin-top: 2rem;
-					margin-bottom: 1rem;
-				}
-				.prose h2 {
-					font-size: 1.75rem;
-					margin-top: 1.75rem;
-					margin-bottom: 0.75rem;
-				}
-				.prose h3 {
-					font-size: 1.5rem;
-					margin-top: 1.5rem;
-					margin-bottom: 0.5rem;
-				}
-			}
-		</style>
+    <link rel="stylesheet" href="/styles/styles.css" />
 
-		<!-- Marked for Markdown Parsing -->
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <!-- DOMPurify for sanitization -->
-        <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <!-- MathJax -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        chtml: {
+          scale: 1,
+          minScale: 0.5,
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-		<!-- Favicons -->
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-	</head>
+    <!-- Inline MathJax scaling -->
+    <style>
+      mjx-container:not([display='true']) {
+        font-size: 1.2em !important;
+      }
 
-	<body
-		class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
-		<!-- Navbar -->
-		<div
-			class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-			<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex justify-between items-center h-20">
-					<div class="flex items-center gap-4">
-						<div class="border border-gray-900 dark:border-gray-100 p-1">
-							<img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
-						</div>
-						<div class="flex flex-col leading-none">
-							<a
-								href="/infinity-insights/index.html"
-								class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
-								Infinity Insights
-							</a>
-							<span
-								class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
-								>Maths Assoc BITS Pilani</span
-							>
-						</div>
-					</div>
+      /* Responsive prose typography */
+      .prose h1 {
+        font-size: 1.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .prose h2 {
+        font-size: 1.5rem;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+      .prose h3 {
+        font-size: 1.25rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .prose p {
+        margin-bottom: 1rem;
+      }
 
-					<!-- Desktop Menu -->
-					<div
-						class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
-						<a href="/index.html" class="hover:text-gray-500 transition-colors">Home</a>
-						<a href="/infinity-insights/index.html" class="hover:text-gray-500 transition-colors">Blog</a>
-						<a href="/infinity-insights/write.html" class="hover:text-gray-500 transition-colors">Write</a>
+      /* Larger sizes on desktop */
+      @media (min-width: 768px) {
+        .prose h1 {
+          font-size: 2.25rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+        .prose h2 {
+          font-size: 1.75rem;
+          margin-top: 1.75rem;
+          margin-bottom: 0.75rem;
+        }
+        .prose h3 {
+          font-size: 1.5rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+    </style>
 
-						<!-- Theme Toggle -->
-						<button
-							id="theme-toggle"
-							class="focus:outline-none hover:text-gray-500 transition-colors">
-							<svg
-								id="theme-toggle-light-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path
-									d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-									fill-rule="evenodd"
-									clip-rule="evenodd"></path>
-							</svg>
-							<svg
-								id="theme-toggle-dark-icon"
-								class="hidden w-5 h-5"
-								fill="currentColor"
-								viewBox="0 0 20 20">
-								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-							</svg>
-						</button>
-					</div>
+    <!-- Marked for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- DOMPurify for sanitization -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
 
-					<!-- Mobile Menu Button -->
-					<div class="md:hidden">
-						<button id="menu-toggle" class="text-2xl hover:text-gray-500 transition-colors">
-							&#9776;
-						</button>
-					</div>
-				</div>
-			</nav>
-		</div>
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96-2.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon-2.ico" />
+  </head>
 
-		<!-- Mobile Menu Overlay -->
-		<div
-			id="menu"
-			class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
-			<button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">
-				&times;
-			</button>
-			<a href="/index.html" class="hover:text-gray-400">Home</a>
-			<a href="/infinity-insights/index.html" class="hover:text-gray-400">Blog</a>
-			<a href="/infinity-insights/write.html" class="hover:text-gray-400">Write</a>
-			<a href="/contact.html" class="hover:text-gray-400">Contact</a>
-		</div>
-
-		<!-- Article Content -->
-		<main id="article-container" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="animate-pulse space-y-8">
-                <div class="h-8 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
-                <div class="h-64 bg-gray-200 dark:bg-gray-800 rounded"></div>
-                <div class="space-y-4">
-                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-full"></div>
-                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-5/6"></div>
-                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-4/6"></div>
-                </div>
+  <body
+    class="bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800"
+  >
+    <!-- Navbar -->
+    <div
+      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+    >
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center gap-4">
+            <div class="border border-gray-900 dark:border-gray-100 p-1">
+              <img
+                src="/assets/massocicon.jpg"
+                alt="Logo"
+                class="h-8 w-8 dark:grayscale"
+              />
             </div>
-		</main>
+            <div class="flex flex-col leading-none">
+              <a
+                href="/infinity-insights/index.html"
+                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+              >
+                Infinity Insights
+              </a>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                >Maths Assoc BITS Pilani</span
+              >
+            </div>
+          </div>
 
-		<script src="/scripts/darkMode.js"></script>
-		<script src="/scripts/config.js"></script>
-		<script src="/scripts/index.js"></script>
-        <script src="/scripts/article-view.js"></script>
-	</body>
+          <!-- Desktop Menu -->
+          <div
+            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+          >
+            <a href="/index.html" class="hover:text-gray-500 transition-colors"
+              >Home</a
+            >
+            <a
+              href="/infinity-insights/index.html"
+              class="hover:text-gray-500 transition-colors"
+              >Blog</a
+            >
+            <a
+              href="/infinity-insights/write.html"
+              class="hover:text-gray-500 transition-colors"
+              >Write</a
+            >
+
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="focus:outline-none hover:text-gray-500 transition-colors"
+            >
+              <svg
+                id="theme-toggle-light-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-dark-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="menu-toggle"
+              class="text-2xl hover:text-gray-500 transition-colors"
+            >
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="menu"
+      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+      >
+        &times;
+      </button>
+      <a href="/index.html" class="hover:text-gray-400">Home</a>
+      <a href="/infinity-insights/index.html" class="hover:text-gray-400"
+        >Blog</a
+      >
+      <a href="/infinity-insights/write.html" class="hover:text-gray-400"
+        >Write</a
+      >
+      <a href="/contact.html" class="hover:text-gray-400">Contact</a>
+    </div>
+
+    <!-- Article Content -->
+    <main
+      id="article-container"
+      class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+    >
+      <div class="animate-pulse space-y-8">
+        <div class="h-8 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
+        <div class="h-64 bg-gray-200 dark:bg-gray-800 rounded"></div>
+        <div class="space-y-4">
+          <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-full"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-5/6"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded w-4/6"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/scripts/darkMode.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/article-view.js"></script>
+  </body>
 </html>

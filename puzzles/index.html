@@ -1,280 +1,466 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puzzles 2 Puzzle U</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['Merriweather', 'serif'],
-            sans: ['Lato', 'sans-serif'],
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puzzles 2 Puzzle U</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Merriweather', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                850: '#1f2937',
+                950: '#030712',
+              },
+            },
           },
-          colors: {
-            gray: {
-              850: '#1f2937',
-              950: '#030712',
-            }
-          }
         },
-      },
-    }
-  </script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/styles.css" />
-  <link rel="stylesheet" href="/styles/fonts.css" />
-  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="/favicon/site.webmanifest" />
-</head>
+      };
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/fonts.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-2.ico"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon-2.ico" />
+    <link rel="shortcut icon" href="/favicon/favicon-2.ico" />
+    <link
+      rel="apple-touch-icon-2"
+      sizes="180x180"
+      href="/favicon/favicon-2.ico"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+  </head>
 
-<body class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800">
-  <div class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <!-- Logo / Brand -->
-        <div class="flex items-center gap-4">
-          <div class="border border-gray-900 dark:border-gray-100 p-1">
-            <img src="/assets/massocicon.jpg" alt="Logo" class="h-8 w-8 dark:grayscale" />
-          </div>
-          <div class="flex flex-col leading-none">
-            <a href="/puzzles/index.html" class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase">
-              Puzzles 2 Puzzle U
-            </a>
-            <span class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase">Maths Assoc BITS Pilani</span>
-          </div>
-        </div>
-
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold">
-          <a href="/puzzles/leaderboard.html" class="hover:text-gray-500 transition-colors">Leaderboard</a>
-          <a href="/index.html" class="hover:text-gray-500 transition-colors">Home</a>
-          <a href="/contact.html" class="hover:text-gray-500 transition-colors">Contact</a>
-          
-          <!-- Theme Toggle -->
-          <button id="theme-toggle" class="focus:outline-none hover:text-gray-500 transition-colors p-2 rounded-md">
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-            </svg>
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden">
-          <button id="menu-toggle" class="text-2xl hover:text-gray-500 transition-colors">&#9776;</button>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <!-- Mobile Menu Overlay -->
-  <div id="menu" class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest">
-    <button id="close-menu" class="absolute top-6 right-6 text-4xl hover:text-gray-400">&times;</button>
-    <a href="/puzzles/leaderboard.html" class="hover:text-gray-400">Leaderboard</a>
-    <a href="/index.html" class="hover:text-gray-400">Home</a>
-    <a href="/contact.html" class="hover:text-gray-400">Contact</a>
-  </div>
-
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-    <div class="flex justify-center mb-12 text-xl font-serif italic text-gray-500 dark:text-gray-400">
-      Weekly puzzles to work your brain!
-    </div>
+  <body
+    class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800"
+  >
     <div
-      class="flex flex-col md:flex-row md:items-start mb-16 border-l border-r border-gray-200 dark:border-gray-800 px-6 lg:px-10 py-8 lg:py-12 gap-x-12">
-      <div class="w-full flex flex-col gap-y-8">
-        <div class="puzzle-question">
-          <h2 class="text-4xl font-bold mb-6 leading-tight">Odd Sevens Out</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Let $a_n$ be the number of $n$-digits numbers made from $5,6,7,8,9$ which have an odd number of $7$'s. <br>
-            Find $2a_{100}$ (do not include any parentheses in your answer, in case your answer contains an exponentiation
-            sign you may use $\hat{}$ symbol for exponentiation).
-          </p>
+      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+    >
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo / Brand -->
+          <div class="flex items-center gap-4">
+            <div class="border border-gray-900 dark:border-gray-100 p-1">
+              <img
+                src="/assets/massocicon.jpg"
+                alt="Logo"
+                class="h-8 w-8 dark:grayscale"
+              />
+            </div>
+            <div class="flex flex-col leading-none">
+              <a
+                href="/puzzles/index.html"
+                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+              >
+                Puzzles 2 Puzzle U
+              </a>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                >Maths Assoc BITS Pilani</span
+              >
+            </div>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div
+            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+          >
+            <a
+              href="/puzzles/leaderboard.html"
+              class="hover:text-gray-500 transition-colors"
+              >Leaderboard</a
+            >
+            <a href="/index.html" class="hover:text-gray-500 transition-colors"
+              >Home</a
+            >
+            <a
+              href="/contact.html"
+              class="hover:text-gray-500 transition-colors"
+              >Contact</a
+            >
+
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="focus:outline-none hover:text-gray-500 transition-colors p-2 rounded-md"
+            >
+              <svg
+                id="theme-toggle-light-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-dark-icon"
+                class="hidden w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button
+              id="menu-toggle"
+              class="text-2xl hover:text-gray-500 transition-colors"
+            >
+              &#9776;
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
-    <div id="carouselExample"
-      class="carousel slide border-t border-b border-gray-200 dark:border-gray-800 py-12 md:px-20"
-      data-bs-touch="false" data-bs-keyboard="false" data-bs-wrap="false">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="container text-center px-4">
-            <p class="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-8">
-              Sign in using your BITS Google account to submit your answer.
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="menu"
+      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+      >
+        &times;
+      </button>
+      <a href="/puzzles/leaderboard.html" class="hover:text-gray-400"
+        >Leaderboard</a
+      >
+      <a href="/index.html" class="hover:text-gray-400">Home</a>
+      <a href="/contact.html" class="hover:text-gray-400">Contact</a>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div
+        class="flex justify-center mb-12 text-xl font-serif italic text-gray-500 dark:text-gray-400"
+      >
+        Weekly puzzles to work your brain!
+      </div>
+      <div
+        class="flex flex-col md:flex-row md:items-start mb-16 border-l border-r border-gray-200 dark:border-gray-800 px-6 lg:px-10 py-8 lg:py-12 gap-x-12"
+      >
+        <div class="w-full flex flex-col gap-y-8">
+          <div class="puzzle-question">
+            <h2 class="text-4xl font-bold mb-6 leading-tight">
+              Odd Sevens Out
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              Let $a_n$ be the number of $n$-digits numbers made from
+              $5,6,7,8,9$ which have an odd number of $7$'s. <br />
+              Find $2a_{100}$ (do not include any parentheses in your answer, in
+              case your answer contains an exponentiation sign you may use
+              $\hat{}$ symbol for exponentiation).
             </p>
-            <!-- Loading indicator -->
-            <div id="google-loading" class="text-center my-6" style="display: none">
-              <div class="spinner-border text-gray-900 dark:text-gray-100" role="status">
-                <span class="visually-hidden">Signing in...</span>
+          </div>
+        </div>
+      </div>
+      <div
+        id="carouselExample"
+        class="carousel slide border-t border-b border-gray-200 dark:border-gray-800 py-12 md:px-20"
+        data-bs-touch="false"
+        data-bs-keyboard="false"
+        data-bs-wrap="false"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container text-center px-4">
+              <p
+                class="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-8"
+              >
+                Sign in using your BITS Google account to submit your answer.
+              </p>
+              <!-- Loading indicator -->
+              <div
+                id="google-loading"
+                class="text-center my-6"
+                style="display: none"
+              >
+                <div
+                  class="spinner-border text-gray-900 dark:text-gray-100"
+                  role="status"
+                >
+                  <span class="visually-hidden">Signing in...</span>
+                </div>
+              </div>
+              <!-- Google Sign-in Button -->
+              <div
+                id="google-signin-container"
+                class="text-center flex justify-center"
+              >
+                <div
+                  id="g_id_onload"
+                  data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
+                  data-callback="handleCredentialResponse"
+                  data-auto_prompt="false"
+                ></div>
+                <div
+                  class="g_id_signin"
+                  data-type="standard"
+                  data-theme="outline"
+                  data-size="large"
+                ></div>
               </div>
             </div>
-            <!-- Google Sign-in Button -->
-            <div id="google-signin-container" class="text-center flex justify-center">
-              <div id="g_id_onload"
-                data-client_id="32276754299-ni4aa81u2j53q07ke15nhr4oq8ap9t8f.apps.googleusercontent.com"
-                data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
-              <div class="g_id_signin" data-type="standard" data-theme="outline" data-size="large"></div>
+          </div>
+          <div class="carousel-item">
+            <div class="container text-center px-4">
+              <form id="response-form" class="max-w-xl mx-auto">
+                <div class="mb-8">
+                  <label
+                    for="response"
+                    class="block text-sm font-sans font-bold uppercase tracking-widest text-gray-500 mb-3"
+                    >Your Response</label
+                  >
+                  <input
+                    type="text"
+                    id="response"
+                    class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-none focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-colors font-serif text-lg"
+                    placeholder="Enter Your Response"
+                    required
+                  />
+                </div>
+                <div class="flex justify-center gap-x-6">
+                  <button
+                    class="px-8 py-3 border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-sans font-bold uppercase tracking-widest text-xs hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors back-btn"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    class="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-sans font-bold uppercase tracking-widest text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="carousel-item h-auto">
+            <div
+              class="container text-center w-full flex flex-row justify-center items-center gap-x-10"
+            >
+              <div class="w-full md:w-3/4 lg:w-2/3 text-left">
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    $a_n$ denotes the number of $n$-digit numbers made from
+                    $5,6,7,8,9$ which have an odd number of $7$'s.<br />
+
+                    Let $b_n$ denote the number of $n$-digit numbers made from
+                    $5,6,7,8,9$ which have an even number of $7$'s. Let there be
+                    $n$-spots for the $n$-digit number $\\\\...\\$, the first
+                    $(n-1)$ spots can be filled in $a_{n-1}$ ways which is
+                    followed by the last spot which can be filled in $4$ ways,
+                    if the last spot is a $7$ then we can fill the remaining
+                    $(n-1)$ spots in $b_{n-1}$ ways.<br />
+
+                    Thus, we have the recurrence relation
+                    $a_n=4a_{n-1}+b_{n-1}$. Similarly, for $b_n$ the first
+                    $(n-1)$ spots can be filled in $b_{n-1}$ ways which is
+                    followed by the last spot which can be filled in $4$ ways,
+                    if the last spot is a $7$ then we can fill the remaining
+                    $(n-1)$ spots in $a_{n-1}$ ways, thus we have the recurrence
+                    relation $b_n=4b_{n-1}+a_{n-1}$.<br />
+
+                    We can simply compute $a_1$ and $b_1$ without the
+                    recurrence. $a_1=1$, $b_1=4$.<br />
+
+                    Now, $(a_n+b_n)=5(a_{n-1}+b_{n-1})$ and
+                    $(b_n-a_n)=3(b_{n-1}-a_{n-1})$. From this we know that
+                    $(a_n+b_n)$ forms a G.P. with common ratio $5$ and first
+                    term $5$ and $(b_n-a_n)$ forms a G.P. with common ratio $3$
+                    and first term 3.<br />
+
+                    Thus, $(a_n+b_n)=5^n$ and $(b_n-a_n)=3^n$. This gives us
+                    that $a_n=\frac{5^n-3^n}{2}$. Thus,
+                    $2a_{100}=5^{100}-3^{100}$.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="container text-center px-4">
-            <form id="response-form" class="max-w-xl mx-auto">
-              <div class="mb-8">
-                <label for="response" class="block text-sm font-sans font-bold uppercase tracking-widest text-gray-500 mb-3">Your Response</label>
-                <input type="text" id="response" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-none focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-colors font-serif text-lg" placeholder="Enter Your Response"
-                  required />
-              </div>
-              <div class="flex justify-center gap-x-6">
-                <button class="px-8 py-3 border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-sans font-bold uppercase tracking-widest text-xs hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors back-btn">
-                  Back
-                </button>
-                <button type="submit" class="px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-sans font-bold uppercase tracking-widest text-xs hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
+      </div>
+    </main>
+    <div class="correct-modal modal hidden">
+      <div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
+        <div class="tick-mark flex justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#c8e6c9"
+              d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+            ></path>
+            <path
+              fill="#4caf50"
+              d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"
+            ></path>
+          </svg>
         </div>
-        <div class="carousel-item h-auto">
-          <div class="container text-center w-full flex flex-row justify-center items-center gap-x-10">
-            <div class="w-full md:w-3/4 lg:w-2/3 text-left">
-              <div class="prose prose-lg dark:prose-invert max-w-none">
-                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  $a_n$ denotes the number of $n$-digit numbers made from $5,6,7,8,9$ which have an odd number of $7$'s.<br/>
-
-                  Let $b_n$ denote the number of $n$-digit numbers made from $5,6,7,8,9$ which have an even number of
-                  $7$'s. Let there be $n$-spots for the $n$-digit number $\\\\...\\$, the first $(n-1)$ spots can be
-                  filled in $a_{n-1}$ ways which is followed by the last spot which can be filled in $4$ ways, if the last
-                  spot is a $7$ then we can fill the remaining $(n-1)$ spots in $b_{n-1}$ ways.<br/>
-
-                  Thus, we have the recurrence relation $a_n=4a_{n-1}+b_{n-1}$. Similarly, for $b_n$ the first $(n-1)$
-                  spots can be filled
-                  in $b_{n-1}$ ways which is followed by the last spot which can be filled in $4$ ways, if the last spot
-                  is a $7$ then we can fill the remaining $(n-1)$ spots in $a_{n-1}$ ways, thus we have the recurrence
-                  relation $b_n=4b_{n-1}+a_{n-1}$.<br/>
-
-                  We can simply compute $a_1$ and $b_1$ without the recurrence. $a_1=1$, $b_1=4$.<br/>
-
-                  Now, $(a_n+b_n)=5(a_{n-1}+b_{n-1})$ and $(b_n-a_n)=3(b_{n-1}-a_{n-1})$. From this we know that
-                  $(a_n+b_n)$ forms a G.P. with common ratio $5$ and first term $5$ and $(b_n-a_n)$ forms a G.P. with
-                  common ratio $3$ and first term 3.<br/>
-
-                  Thus, $(a_n+b_n)=5^n$ and $(b_n-a_n)=3^n$. This gives us that $a_n=\frac{5^n-3^n}{2}$. Thus,
-                  $2a_{100}=5^{100}-3^{100}$.
-                </p>
-              </div>
-            </div>
+        <div class="correct-text text-center">
+          <h2 class="text-2xl mb-6">Correct!</h2>
+          <p class="text-base">Well done! Your answer is correct.</p>
+          <div class="flex justify-center">
+            <button
+              class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4"
+            >
+              OK
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </main>
-  <div class="correct-modal modal hidden">
-    <div class="bg-white border-4 border-green-500 rounded-lg p-8 max-w-md">
-      <div class="tick-mark flex justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-          <path fill="#c8e6c9" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-          <path fill="#4caf50"
-            d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
-        </svg>
-      </div>
-      <div class="correct-text text-center">
-        <h2 class="text-2xl mb-6">Correct!</h2>
-        <p class="text-base">Well done! Your answer is correct.</p>
+    <div class="incorrect-modal modal hidden">
+      <div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
+        <div class="cross-mark flex justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#f44336"
+              d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="incorrect-text flex flex-col justify-center text-center"
+        ></div>
         <div class="flex justify-center">
-          <button class="close-btn bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded mt-4">
+          <button
+            class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4"
+          >
             OK
           </button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="incorrect-modal modal hidden">
-    <div class="bg-white border-4 border-red-500 rounded-lg p-8 max-w-md">
-      <div class="cross-mark flex justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-          <path fill="#f44336" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-          <path fill="#fff" d="M29.656,15.516l2.828,2.828l-14.14,14.14l-2.828-2.828L29.656,15.516z"></path>
-          <path fill="#fff" d="M32.484,29.656l-2.828,2.828l-14.14-14.14l2.828-2.828L32.484,29.656z"></path>
-        </svg>
-      </div>
-      <div class="incorrect-text flex flex-col justify-center text-center"></div>
-      <div class="flex justify-center">
-        <button class="close-btn bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded mt-4">
-          OK
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="attempts-complete modal hidden">
-    <div class="bg-white border-4 border-gray-500 rounded-lg p-8 max-w-md text-center">
-      <h2 class="text-2xl mb-6">No attempts left!</h2>
-      <p class="mb-4">You have used all your attempts! Come back next week.</p>
-      <div class="flex justify-center">
-        <button class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded">
-          OK
-        </button>
+    <div class="attempts-complete modal hidden">
+      <div
+        class="bg-white border-4 border-gray-500 rounded-lg p-8 max-w-md text-center"
+      >
+        <h2 class="text-2xl mb-6">No attempts left!</h2>
+        <p class="mb-4">
+          You have used all your attempts! Come back next week.
+        </p>
+        <div class="flex justify-center">
+          <button
+            class="close-btn bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded"
+          >
+            OK
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="already-submitted modal hidden">
-    <div class="bg-white border-4 border-blue-500 rounded-lg p-8 max-w-md text-center">
-      <div class="info-mark flex justify-center mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-          <path fill="#2196f3" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
-          <path fill="#fff" d="M22 22h4v11h-4V22zM22 15h4v4h-4V15z"></path>
-        </svg>
-      </div>
-      <h2 class="text-2xl mb-4">Already Submitted!</h2>
-      <p class="mb-4">
-        You've already submitted a correct answer for this week's puzzle.
-      </p>
-      <div class="flex justify-center">
-        <button class="close-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded">
-          View Solution
-        </button>
+    <div class="already-submitted modal hidden">
+      <div
+        class="bg-white border-4 border-blue-500 rounded-lg p-8 max-w-md text-center"
+      >
+        <div class="info-mark flex justify-center mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#2196f3"
+              d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+            ></path>
+            <path fill="#fff" d="M22 22h4v11h-4V22zM22 15h4v4h-4V15z"></path>
+          </svg>
+        </div>
+        <h2 class="text-2xl mb-4">Already Submitted!</h2>
+        <p class="mb-4">
+          You've already submitted a correct answer for this week's puzzle.
+        </p>
+        <div class="flex justify-center">
+          <button
+            class="close-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded"
+          >
+            View Solution
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="/scripts/darkMode.js"></script>
-  <script src="/scripts/config.js"></script>
-  <script src="/scripts/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [
-          ["$", "$"],
-          ["\\(", "\\)"],
-        ],
-        displayMath: [
-          ["$$", "$$"],
-          ["\\[", "\\]"],
-        ],
-      },
-      chtml: {
-        scale: 1,
-        minScale: 0.5
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</body>
-
+    <script src="/scripts/darkMode.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        chtml: {
+          scale: 1,
+          minScale: 0.5,
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </body>
 </html>
