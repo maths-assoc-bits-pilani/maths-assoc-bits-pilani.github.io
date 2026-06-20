@@ -6,6 +6,16 @@ marked.setOptions({
     gfm: true
 });
 
+// Title, author name, tags, and the cover image URL are user-submitted
+// (see infinity-insights/write.html) and untrusted. The markdown body is
+// run through DOMPurify below, but these fields are interpolated directly
+// into innerHTML, so they need their own escaping.
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str ?? '';
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
@@ -68,22 +78,22 @@ function renderArticle(article, container) {
         ${editButton}
         <header class="mb-10 text-center">
             <div class="flex items-center justify-center gap-3 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4">
-                <span class="text-black dark:text-white border-b border-black dark:border-white pb-0.5">${tags[0] || 'Article'}</span>
+                <span class="text-black dark:text-white border-b border-black dark:border-white pb-0.5">${escapeHtml(tags[0] || 'Article')}</span>
                 <span>&bull;</span>
-                <span>${date}</span>
+                <span>${escapeHtml(date)}</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${title}</h1>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">${escapeHtml(title)}</h1>
             <div class="flex items-center justify-center gap-3">
                 <div class="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex items-center justify-center text-xs font-bold">
-                    ${authorName.charAt(0)}
+                    ${escapeHtml(authorName.charAt(0))}
                 </div>
-                <span class="text-sm font-sans font-bold uppercase tracking-wide">By ${authorName}</span>
+                <span class="text-sm font-sans font-bold uppercase tracking-wide">By ${escapeHtml(authorName)}</span>
             </div>
         </header>
 
         ${coverImage ? `
         <div class="mb-12 overflow-hidden rounded-lg shadow-lg">
-            <img src="${coverImage}" alt="${title}" class="w-full h-auto object-cover max-h-[600px]" />
+            <img src="${escapeHtml(coverImage)}" alt="${escapeHtml(title)}" class="w-full h-auto object-cover max-h-[600px]" />
         </div>
         ` : ''}
 
@@ -101,7 +111,7 @@ function renderArticle(article, container) {
                 <div class="p-6 space-y-6">
                     <div>
                         <label class="block text-sm font-bold uppercase tracking-wide mb-2">Title</label>
-                        <input type="text" id="edit-title" value="${title.replace(/"/g, '&quot;')}" 
+                        <input type="text" id="edit-title" value="${escapeHtml(title)}" 
                             class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 focus:outline-none focus:border-blue-500 select-text">
                     </div>
                     <div>
@@ -111,12 +121,12 @@ function renderArticle(article, container) {
                     </div>
                     <div>
                         <label class="block text-sm font-bold uppercase tracking-wide mb-2">Cover Image URL</label>
-                        <input type="text" id="edit-coverImage" value="${coverImage || ''}" 
+                        <input type="text" id="edit-coverImage" value="${escapeHtml(coverImage || '')}" 
                             class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 focus:outline-none focus:border-blue-500 select-text">
                     </div>
                     <div>
                         <label class="block text-sm font-bold uppercase tracking-wide mb-2">Tags (comma-separated)</label>
-                        <input type="text" id="edit-tags" value="${(tags || []).join(', ')}" 
+                        <input type="text" id="edit-tags" value="${escapeHtml((tags || []).join(', '))}" 
                             class="w-full p-3 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 focus:outline-none focus:border-blue-500 select-text">
                     </div>
                     <div>
