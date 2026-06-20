@@ -97,6 +97,10 @@ async function loadCurrentPuzzle() {
 
 			// Store week globally if needed for submission context
 			window.currentPuzzleWeek = data.week;
+
+			if (window.MathJax && window.MathJax.typesetPromise) {
+				window.MathJax.typesetPromise();
+			}
 		} else {
 			const questionContainer = document.querySelector('.puzzle-question');
 			if (questionContainer) {
@@ -298,6 +302,10 @@ async function loadSolution(email, idToken) {
 				} else {
 					solutionImageContainer.innerHTML = '';
 				}
+			}
+
+			if (window.MathJax && window.MathJax.typesetPromise) {
+				window.MathJax.typesetPromise();
 			}
 		}
 	} catch (err) {
