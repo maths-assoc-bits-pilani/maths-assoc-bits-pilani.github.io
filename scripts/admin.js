@@ -255,10 +255,12 @@ function togglePuzzleForm(mode = 'add', puzzleData = null) {
             
             document.getElementById('puzzle-active').checked = puzzleData.isActive;
             
-            // Needs to fetch full puzzle details (which the list endpoint currently doesn't provide)
-            // For now, we'll prompt the user that they are just editing the basic details shown in the list
-            alert('Note: Editing currently overwrites other fields if left blank. Please implement full puzzle fetch for complete edit support. See console for data available.');
-            console.log(puzzleData);
+            document.getElementById('puzzle-question-html').value = puzzleData.questionHtml || '';
+            document.getElementById('puzzle-question-image').value = puzzleData.questionImageUrl || '';
+            document.getElementById('puzzle-answer').value = puzzleData.correctAnswer || '';
+            document.getElementById('puzzle-hints').value = JSON.stringify(puzzleData.hints || []);
+            document.getElementById('puzzle-solution-html').value = puzzleData.solutionHtml || '';
+            document.getElementById('puzzle-solution-image').value = puzzleData.solutionImageUrl || '';
         }
     } else {
         container.classList.add('hidden');
