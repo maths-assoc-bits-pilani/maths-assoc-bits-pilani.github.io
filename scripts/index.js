@@ -170,7 +170,13 @@ function handleCredentialResponse(response) {
 				}
 			} else {
 				toggleGoogleLoading(false);
-				alert(data.error || "Google sign in failed. Please try again.");
+				if (data.error === 'Only BITS Pilani email addresses are allowed.') {
+					const invalidEmailModal = document.querySelector(".invalid-email-modal");
+					invalidEmailModal.classList.remove("hidden");
+					invalidEmailModal.classList.add("open");
+				} else {
+					alert(data.error || "Google sign in failed. Please try again.");
+				}
 			}
 		})
 		.catch((err) => {
@@ -259,7 +265,7 @@ document.addEventListener("click", (e) => {
 	if (!e.target.matches(".close-btn")) return;
 	const btn = e.target;
 	const modal = btn.closest(
-		".correct-modal, .incorrect-modal, .attempts-complete, .already-submitted"
+		".correct-modal, .incorrect-modal, .attempts-complete, .already-submitted, .invalid-email-modal"
 	);
 	if (!modal) return;
 
