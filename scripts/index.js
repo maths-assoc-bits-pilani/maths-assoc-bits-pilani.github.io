@@ -73,6 +73,48 @@ window.addEventListener('load', () => {
 	}, 1000);
 });
 
+// Fetch Current Puzzle
+async function loadCurrentPuzzle() {
+	try {
+		const res = await fetch(`${API_BASE}/puzzle/current`);
+		const data = await res.json();
+		
+		if (data.success) {
+			// Inject Question
+			const questionContainer = document.querySelector('.puzzle-question');
+			if (questionContainer) {
+				questionContainer.innerHTML = data.questionHtml;
+			}
+			
+			const questionImageContainer = document.querySelector('.puzzle-question-image');
+			if (questionImageContainer) {
+				if (data.questionImageUrl) {
+					questionImageContainer.innerHTML = `<img src="${data.questionImageUrl}" alt="Puzzle Question Image" class="w-1/2">`;
+				} else {
+					questionImageContainer.innerHTML = '';
+				}
+			}
+
+			// Store week globally if needed for submission context
+			window.currentPuzzleWeek = data.week;
+		} else {
+			const questionContainer = document.querySelector('.puzzle-question');
+			if (questionContainer) {
+				questionContainer.innerHTML = `<p class="text-center text-red-500 italic">No active puzzle found or error loading puzzle.</p>`;
+			}
+		}
+	} catch (err) {
+		console.error("Error loading current puzzle:", err);
+		const questionContainer = document.querySelector('.puzzle-question');
+		if (questionContainer) {
+			questionContainer.innerHTML = `<p class="text-center text-red-500 italic">Failed to connect to the server.</p>`;
+		}
+	}
+}
+
+// Call on page load
+loadCurrentPuzzle();
+
 async function checkSubmissionStatus(email) {
 	try {
 		const res = await fetch(`${API_BASE}/check-submission`, {
@@ -107,10 +149,12 @@ function handleCredentialResponse(response) {
 				toggleGoogleLoading(false);
 				
 				if (submissionStatus.hasSubmitted && submissionStatus.isCorrect) {
+					await loadSolution(globalEmail, token);
 					const alreadySubmittedModal = document.querySelector(".already-submitted");
 					alreadySubmittedModal.classList.remove("hidden");
 					alreadySubmittedModal.classList.add("open");
 				} else if (submissionStatus.maxAttemptsReached) {
+					await loadSolution(globalEmail, token);
 					const attemptsComplete = document.querySelector(".attempts-complete");
 					attemptsComplete.classList.remove("hidden");
 					attemptsComplete.classList.add("open");
@@ -173,6 +217,9 @@ responseForm.addEventListener("submit", async (e) => {
 		const carousel = new bootstrap.Carousel("#carouselExample");
 		if (res.ok && data.success) {
 			if (data.isCorrect) {
+				// Assuming we need to refetch token or just verify on backend later, but for now just show modal
+				// We can't immediately fetch the solution without the google idToken unless we change the API or stored it
+				// Assuming the server trusts correct answers directly here or the user can view it later
 				const correctModal = document.querySelector(".correct-modal");
 				correctModal.classList.remove("hidden");
 				correctModal.classList.add("open");
@@ -216,12 +263,43 @@ document.addEventListener("click", (e) => {
 
 	const carousel = new bootstrap.Carousel("#carouselExample");
 	if (
-		modal.classList.contains("correct-modal") ||
-		modal.classList.contains("attempts-complete") ||
-		modal.classList.contains("already-submitted")
+			modal.classList.contains("correct-modal") ||
+			modal.classList.contains("attempts-complete") ||
+			modal.classList.contains("already-submitted")
 	) {
-		carousel.to(2);
+			// Before showing the solution carousel, ensure it is loaded if not already
+			carousel.to(2);
 	} else if (modal.classList.contains("incorrect-modal")) {
-		carousel.to(1);
+			carousel.to(1);
 	}
 });
+
+// Load Solution Helper
+async function loadSolution(email, idToken) {
+	try {
+		const res = await fetch(`${API_BASE}/get-solution`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ email, idToken }),
+		});
+		const data = await res.json();
+		
+		if (data.success) {
+			const solutionContainer = document.querySelector('.puzzle-solution');
+			if (solutionContainer) {
+				solutionContainer.innerHTML = data.solutionHtml;
+			}
+			
+			const solutionImageContainer = document.querySelector('.puzzle-solution-image');
+			if (solutionImageContainer) {
+				if (data.solutionImageUrl) {
+					solutionImageContainer.innerHTML = `<img src="${data.solutionImageUrl}" alt="Puzzle Solution Image" class="w-1/2">`;
+				} else {
+					solutionImageContainer.innerHTML = '';
+				}
+			}
+		}
+	} catch (err) {
+		console.error("Error loading solution:", err);
+	}
+}

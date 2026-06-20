@@ -1,4 +1,3 @@
-
 let adminKey = "";
 
 async function loadDashboard() {
@@ -24,6 +23,7 @@ async function loadDashboard() {
             document.getElementById('dashboard-content').classList.remove('hidden');
             renderPendingArticles(data.articles);
             loadPublishedArticles(); // Also load published
+            loadPuzzles(); // Also load puzzles
         } else {
             alert("Invalid Key or Server Error");
         }
@@ -47,26 +47,57 @@ async function loadPublishedArticles() {
     }
 }
 
+async function loadPuzzles() {
+    try {
+        const res = await fetch(`${API_BASE}/admin/list-puzzles`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ adminKey })
+        });
+        const data = await res.json();
+        if (data.success) {
+            renderPuzzles(data.puzzles);
+        } else {
+            console.error('Failed to load puzzles:', data.error);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 function switchTab(tab) {
     const pendingTab = document.getElementById('tab-pending');
     const publishedTab = document.getElementById('tab-published');
+    const puzzlesTab = document.getElementById('tab-puzzles');
+    
     const pendingSection = document.getElementById('pending-section');
     const publishedSection = document.getElementById('published-section');
+    const puzzlesSection = document.getElementById('puzzles-section');
 
+    // Reset all tabs
+    [pendingTab, publishedTab, puzzlesTab].forEach(t => {
+        t.classList.remove('border-black', 'dark:border-white');
+        t.classList.add('border-transparent', 'text-gray-500');
+    });
+
+    // Hide all sections
+    [pendingSection, publishedSection, puzzlesSection].forEach(s => {
+        s.classList.add('hidden');
+    });
+
+    // Activate selected tab and section
     if (tab === 'pending') {
         pendingTab.classList.add('border-black', 'dark:border-white');
         pendingTab.classList.remove('border-transparent', 'text-gray-500');
-        publishedTab.classList.remove('border-black', 'dark:border-white');
-        publishedTab.classList.add('border-transparent', 'text-gray-500');
         pendingSection.classList.remove('hidden');
-        publishedSection.classList.add('hidden');
-    } else {
+    } else if (tab === 'published') {
         publishedTab.classList.add('border-black', 'dark:border-white');
         publishedTab.classList.remove('border-transparent', 'text-gray-500');
-        pendingTab.classList.remove('border-black', 'dark:border-white');
-        pendingTab.classList.add('border-transparent', 'text-gray-500');
         publishedSection.classList.remove('hidden');
-        pendingSection.classList.add('hidden');
+    } else if (tab === 'puzzles') {
+        puzzlesTab.classList.add('border-black', 'dark:border-white');
+        puzzlesTab.classList.remove('border-transparent', 'text-gray-500');
+        puzzlesSection.classList.remove('hidden');
     }
 }
 
@@ -183,6 +214,169 @@ async function deleteArticle(id, title) {
         if (data.success) {
             alert('Article deleted!');
             loadPublishedArticles(); // Refresh published list
+        } else {
+            alert(data.error || "Delete failed");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Server error");
+    }
+}
+
+// Puzzle Admin Functions
+
+function togglePuzzleForm(mode = 'add', puzzleData = null) {
+    const container = document.getElementById('puzzle-form-container');
+    const formTitle = document.getElementById('puzzle-form-title');
+    const modeInput = document.getElementById('puzzle-mode');
+    
+    if (container.classList.contains('hidden') || mode === 'edit') {
+        container.classList.remove('hidden');
+        container.scrollIntoView({ behavior: 'smooth' });
+        
+        if (mode === 'add') {
+            formTitle.textContent = 'Add New Puzzle';
+            modeInput.value = 'add';
+            document.getElementById('puzzle-form').reset();
+            document.getElementById('puzzle-week').disabled = false;
+        } else if (mode === 'edit' && puzzleData) {
+            formTitle.textContent = `Edit Puzzle ${puzzleData.week}`;
+            modeInput.value = 'edit';
+            
+            document.getElementById('puzzle-week').value = puzzleData.week;
+            document.getElementById('puzzle-week').disabled = true; // Cannot change week once created
+            
+            // Format date for datetime-local input
+            const date = new Date(puzzleData.goesLiveAt);
+            const dateString = date.toISOString().slice(0, 16);
+            document.getElementById('puzzle-live-at').value = dateString;
+            
+            document.getElementById('puzzle-active').checked = puzzleData.isActive;
+            
+            // Needs to fetch full puzzle details (which the list endpoint currently doesn't provide)
+            // For now, we'll prompt the user that they are just editing the basic details shown in the list
+            alert('Note: Editing currently overwrites other fields if left blank. Please implement full puzzle fetch for complete edit support. See console for data available.');
+            console.log(puzzleData);
+        }
+    } else {
+        container.classList.add('hidden');
+    }
+}
+
+function renderPuzzles(puzzles) {
+    const container = document.getElementById('puzzles-list');
+    
+    if (!puzzles || puzzles.length === 0) {
+        container.innerHTML = '<p class="text-gray-500">No puzzles found.</p>';
+        return;
+    }
+
+    container.innerHTML = puzzles.map(puzzle => {
+        const liveDate = new Date(puzzle.goesLiveAt);
+        const isLive = puzzle.isActive && liveDate <= new Date();
+        
+        let statusBadge = '';
+        if (!puzzle.isActive) {
+            statusBadge = '<span class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded uppercase">Inactive</span>';
+        } else if (isLive) {
+            statusBadge = '<span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded uppercase">Live</span>';
+        } else {
+            statusBadge = '<span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded uppercase">Scheduled</span>';
+        }
+
+        return `
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Week ${puzzle.week}</h3>
+                        <p class="text-sm text-gray-500">Scheduled for: ${liveDate.toLocaleString()}</p>
+                    </div>
+                    ${statusBadge}
+                </div>
+                
+                <div class="flex gap-4 border-t border-gray-100 dark:border-gray-800 pt-4 mt-2">
+                    <button onclick='togglePuzzleForm("edit", ${JSON.stringify(puzzle).replace(/'/g, "&apos;")})' 
+                            class="text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-4 py-2 rounded text-sm font-bold transition">
+                        ✏️ Edit Note
+                    </button>
+                    <div class="flex-grow"></div>
+                    <button onclick="deletePuzzle(${puzzle.week})" 
+                            class="text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 px-4 py-2 rounded text-sm font-bold transition">
+                        🗑 Delete
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+async function submitPuzzleForm(event) {
+    event.preventDefault();
+    
+    const mode = document.getElementById('puzzle-mode').value;
+    const week = document.getElementById('puzzle-week').value;
+    
+    let hintsArray = [];
+    try {
+        hintsArray = JSON.parse(document.getElementById('puzzle-hints').value || '[]');
+        if (!Array.isArray(hintsArray)) throw new Error("Hints must be an array");
+    } catch (e) {
+        alert("Invalid Hints format. Must be a valid JSON array of strings, e.g. [\"Hint 1\", \"Hint 2\"]");
+        return;
+    }
+
+    const payload = {
+        adminKey,
+        week: parseInt(week),
+        goesLiveAt: document.getElementById('puzzle-live-at').value,
+        questionHtml: document.getElementById('puzzle-question-html').value,
+        questionImageUrl: document.getElementById('puzzle-question-image').value,
+        correctAnswer: document.getElementById('puzzle-answer').value,
+        hints: hintsArray,
+        solutionHtml: document.getElementById('puzzle-solution-html').value,
+        solutionImageUrl: document.getElementById('puzzle-solution-image').value,
+        isActive: document.getElementById('puzzle-active').checked
+    };
+
+    try {
+        const endpoint = mode === 'add' ? '/admin/add-puzzle' : `/admin/update-puzzle/${week}`;
+        const method = mode === 'add' ? 'POST' : 'PUT';
+        
+        const res = await fetch(`${API_BASE}${endpoint}`, {
+            method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        
+        if (data.success) {
+            alert(data.message || `Puzzle ${mode === 'add' ? 'added' : 'updated'} successfully!`);
+            togglePuzzleForm();
+            loadPuzzles();
+        } else {
+            alert(data.error || "Operation failed");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Server error");
+    }
+}
+
+async function deletePuzzle(week) {
+    if (!confirm(`Are you sure you want to PERMANENTLY DELETE puzzle for week ${week}? This cannot be undone.`)) return;
+
+    try {
+        const res = await fetch(`${API_BASE}/admin/delete-puzzle/${week}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ adminKey })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            alert('Puzzle deleted!');
+            loadPuzzles();
         } else {
             alert(data.error || "Delete failed");
         }

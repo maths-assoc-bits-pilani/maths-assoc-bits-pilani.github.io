@@ -172,18 +172,13 @@
       <div
         class="flex flex-col md:flex-row md:items-start mb-16 border-l border-r border-gray-200 dark:border-gray-800 px-6 lg:px-10 py-8 lg:py-12 gap-x-12"
       >
-        <div class="w-full flex flex-col gap-y-8">
+        <div class="w-full flex flex-col gap-y-8 lg:px-16 md:px-10">
           <div class="puzzle-question">
-            <h2 class="text-4xl font-bold mb-6 leading-tight">
-              Odd Sevens Out
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Let $a_n$ be the number of $n$-digits numbers made from
-              $5,6,7,8,9$ which have an odd number of $7$'s. <br />
-              Find $2a_{100}$ (do not include any parentheses in your answer, in
-              case your answer contains an exponentiation sign you may use
-              $\hat{}$ symbol for exponentiation).
-            </p>
+              <div class="puzzle-question-image flex justify-center mb-6">
+                <!-- Question Image will be dynamically inserted here if it exists -->
+              </div>
+            <!-- Question HTML will be dynamically inserted here -->
+            <p class="text-center text-gray-500 italic">Loading puzzle...</p>
           </div>
         </div>
       </div>
@@ -274,39 +269,12 @@
             >
               <div class="w-full md:w-3/4 lg:w-2/3 text-left">
                 <div class="prose prose-lg dark:prose-invert max-w-none">
-                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    $a_n$ denotes the number of $n$-digit numbers made from
-                    $5,6,7,8,9$ which have an odd number of $7$'s.<br />
-
-                    Let $b_n$ denote the number of $n$-digit numbers made from
-                    $5,6,7,8,9$ which have an even number of $7$'s. Let there be
-                    $n$-spots for the $n$-digit number $\\\\...\\$, the first
-                    $(n-1)$ spots can be filled in $a_{n-1}$ ways which is
-                    followed by the last spot which can be filled in $4$ ways,
-                    if the last spot is a $7$ then we can fill the remaining
-                    $(n-1)$ spots in $b_{n-1}$ ways.<br />
-
-                    Thus, we have the recurrence relation
-                    $a_n=4a_{n-1}+b_{n-1}$. Similarly, for $b_n$ the first
-                    $(n-1)$ spots can be filled in $b_{n-1}$ ways which is
-                    followed by the last spot which can be filled in $4$ ways,
-                    if the last spot is a $7$ then we can fill the remaining
-                    $(n-1)$ spots in $a_{n-1}$ ways, thus we have the recurrence
-                    relation $b_n=4b_{n-1}+a_{n-1}$.<br />
-
-                    We can simply compute $a_1$ and $b_1$ without the
-                    recurrence. $a_1=1$, $b_1=4$.<br />
-
-                    Now, $(a_n+b_n)=5(a_{n-1}+b_{n-1})$ and
-                    $(b_n-a_n)=3(b_{n-1}-a_{n-1})$. From this we know that
-                    $(a_n+b_n)$ forms a G.P. with common ratio $5$ and first
-                    term $5$ and $(b_n-a_n)$ forms a G.P. with common ratio $3$
-                    and first term 3.<br />
-
-                    Thus, $(a_n+b_n)=5^n$ and $(b_n-a_n)=3^n$. This gives us
-                    that $a_n=\frac{5^n-3^n}{2}$. Thus,
-                    $2a_{100}=5^{100}-3^{100}$.
-                  </p>
+                  <div class="puzzle-solution-image flex justify-center mb-6">
+                    <!-- Solution Image will be dynamically inserted here if it exists -->
+                  </div>
+                  <div class="puzzle-solution">
+                      <!-- Solution HTML will be dynamically inserted here -->
+                  </div>
                 </div>
               </div>
             </div>
