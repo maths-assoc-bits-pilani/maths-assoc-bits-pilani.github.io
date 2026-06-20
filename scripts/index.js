@@ -144,11 +144,12 @@ function handleCredentialResponse(response) {
 			if (data.success) {
 				globalName = data.user.name;
 				globalEmail = data.user.email;
+				globalToken = token;
 				
 				const submissionStatus = await checkSubmissionStatus(globalEmail);
 				toggleGoogleLoading(false);
 				
-				if (submissionStatus.hasSubmitted && submissionStatus.isCorrect) {
+				if (submissionStatus.alreadyCorrect) {
 					await loadSolution(globalEmail, token);
 					const alreadySubmittedModal = document.querySelector(".already-submitted");
 					alreadySubmittedModal.classList.remove("hidden");
@@ -159,6 +160,7 @@ function handleCredentialResponse(response) {
 					attemptsComplete.classList.remove("hidden");
 					attemptsComplete.classList.add("open");
 				} else {
+					attemptCount = submissionStatus.attemptCount || 0;
 					const carousel = new bootstrap.Carousel("#carouselExample");
 					carousel.next();
 				}
@@ -179,6 +181,7 @@ window.handleCredentialResponse = handleCredentialResponse;
 const responseForm = document.getElementById("response-form");
 let globalName = "";
 let globalEmail = "";
+let globalToken = "";
 
 let attemptCount = 0;
 
@@ -217,9 +220,7 @@ responseForm.addEventListener("submit", async (e) => {
 		const carousel = new bootstrap.Carousel("#carouselExample");
 		if (res.ok && data.success) {
 			if (data.isCorrect) {
-				// Assuming we need to refetch token or just verify on backend later, but for now just show modal
-				// We can't immediately fetch the solution without the google idToken unless we change the API or stored it
-				// Assuming the server trusts correct answers directly here or the user can view it later
+				await loadSolution(globalEmail, globalToken);
 				const correctModal = document.querySelector(".correct-modal");
 				correctModal.classList.remove("hidden");
 				correctModal.classList.add("open");

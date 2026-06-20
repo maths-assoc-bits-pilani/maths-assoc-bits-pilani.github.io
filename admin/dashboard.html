@@ -70,6 +70,11 @@
                     <form id="puzzle-form" onsubmit="submitPuzzleForm(event)">
                         <input type="hidden" id="puzzle-mode" value="add">
                         
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-1">Title (Internal Only)</label>
+                            <input type="text" id="puzzle-title" class="w-full p-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded" placeholder="E.g. Logic Gate Puzzle">
+                        </div>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label class="block text-sm font-bold mb-1">Week Number</label>

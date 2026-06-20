@@ -239,12 +239,14 @@ function togglePuzzleForm(mode = 'add', puzzleData = null) {
             modeInput.value = 'add';
             document.getElementById('puzzle-form').reset();
             document.getElementById('puzzle-week').disabled = false;
+            document.getElementById('puzzle-title').value = '';
         } else if (mode === 'edit' && puzzleData) {
             formTitle.textContent = `Edit Puzzle ${puzzleData.week}`;
             modeInput.value = 'edit';
             
             document.getElementById('puzzle-week').value = puzzleData.week;
             document.getElementById('puzzle-week').disabled = true; // Cannot change week once created
+            document.getElementById('puzzle-title').value = puzzleData.title || '';
             
             // Format date for datetime-local input
             const date = new Date(puzzleData.goesLiveAt);
@@ -288,7 +290,7 @@ function renderPuzzles(puzzles) {
             <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-800">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <h3 class="text-xl font-bold mb-1">Week ${puzzle.week}</h3>
+                        <h3 class="text-xl font-bold mb-1">Week ${puzzle.week} ${puzzle.title ? `- ${puzzle.title}` : ''}</h3>
                         <p class="text-sm text-gray-500">Scheduled for: ${liveDate.toLocaleString()}</p>
                     </div>
                     ${statusBadge}
@@ -328,6 +330,7 @@ async function submitPuzzleForm(event) {
     const payload = {
         adminKey,
         week: parseInt(week),
+        title: document.getElementById('puzzle-title').value,
         goesLiveAt: document.getElementById('puzzle-live-at').value,
         questionHtml: document.getElementById('puzzle-question-html').value,
         questionImageUrl: document.getElementById('puzzle-question-image').value,
