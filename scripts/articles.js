@@ -46,46 +46,60 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-US', options);
 }
 
+// Article titles, excerpts, author names, and tags all come from
+// user-submitted content (see infinity-insights/write.html) and are
+// untrusted. Escape before interpolating into innerHTML to avoid
+// stored XSS, and URL-encode the slug since it's used inside an href.
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str ?? '';
+    return div.innerHTML;
+}
+
+function articleUrl(slug) {
+    return `/infinity-insights/article.html?slug=${encodeURIComponent(slug)}`;
+}
+
 function renderHeroArticle(article, container) {
     const { title, excerpt, coverImage, tags, publishedAt, author, slug } = article;
     const date = formatDate(publishedAt || article.submittedAt); // Fallback to submittedAt if not published
     const tag = tags && tags.length > 0 ? tags[0] : 'General';
     const authorName = author?.name || 'Anonymous';
-    
+
     // Default image if none provided
     const imageUrl = coverImage || 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop';
 
     container.innerHTML = `
-        <a href="/infinity-insights/article.html?slug=${slug}" class="group grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <a href="${articleUrl(slug)}" class="group grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <!-- Image -->
             <div class="lg:col-span-7 overflow-hidden">
                 <img
-                    src="${imageUrl}"
-                    alt="${title}"
+                    src="${escapeHtml(imageUrl)}"
+                    alt="${escapeHtml(title)}"
                     class="w-full h-[400px] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" />
             </div>
 
             <!-- Content -->
             <div class="lg:col-span-5 flex flex-col justify-center">
                 <div class="flex items-center gap-3 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4">
-                    <span class="text-black dark:text-white border-b border-black dark:border-white pb-0.5">${tag}</span>
+                    <span class="text-black dark:text-white border-b border-black dark:border-white pb-0.5">${escapeHtml(tag)}</span>
                     <span>&bull;</span>
-                    <span>${date}</span>
+                    <span>${escapeHtml(date)}</span>
                 </div>
 
                 <h1 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-                    ${title}
+                    ${escapeHtml(title)}
                 </h1>
 
                 <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed line-clamp-3">
-                    ${excerpt}
+                    ${escapeHtml(excerpt)}
                 </p>
 
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden flex items-center justify-center text-xs font-bold">
-                        ${authorName.charAt(0)}
+                        ${escapeHtml(authorName.charAt(0))}
                     </div>
-                    <span class="text-sm font-sans font-bold uppercase tracking-wide">${authorName}</span>
+                    <span class="text-sm font-sans font-bold uppercase tracking-wide">${escapeHtml(authorName)}</span>
                 </div>
             </div>
         </a>
@@ -101,31 +115,31 @@ function createArticleCard(article) {
 
     const articleEl = document.createElement('article');
     articleEl.className = 'flex flex-col h-full px-6 border-l border-r border-gray-200 dark:border-gray-800 group';
-    
+
     articleEl.innerHTML = `
-        <a href="/infinity-insights/article.html?slug=${slug}" class="block overflow-hidden mb-6">
+        <a href="${articleUrl(slug)}" class="block overflow-hidden mb-6">
             <img
-                src="${imageUrl}"
-                alt="${title}"
+                src="${escapeHtml(imageUrl)}"
+                alt="${escapeHtml(title)}"
                 class="w-full h-56 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
         </a>
         <div class="flex-1">
             <div class="flex items-center gap-2 text-xs font-sans font-bold tracking-widest uppercase text-gray-500 mb-3">
-                <span class="text-black dark:text-white">${tag}</span>
+                <span class="text-black dark:text-white">${escapeHtml(tag)}</span>
                 <span>&bull;</span>
-                <span>${date}</span>
+                <span>${escapeHtml(date)}</span>
             </div>
             <h3 class="text-2xl font-bold mb-3 leading-tight group-hover:underline decoration-1 underline-offset-4">
-                <a href="/infinity-insights/article.html?slug=${slug}">${title}</a>
+                <a href="${articleUrl(slug)}">${escapeHtml(title)}</a>
             </h3>
             <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-                ${excerpt}
+                ${escapeHtml(excerpt)}
             </p>
         </div>
         <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-            <span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500">By ${authorName}</span>
+            <span class="text-xs font-sans font-bold uppercase tracking-wide text-gray-500">By ${escapeHtml(authorName)}</span>
         </div>
     `;
-    
+
     return articleEl;
 }
