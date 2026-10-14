@@ -90,3 +90,287 @@ a {
 	background-color: #c29f76;
 	color: #1a1a1a;
 }
+
+/* ==========================================================
+   Theme (ported from the AIMO site)
+   ========================================================== */
+:root {
+	--ink: #171636;
+	--navy: #211f5c;
+	--indigo: #322e86;
+	--violet: #6b67ad;
+	--lilac: #b9b5db;
+	--muted: #5b5980;
+	--line: #e4e2ee;
+	--tint: #f6f5f9;
+	--display: "Libre Franklin", "Trebuchet MS", sans-serif;
+	--body: "Lato", "Trebuchet MS", Helvetica, sans-serif;
+	--gutter: clamp(16px, 4vw, 56px);
+	--section-y: clamp(56px, 7vw, 110px);
+}
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4,
+.font-display {
+	font-family: var(--display);
+	letter-spacing: -0.015em;
+}
+::selection {
+	background: var(--lilac);
+	color: var(--ink);
+}
+
+/* Header */
+.site-header {
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
+}
+.brand__name {
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 700;
+}
+.brand__sub {
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-size: 11px;
+}
+.site-nav a {
+	letter-spacing: 0.04em;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+/* Typography helpers */
+.eyebrow,
+.label {
+	font-family: var(--body);
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.eyebrow { color: var(--violet); font-size: 11px; }
+.eyebrow--dark { color: #9c98c4; }
+.label { font-size: 10px; }
+.h2 {
+	font-family: var(--display);
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+	margin: 16px 0 0;
+	font-size: clamp(28px, 3.6vw, 46px);
+	font-weight: 400;
+	line-height: 1.1;
+}
+.light { color: var(--lilac); font-weight: 300; }
+.lead {
+	text-wrap: pretty;
+	font-size: clamp(16px, 1.6vw, 20px);
+	line-height: 1.65;
+}
+
+/* Buttons */
+.btn {
+	letter-spacing: 0.03em;
+	border-radius: 2px;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	font-weight: 700;
+	display: inline-flex;
+	transition: color .15s, background-color .15s, border-color .15s;
+}
+.btn .arrow { font-size: 1.12em; line-height: 1; }
+.btn--nav {
+	background: var(--indigo);
+	letter-spacing: 0.04em;
+	padding: 10px 20px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #fff !important;
+}
+.btn--nav:hover { background: var(--ink); }
+.dark .btn--nav:hover { background: var(--violet); }
+.btn--primary {
+	background: var(--indigo);
+	color: #fff;
+	padding: 15px 30px;
+	font-size: 14px;
+}
+.btn--primary:hover { background: var(--ink); color: #fff; }
+.dark .btn--primary:hover { background: var(--violet); }
+.btn--outline {
+	color: var(--indigo);
+	border: 1px solid var(--indigo);
+	padding: 14px 28px;
+	font-size: 14px;
+}
+.btn--outline:hover { background: var(--indigo); color: #fff; }
+.dark .btn--outline { color: var(--lilac); border-color: #b9b5db73; }
+.dark .btn--outline:hover { background: var(--lilac); color: var(--ink); }
+.btn--light {
+	color: var(--navy);
+	background: #fff;
+	padding: 17px 34px;
+	font-size: 15px;
+}
+.btn--light:hover { background: var(--lilac); color: var(--ink); }
+.btn--ghost {
+	color: #fff;
+	border: 1px solid #ffffff59;
+	padding: 17px 30px;
+	font-size: 15px;
+	font-weight: 500;
+}
+.btn--ghost:hover { color: #fff; background: #ffffff12; border-color: #fff; }
+
+/* Hero / dark bands */
+.grid-bg {
+	opacity: 0.5;
+	background-image:
+		linear-gradient(var(--indigo) 1px, transparent 1px),
+		linear-gradient(90deg, var(--indigo) 1px, transparent 1px);
+	background-size: 64px 64px;
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+}
+.grid-bg--cta {
+	opacity: 0.35;
+	background-image:
+		linear-gradient(var(--violet) 1px, transparent 1px),
+		linear-gradient(90deg, var(--violet) 1px, transparent 1px);
+}
+.hero {
+	background: var(--navy);
+	color: #fff;
+	padding: var(--section-y) var(--gutter) clamp(48px, 6vw, 96px);
+	position: relative;
+	overflow: hidden;
+}
+.hero--compact { padding-block: clamp(48px, 6vw, 88px); }
+.hero__glow {
+	pointer-events: none;
+	background: radial-gradient(circle, #b9b5db47 0%, #211f5c00 70%);
+	border-radius: 50%;
+	width: 460px;
+	height: 460px;
+	position: absolute;
+	top: -140px;
+	right: -120px;
+}
+.hero__title {
+	font-family: var(--display);
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	margin: 0;
+	font-size: clamp(36px, 6.4vw, 82px);
+	font-weight: 400;
+	line-height: 1.02;
+}
+.hero--compact .hero__title { font-size: clamp(34px, 5vw, 64px); }
+.hero__lede {
+	color: #cfcde2;
+	text-wrap: pretty;
+	max-width: 620px;
+	margin: clamp(18px, 2.5vw, 28px) 0 0;
+	font-size: clamp(15px, 1.5vw, 19px);
+	line-height: 1.6;
+}
+.badge {
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: #c9c6e4;
+	border: 1px solid #b9b5db73;
+	border-radius: 2px;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: clamp(20px, 3vw, 34px);
+	padding: 7px 14px;
+	font-size: 11px;
+	font-weight: 700;
+	display: inline-flex;
+}
+.badge__dot {
+	background: var(--lilac);
+	border-radius: 50%;
+	flex-shrink: 0;
+	width: 6px;
+	height: 6px;
+}
+.facts {
+	background: #b9b5db47;
+	border: 1px solid #b9b5db47;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1px;
+	margin-top: clamp(40px, 6vw, 80px);
+	display: grid;
+}
+.facts__item { background: var(--navy); padding: 22px 24px; }
+.facts__item .label { color: #9c98c4; margin-bottom: 10px; }
+.facts__value {
+	font-family: var(--display);
+	font-size: clamp(20px, 2.2vw, 27px);
+	line-height: 1.15;
+}
+@media (max-width: 960px) {
+	.facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+	.facts__item { padding: 18px 16px; }
+	.facts__value { font-size: 18px; }
+}
+
+/* Cards */
+.pillar {
+	border: 1px solid var(--line);
+	border-top: 3px solid var(--indigo);
+	background: #fff;
+	padding: 24px;
+}
+.dark .pillar { background: #171636; border-color: #2c2a50; border-top-color: var(--lilac); }
+
+/* CTA band */
+.cta {
+	padding: clamp(60px, 8vw, 120px) var(--gutter);
+	background: var(--indigo);
+	color: #fff;
+	position: relative;
+	overflow: hidden;
+}
+.cta__title {
+	font-family: var(--display);
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+	margin: 0;
+	font-size: clamp(30px, 4.6vw, 60px);
+	font-weight: 400;
+	line-height: 1.08;
+}
+
+/* Footer */
+.footer {
+	padding: clamp(36px, 4.5vw, 60px) var(--gutter);
+	background: var(--ink);
+	color: #b5b2ce;
+}
+.dark .footer { background: #0d0c22; border-top: 1px solid #2c2a50; }
+.footer__links a { color: #b5b2ce; }
+.footer__links a:hover { color: #fff; }
+.footer__bottom {
+	letter-spacing: 0.1em;
+	color: #726f92;
+	border-top: 1px solid #2c2a50;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+/* AIMO uses light display headings; tone down legacy bold utilities */
+:is(h1, h2, h3).font-bold,
+:is(h1, h2, h3).font-extrabold,
+:is(h1, h2, h3).font-black { font-weight: 500; }

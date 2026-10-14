@@ -46,18 +46,18 @@ function updateMouse(e) {
 function draw() {
     const isDark = document.documentElement.classList.contains('dark');
     
-    // Base colors (Gray-ish)
-    const baseR = isDark ? 255 : 0;
-    const baseG = isDark ? 255 : 0;
-    const baseB = isDark ? 255 : 0;
+    // Base colors (lilac on dark, ink on light)
+    const baseR = isDark ? 185 : 23;
+    const baseG = isDark ? 181 : 22;
+    const baseB = isDark ? 219 : 54;
     const baseA = 0.1; // Very subtle base
 
-    // Highlight colors (Sky Blue)
-    // Dark mode: 56, 189, 248
-    // Light mode: 14, 165, 233
-    const highR = isDark ? 56 : 14;
-    const highG = isDark ? 189 : 165;
-    const highB = isDark ? 248 : 233;
+    // Highlight colors
+    // Dark mode: lilac 185, 181, 219
+    // Light mode: violet 107, 103, 173
+    const highR = isDark ? 185 : 107;
+    const highG = isDark ? 181 : 103;
+    const highB = isDark ? 219 : 173;
     const highA = 0.9; // More transparent highlight as requested
 
     ctx.clearRect(0, 0, width, height);

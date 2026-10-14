@@ -5,29 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mathematics Association - BITS Pilani</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              serif: ['Merriweather', 'serif'],
-              sans: ['Lato', 'sans-serif'],
-            },
-            colors: {
-              gray: {
-                850: '#1f2937',
-                950: '#030712',
-              },
-            },
-          },
-        },
-      };
-    </script>
+    <script src="/scripts/tailwind-config.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/styles.css" />
@@ -49,7 +31,7 @@
   </head>
 
   <body
-    class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 relative"
+    class="!bg-gray-50 dark:!bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800 relative"
   >
     <!-- Background Canvas -->
     <canvas
@@ -59,28 +41,28 @@
 
     <!-- Navbar -->
     <div
-      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+      class="site-header sticky top-0 z-50 bg-gray-50/90 dark:bg-gray-950/90 border-b border-gray-200 dark:border-gray-800"
     >
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
           <!-- Logo / Brand -->
           <div class="flex items-center gap-4">
-            <div class="border border-gray-900 dark:border-gray-100 p-1">
+            <div class="shrink-0">
               <img
                 src="/assets/massocicon.jpg"
                 alt="Logo"
-                class="h-8 w-8 dark:grayscale"
+                class="h-10 w-10 rounded-full"
               />
             </div>
             <div class="flex flex-col leading-none">
               <a
                 href="/index.html"
-                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+                class="brand__name text-indigo dark:text-lilac hover:text-violet transition-colors font-sans"
               >
                 Mathematics Association
               </a>
               <span
-                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                class="brand__sub mt-1 text-gray-500 dark:text-gray-400 font-sans"
                 >BITS Pilani</span
               >
             </div>
@@ -88,26 +70,26 @@
 
           <!-- Desktop Menu -->
           <div
-            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+            class="site-nav hidden md:flex items-center space-x-8 font-sans text-gray-700 dark:text-gray-300"
           >
             <a
               href="/puzzles/index.html"
-              class="hover:text-gray-500 transition-colors"
+              class="hover:text-violet dark:hover:text-lilac transition-colors"
               >Puzzles</a
             >
             <a
               href="/infinity-insights/index.html"
-              class="hover:text-gray-500 transition-colors"
+              class="hover:text-violet dark:hover:text-lilac transition-colors"
               >Blog</a
             >
-            <a href="/about.html" class="hover:text-gray-500 transition-colors"
+            <a href="/about.html" class="hover:text-violet dark:hover:text-lilac transition-colors"
               >About</a
             >
 
             <!-- Theme Toggle -->
             <button
               id="theme-toggle"
-              class="focus:outline-none hover:text-gray-500 transition-colors p-2 rounded-md"
+              class="focus:outline-none hover:text-violet dark:hover:text-lilac transition-colors p-2 rounded-md"
             >
               <svg
                 id="theme-toggle-light-icon"
@@ -138,7 +120,7 @@
           <div class="md:hidden">
             <button
               id="menu-toggle"
-              class="text-2xl hover:text-gray-500 transition-colors"
+              class="text-2xl hover:text-violet dark:hover:text-lilac transition-colors"
             >
               &#9776;
             </button>
@@ -150,116 +132,154 @@
     <!-- Mobile Menu Overlay -->
     <div
       id="menu"
-      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+      class="fixed top-0 left-0 w-screen h-screen bg-navy/[0.97] text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
     >
       <button
         id="close-menu"
-        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+        class="absolute top-6 right-6 text-4xl hover:text-lilac"
       >
         &times;
       </button>
-      <a href="/puzzles/index.html" class="hover:text-gray-400">Puzzles</a>
-      <a href="/infinity-insights/index.html" class="hover:text-gray-400"
+      <a href="/puzzles/index.html" class="hover:text-lilac">Puzzles</a>
+      <a href="/infinity-insights/index.html" class="hover:text-lilac"
         >Blog</a
       >
-      <a href="/about.html" class="hover:text-gray-400">About</a>
+      <a href="/about.html" class="hover:text-lilac">About</a>
     </div>
 
     <!-- Hero Section -->
-    <section class="py-20 px-6 text-center relative z-10">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-          Mathematics Association
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 font-serif italic">
-          Fostering the love for mathematics at BITS Pilani, Pilani campus.
-        </p>
-      </div>
-    </section>
-
-    <!-- Collage Section: Blog & Puzzles -->
-    <section class="py-20 bg-transparent relative z-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          <!-- Infinity Insights (Left) -->
-          <div
-            class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border border-gray-100 dark:border-gray-800"
-          >
-            <div class="h-64 overflow-hidden">
-              <img
-                src="/assets/clocktower.webp"
-                alt="Infinity Insights"
-                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 grayscale hover:grayscale-0"
-              />
-            </div>
-            <div class="p-8 flex-1 flex flex-col justify-center">
-              <h2
-                class="text-3xl font-serif font-extrabold mb-4 text-gray-900 dark:text-white tracking-tight"
+    <section class="hero relative z-10">
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="max-w-[1180px] mx-auto relative">
+        <div class="grid grid-cols-1 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] items-end gap-6 md:gap-16">
+          <div class="min-w-0">
+            <span class="badge"
+              ><span class="badge__dot"></span>BITS Pilani &middot; Pilani
+              Campus</span
+            >
+            <h1 class="hero__title">
+              Mathematics <span class="light">Association</span>
+            </h1>
+            <p class="hero__lede">
+              Fostering the love for mathematics at BITS Pilani, Pilani campus,
+              through weekly puzzles, a student research blog, and events
+              all year round.
+            </p>
+            <div class="flex flex-wrap gap-3.5 mt-7 md:mt-10">
+              <a href="/puzzles/index.html" class="btn btn--light"
+                >Solve this week's puzzle <span class="arrow">&rarr;</span></a
               >
-                Infinity Insights
-              </h2>
-              <p
-                class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
+              <a href="/infinity-insights/index.html" class="btn btn--ghost"
+                >Read the blog</a
               >
-                Dive deep into the world of mathematics with our research blog.
-                Explore fascinating topics, new discoveries, and insightful
-                articles written by our research team.
-              </p>
-              <div>
-                <a
-                  href="/infinity-insights/index.html"
-                  class="inline-block border-2 border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100 font-bold py-3 px-8 rounded-lg hover:bg-gray-900 hover:text-white dark:hover:bg-gray-100 dark:hover:text-gray-900 transition-colors uppercase tracking-wider text-sm"
-                >
-                  Read the Blog
-                </a>
-              </div>
             </div>
           </div>
+          <div class="hidden md:flex justify-end">
+            <img
+              src="/assets/massocicon.png"
+              alt="Mathematics Association logo"
+              class="w-[clamp(120px,18vw,230px)] h-auto rounded-full opacity-95 drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+            />
+          </div>
+        </div>
 
-          <!-- Puzzles 2 Puzzle U (Right, Offset) -->
-          <div
-            class="md:mt-16 bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden flex flex-col h-full border border-gray-100 dark:border-gray-800"
-          >
-            <div
-              class="p-8 flex-1 flex flex-col justify-center text-center md:text-left"
-            >
-              <h2
-                class="text-3xl font-serif font-extrabold mb-4 text-gray-900 dark:text-white tracking-tight"
-              >
-                Puzzles 2 Puzzle U
-              </h2>
-              <p
-                class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-              >
-                Challenge yourself with our weekly puzzles! Test your logic,
-                problem-solving skills, and mathematical intuition. Compete with
-                others and climb the leaderboard.
-              </p>
-              <div>
-                <a
-                  href="/puzzles/index.html"
-                  class="inline-block bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors uppercase tracking-wider text-sm"
-                >
-                  Solve This Week's Puzzle
-                </a>
-              </div>
-            </div>
+        <div class="facts">
+          <div class="facts__item">
+            <div class="label">Puzzles</div>
+            <div class="facts__value">Every week</div>
+          </div>
+          <div class="facts__item">
+            <div class="label">Blog</div>
+            <div class="facts__value">Infinity Insights</div>
+          </div>
+          <div class="facts__item">
+            <div class="label">Events</div>
+            <div class="facts__value">Year-round</div>
+          </div>
+          <div class="facts__item">
+            <div class="label">Open to</div>
+            <div class="facts__value">All students</div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- What We Do -->
+    <section
+      class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 relative z-10 px-[var(--gutter)] py-[var(--section-y)]"
+    >
+      <div class="max-w-[1180px] mx-auto">
+        <div class="flex flex-wrap justify-between items-end gap-x-6 gap-y-4 mb-8 md:mb-12">
+          <div>
+            <span class="eyebrow">What we do</span>
+            <h2 class="h2">Three ways to do more maths.</h2>
+          </div>
+          <p class="max-w-sm text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Pick a puzzle, read something new, or join us at one of our events
+            on campus.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
+          <a href="/puzzles/index.html" class="pillar group block">
+            <div class="font-display text-[34px] leading-none text-indigo dark:text-lilac">01</div>
+            <h3 class="mt-3.5 mb-1.5 text-[15px] font-semibold tracking-[0.01em] text-gray-900 dark:text-gray-100">
+              Puzzles 2 Puzzle U
+            </h3>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+              Challenge yourself with our weekly puzzles. Test your logic,
+              problem-solving skills and mathematical intuition, then climb
+              the leaderboard.
+            </p>
+            <span class="inline-block mt-5 text-[13px] font-bold tracking-wide text-indigo dark:text-lilac group-hover:text-violet"
+              >Solve now &rarr;</span
+            >
+          </a>
+          <a href="/infinity-insights/index.html" class="pillar group block">
+            <div class="font-display text-[34px] leading-none text-indigo dark:text-lilac">02</div>
+            <h3 class="mt-3.5 mb-1.5 text-[15px] font-semibold tracking-[0.01em] text-gray-900 dark:text-gray-100">
+              Infinity Insights
+            </h3>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              Dive deep into mathematics with our research blog. Explore
+              fascinating topics, new discoveries and articles written by
+              students.
+            </p>
+            <span class="inline-block mt-5 text-[13px] font-bold tracking-wide text-indigo dark:text-lilac group-hover:text-violet"
+              >Read the blog &rarr;</span
+            >
+          </a>
+          <a href="#events" class="pillar group block">
+            <div class="font-display text-[34px] leading-none text-indigo dark:text-lilac">03</div>
+            <h3 class="mt-3.5 mb-1.5 text-[15px] font-semibold tracking-[0.01em] text-gray-900 dark:text-gray-100">
+              Events
+            </h3>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+              From the Annual Mathematics Olympiad to the Integration Bee,
+              we run competitions, talks and games throughout the year.
+            </p>
+            <span class="inline-block mt-5 text-[13px] font-bold tracking-wide text-indigo dark:text-lilac group-hover:text-violet"
+              >See events &rarr;</span
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Events Carousel Section -->
-    <section class="py-16 bg-transparent relative z-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          class="text-4xl font-serif font-extrabold text-center mb-12 text-gray-900 dark:text-white tracking-tight"
-        >
-          Our Events
-        </h2>
+    <section
+      id="events"
+      class="bg-transparent relative z-10 px-[var(--gutter)] py-[var(--section-y)]"
+    >
+      <div class="max-w-[1180px] mx-auto">
+        <div class="mb-8 md:mb-12">
+          <span class="eyebrow">Events</span>
+          <h2 class="h2">Our <span class="text-violet dark:text-lilac font-light">events</span></h2>
+        </div>
 
         <div
-          class="relative max-w-5xl mx-auto overflow-hidden rounded-xl shadow-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+          class="relative overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
         >
           <div
             id="carousel-inner"
@@ -268,9 +288,9 @@
             <!-- Item 1 -->
             <div class="carousel-item min-w-full">
               <div class="flex flex-col md:flex-row h-full">
-                <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4">Sherlock vs Moriarty</h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                <div class="md:w-1/2 py-8 pl-16 pr-8 md:py-12 md:pl-20 md:pr-12 flex flex-col justify-center">
+                  <h3 class="font-display text-[clamp(19px,2.1vw,25px)] font-medium mb-3">Sherlock vs Moriarty</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed">
                     An exciting treasure hunt where teams race to solve clues
                     and discover hidden secrets around the campus!
                   </p>
@@ -287,11 +307,11 @@
             <!-- Item 2 -->
             <div class="carousel-item min-w-full">
               <div class="flex flex-col md:flex-row h-full">
-                <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4">
+                <div class="md:w-1/2 py-8 pl-16 pr-8 md:py-12 md:pl-20 md:pr-12 flex flex-col justify-center">
+                  <h3 class="font-display text-[clamp(19px,2.1vw,25px)] font-medium mb-3">
                     Annual Mathematics Olympiad
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                  <p class="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed">
                     A competitive event that tests mathematical skills, logic,
                     and problem-solving under timed conditions.
                   </p>
@@ -308,9 +328,9 @@
             <!-- Item 3 -->
             <div class="carousel-item min-w-full">
               <div class="flex flex-col md:flex-row h-full">
-                <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4">Integration Bee</h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                <div class="md:w-1/2 py-8 pl-16 pr-8 md:py-12 md:pl-20 md:pr-12 flex flex-col justify-center">
+                  <h3 class="font-display text-[clamp(19px,2.1vw,25px)] font-medium mb-3">Integration Bee</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed">
                     An event where participants race to solve integration
                     problems and compete to become the "Integration Champion"!
                   </p>
@@ -327,9 +347,9 @@
             <!-- Item 4 -->
             <div class="carousel-item min-w-full">
               <div class="flex flex-col md:flex-row h-full">
-                <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4">Gambling Mathematics</h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                <div class="md:w-1/2 py-8 pl-16 pr-8 md:py-12 md:pl-20 md:pr-12 flex flex-col justify-center">
+                  <h3 class="font-display text-[clamp(19px,2.1vw,25px)] font-medium mb-3">Gambling Mathematics</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed">
                     Explore the math behind gambling odds and strategies in a
                     series of engaging activities and games.
                   </p>
@@ -346,9 +366,9 @@
             <!-- Item 5 -->
             <div class="carousel-item min-w-full">
               <div class="flex flex-col md:flex-row h-full">
-                <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold mb-4">Proving the Obvious</h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                <div class="md:w-1/2 py-8 pl-16 pr-8 md:py-12 md:pl-20 md:pr-12 flex flex-col justify-center">
+                  <h3 class="font-display text-[clamp(19px,2.1vw,25px)] font-medium mb-3">Proving the Obvious</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed">
                     Dive into the mathematics behind everyday assumptions
                     through interactive problems, puzzles, and intuitive proofs.
                   </p>
@@ -367,7 +387,7 @@
           <!-- Controls -->
           <button
             id="prev-button"
-            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors focus:outline-none"
+            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-navy/80 hover:bg-indigo text-white p-2.5 rounded-sm transition-colors focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -386,7 +406,7 @@
           </button>
           <button
             id="next-button"
-            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors focus:outline-none"
+            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-navy/80 hover:bg-indigo text-white p-2.5 rounded-sm transition-colors focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -407,31 +427,45 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer
-      class="bg-gray-900 dark:bg-black dark:border-t dark:border-gray-800 text-white py-12 relative z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="mb-8">
-          <img
-            src="/assets/massocicon.jpg"
-            alt="Logo"
-            class="h-12 w-12 rounded-full mx-auto grayscale opacity-80"
-          />
-        </div>
-        <p class="text-gray-400 mb-4">
-          &copy; 2026 Mathematics Association BITS Pilani. All rights reserved.
+    <!-- CTA -->
+    <section class="cta relative z-10">
+      <div class="grid-bg grid-bg--cta" aria-hidden="true"></div>
+      <div class="relative max-w-[900px] mx-auto text-center">
+        <span class="eyebrow eyebrow--dark">This week</span>
+        <h2 class="cta__title mt-4">
+          Think you can crack this week's puzzle?
+        </h2>
+        <p class="mt-5 mx-auto max-w-[560px] text-[#dad8ec] text-[clamp(15px,1.5vw,18px)] leading-relaxed">
+          Submit your answer, earn points and see where you stand on the
+          leaderboard.
         </p>
-        <div class="flex justify-center space-x-6">
-          <a href="#" class="text-gray-400 hover:text-white transition-colors"
-            >Instagram</a
-          >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors"
-            >LinkedIn</a
-          >
-          <a href="#" class="text-gray-400 hover:text-white transition-colors"
-            >Facebook</a
-          >
+        <a href="/puzzles/index.html" class="btn btn--light btn--lg mt-8 md:mt-10"
+          >Solve the puzzle <span class="arrow">&rarr;</span></a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer relative z-10">
+      <div class="max-w-[1180px] mx-auto">
+        <div class="flex flex-wrap justify-between items-center gap-6">
+          <a href="/index.html" class="flex items-center gap-3.5">
+            <img src="/assets/massocicon.jpg" alt="Logo" class="h-11 w-11 rounded-full" />
+            <span class="flex flex-col gap-1 leading-tight">
+              <span class="brand__name text-white !font-semibold">Mathematics Association</span>
+              <span class="text-xs text-[#8f8cab]">BITS Pilani, Pilani Campus</span>
+            </span>
+          </a>
+          <div class="footer__links flex flex-wrap gap-x-8 gap-y-3 text-[13px]">
+            <a href="/puzzles/index.html">Puzzles</a>
+            <a href="/infinity-insights/index.html">Blog</a>
+            <a href="/about.html">About</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+        <div class="footer__bottom mt-8 pt-5 uppercase">
+          &copy; 2026 Mathematics Association &middot; BITS Pilani
         </div>
       </div>
     </footer>

@@ -9,30 +9,12 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              serif: ['Merriweather', 'serif'],
-              sans: ['Lato', 'sans-serif'],
-            },
-            colors: {
-              gray: {
-                850: '#1f2937',
-                950: '#030712',
-              },
-            },
-          },
-        },
-      };
-    </script>
+    <script src="/scripts/tailwind-config.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/styles.css" />
@@ -54,31 +36,31 @@
   </head>
 
   <body
-    class="!bg-white dark:!bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800"
+    class="!bg-gray-50 dark:!bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 font-serif antialiased selection:bg-gray-200 dark:selection:bg-gray-800"
   >
     <div
-      class="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800"
+      class="site-header sticky top-0 z-50 bg-gray-50/90 dark:bg-gray-950/90 border-b border-gray-200 dark:border-gray-800"
     >
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
           <!-- Logo / Brand -->
           <div class="flex items-center gap-4">
-            <div class="border border-gray-900 dark:border-gray-100 p-1">
+            <div class="shrink-0">
               <img
                 src="/assets/massocicon.jpg"
                 alt="Logo"
-                class="h-8 w-8 dark:grayscale"
+                class="h-10 w-10 rounded-full"
               />
             </div>
             <div class="flex flex-col leading-none">
               <a
                 href="/puzzles/index.html"
-                class="text-xl font-bold tracking-tight hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-sans uppercase"
+                class="brand__name text-indigo dark:text-lilac hover:text-violet transition-colors font-sans"
               >
                 Puzzles 2 Puzzle U
               </a>
               <span
-                class="text-xs text-gray-500 dark:text-gray-400 font-sans tracking-widest uppercase"
+                class="brand__sub mt-1 text-gray-500 dark:text-gray-400 font-sans"
                 >Maths Assoc BITS Pilani</span
               >
             </div>
@@ -86,21 +68,21 @@
 
           <!-- Desktop Menu -->
           <div
-            class="hidden md:flex items-center space-x-8 font-sans text-sm tracking-wide uppercase font-bold"
+            class="site-nav hidden md:flex items-center space-x-8 font-sans text-gray-700 dark:text-gray-300"
           >
             <a
               href="/puzzles/leaderboard.html"
-              class="hover:text-gray-500 transition-colors"
+              class="hover:text-violet dark:hover:text-lilac transition-colors"
               >Leaderboard</a
             >
-            <a href="/index.html" class="hover:text-gray-500 transition-colors"
+            <a href="/index.html" class="hover:text-violet dark:hover:text-lilac transition-colors"
               >Home</a
             >
 
             <!-- Theme Toggle -->
             <button
               id="theme-toggle"
-              class="focus:outline-none hover:text-gray-500 transition-colors p-2 rounded-md"
+              class="focus:outline-none hover:text-violet dark:hover:text-lilac transition-colors p-2 rounded-md"
             >
               <svg
                 id="theme-toggle-light-icon"
@@ -131,7 +113,7 @@
           <div class="md:hidden">
             <button
               id="menu-toggle"
-              class="text-2xl hover:text-gray-500 transition-colors"
+              class="text-2xl hover:text-violet dark:hover:text-lilac transition-colors"
             >
               &#9776;
             </button>
@@ -143,18 +125,18 @@
     <!-- Mobile Menu Overlay -->
     <div
       id="menu"
-      class="fixed top-0 left-0 w-screen h-screen bg-black/95 text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
+      class="fixed top-0 left-0 w-screen h-screen bg-navy/[0.97] text-white z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center space-y-8 font-sans text-2xl uppercase tracking-widest"
     >
       <button
         id="close-menu"
-        class="absolute top-6 right-6 text-4xl hover:text-gray-400"
+        class="absolute top-6 right-6 text-4xl hover:text-lilac"
       >
         &times;
       </button>
-      <a href="/puzzles/leaderboard.html" class="hover:text-gray-400"
+      <a href="/puzzles/leaderboard.html" class="hover:text-lilac"
         >Leaderboard</a
       >
-      <a href="/index.html" class="hover:text-gray-400">Home</a>
+      <a href="/index.html" class="hover:text-lilac">Home</a>
     </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
