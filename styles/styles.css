@@ -374,3 +374,54 @@ h1, h2, h3, h4,
 :is(h1, h2, h3).font-bold,
 :is(h1, h2, h3).font-extrabold,
 :is(h1, h2, h3).font-black { font-weight: 500; }
+
+/* "Live now" event link in the navbar */
+.live-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	border: 1px solid var(--violet);
+	border-radius: 999px;
+	color: var(--indigo);
+	white-space: nowrap;
+	transition: background-color 0.2s, color 0.2s;
+}
+.site-nav a.live-pill {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+.live-pill:hover { background: var(--indigo); color: #fff; }
+.dark .live-pill { color: var(--lilac); border-color: #b9b5db73; }
+.dark .live-pill:hover { background: var(--lilac); color: var(--ink); }
+.live-pill--menu,
+.dark .live-pill--menu {
+	font-size: 14px;
+	letter-spacing: 0.08em;
+	color: #fff;
+	border-color: var(--lilac);
+}
+.live-pill__dot {
+	position: relative;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #e5484d;
+	flex-shrink: 0;
+}
+.live-pill__dot::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: #e5484d;
+	animation: live-pulse 1.6s ease-out infinite;
+}
+@keyframes live-pulse {
+	from { transform: scale(1); opacity: 0.7; }
+	to { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.live-pill__dot::after { animation: none; }
+}
